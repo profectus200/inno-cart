@@ -1,4 +1,4 @@
-# InnoCart
+# 🛒InnoCart
 ## An application that connects Innopolis residents with people moving around Kazan.
 
 ### Team
