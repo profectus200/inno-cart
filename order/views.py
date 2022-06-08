@@ -5,6 +5,6 @@ from rest_framework import viewsets
 
 
 # Create your views here.
-class Order(viewsets.ModelViewSet):
+class OrderViewSet(viewsets.ModelViewSet):
     queryset = OrderModel.objects.all()
     serializer_class = OrderSerializer

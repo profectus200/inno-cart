@@ -1,11 +1,11 @@
 from rest_framework import serializers
 
-from .models import OrderModel
+from .models import ProfileModel
 
 
-class OrderSerializer(serializers.ModelSerializer):
+class ProfileSerializer(serializers.ModelSerializer):
     user = serializers.HiddenField(default=serializers.CurrentUserDefault())
 
     class Meta:
-        model = OrderModel
+        model = ProfileModel
         fields = "__all__"
