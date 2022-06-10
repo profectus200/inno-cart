@@ -5,7 +5,7 @@ import 'package:innocart_front/data/api/model/api_order.dart';
 
 class OrderService {
   Future<List<ApiOrder>> getOrderList() async {
-    Uri url = Uri.parse('http://10.0.2.2:8000/ordersdetails');
+    Uri url = Uri.parse('http://10.0.2.2:8000/api/v1/ordersdetails');
     var response = await http.get(url);
     var list = jsonDecode(response.body) as List;
     List<ApiOrder> orderList = [];
@@ -18,7 +18,7 @@ class OrderService {
   }
 
   Future<ApiOrder> getOrder(int id) async {
-    Uri url = Uri.parse('http://10.0.2.2:8000/ordersdetails/$id');
+    Uri url = Uri.parse('http://10.0.2.2:8000/api/v1/ordersdetails/$id');
     var response = await http.get(url);
     var element = jsonDecode(response.body);
     ApiOrder order = ApiOrder.fromApi(element);
@@ -27,7 +27,7 @@ class OrderService {
   }
 
   Future<int> addOrder(ApiOrder order) async {
-    Uri url = Uri.parse('http://10.0.2.2:8000/ordersdetails');
+    Uri url = Uri.parse('http://10.0.2.2:8000/api/v1/ordersdetails');
     var response = await http.post(url,
         headers: {
           "Content-Type": "application/json",
@@ -37,7 +37,7 @@ class OrderService {
   }
 
   Future<int> deleteOrder(int id) async {
-    Uri url = Uri.parse('http://10.0.2.2:8000/ordersdetails/$id');
+    Uri url = Uri.parse('http://10.0.2.2:8000/api/v1/ordersdetails/$id');
     var response = await http.delete(url);
     return response.statusCode;
   }

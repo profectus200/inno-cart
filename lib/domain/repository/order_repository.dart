@@ -7,6 +7,5 @@ abstract class OrderRepository {
 
   Future<int> addOrder(Order order);
 
-  Future<int> deleteOrder(int id
-      );
+  Future<int> deleteOrder(int id);
 }
