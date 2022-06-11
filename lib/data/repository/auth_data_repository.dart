@@ -19,7 +19,7 @@ class AuthDataRepository extends AuthRepository{
   }
 
   @override
-  Future<bool> isStorageEmpty() {
+  Future<bool> isStorageEmpty() async {
     return _apiUtil.isStorageEmpty();
   }
 }

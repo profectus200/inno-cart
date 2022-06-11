@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:innocart_front/presentation/login_page.dart';
+import 'package:innocart_front/presentation/register_page.dart';
 
-import 'domain/model/order.dart';
-import 'internal/application.dart';
-import 'internal/dependencies/order_repo_module.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MaterialApp(
+    debugShowCheckedModeBanner: false,
+    home: const MyLogin(),
+    routes: {
+      'register': (context) => const MyRegister(),
+      'login': (context) => const MyLogin(),
+    },
+  ));
 }
