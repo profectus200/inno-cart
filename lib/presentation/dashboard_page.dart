@@ -30,9 +30,9 @@ class _MyDashboard extends State<MyDashboard> {
 
 class CatalogModel {
   static final orders = [
-    ApiOrder(id: 1, productName: "pizza", weight: 1, size:"45x45cm", price: 10, reward:5, contacts: "robiul"),
-    ApiOrder(id: 2, productName: "pizza", weight: 1, size:"45x45cm", price: 10, reward:5, contacts: "robiul"),
-    ApiOrder(id: 3, productName: "pizza", weight: 1, size:"45x45cm", price: 10, reward:5, contacts: "robiul")
+    ApiOrder(id: 1, imageUrl: "https://picsum.photos/id/213/4928/3264", productName: "pizza", weight: 1, size:"45x45cm", price: 10, reward:5, contacts: "robiul"),
+    ApiOrder(id: 2, imageUrl: "https://picsum.photos/id/213/4928/3264", productName: "pizza", weight: 1, size:"45x45cm", price: 10, reward:5, contacts: "robiul"),
+    ApiOrder(id: 3, imageUrl: "https://picsum.photos/id/213/4928/3264", productName: "pizza", weight: 1, size:"45x45cm", price: 10, reward:5, contacts: "robiul")
   ];
 }
 
@@ -51,7 +51,11 @@ class ItemWidget extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: ListTile(
-            leading: Text("${item.id}"),
+            leading: Image.network(
+              item.imageUrl,
+              height: 90,
+              width: 90,
+            ),
             title: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Center(child: Text(item.productName, style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 18))),
