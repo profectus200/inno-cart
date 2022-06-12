@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:innocart_front/presentation/dashboard_page.dart';
 import 'package:innocart_front/presentation/login_page.dart';
 import 'package:innocart_front/presentation/register_page.dart';
-
+import 'package:innocart_front/presentation/navbar.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -11,7 +11,7 @@ void main() {
     routes: {
       'register': (context) => const MyRegister(),
       'login': (context) => const MyLogin(),
-      'dashboard' : (context) => const MyDashboard()
+      'dashboard' : (context) =>  CustomizedBottomNavigationbar()
     },
   ));
 }
