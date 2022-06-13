@@ -21,6 +21,8 @@ We are working on the major part of MVP with the following featuries:
   * backEnd part of the appication with the profile, order models and authorization support
   * archetecture of the frontEnd and complete data/business-logic layers in order to connect frontEnd and backEnd parts
   * working UI
+ 
+ See the [open issues](https://github.com/InnoSWP/InnoCart/issues) for a full list of proposed features (and known issues).
 
 
 ## History of project
