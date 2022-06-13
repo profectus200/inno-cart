@@ -16,7 +16,7 @@ Polina Bazhenova & Ksenia Shchekina: _documentation writers & testers_
 * Link to the [UI design](https://www.figma.com/file/IwHlIEm6KW9Id4vlKFG09B/InnoCart?node-id=0%3A1)
 * Link to the [clickable prototype in Figma](https://www.figma.com/proto/IwHlIEm6KW9Id4vlKFG09B/InnoCart?node-id=83%3A59&scaling=scale-down&page-id=0%3A1&starting-point-node-id=83%3A59&show-proto-sidebar=1)
 
-## Our current state
+## Current state
 We are working on the major part of MVP with the following featuries:
   * backEnd part of the appication with the profile, order models and authorization support
   * archetecture of the frontEnd and complete data/business-logic layers in order to connect frontEnd and backEnd parts
