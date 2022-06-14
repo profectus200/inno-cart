@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:innocart_front/internal/dependencies/api_module.dart';
 
 class MyRegister extends StatefulWidget {
   const MyRegister({Key? key}) : super(key: key);
@@ -8,6 +9,10 @@ class MyRegister extends StatefulWidget {
 }
 
 class _MyRegisterState extends State<MyRegister> {
+  final TextEditingController _usernameController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -42,6 +47,7 @@ class _MyRegisterState extends State<MyRegister> {
                       child: Column(
                         children: [
                           TextField(
+                            controller: _usernameController,
                             style: const TextStyle(color: Colors.black),
                             decoration: InputDecoration(
                                 fillColor: Colors.grey.shade100,
@@ -67,6 +73,7 @@ class _MyRegisterState extends State<MyRegister> {
                             height: 30,
                           ),
                           TextField(
+                            controller: _emailController,
                             style: const TextStyle(color: Colors.black),
                             decoration: InputDecoration(
                                 fillColor: Colors.grey.shade100,
@@ -92,6 +99,7 @@ class _MyRegisterState extends State<MyRegister> {
                             height: 30,
                           ),
                           TextField(
+                            controller: _passwordController,
                             style: const TextStyle(color: Colors.black),
                             obscureText: true,
                             decoration: InputDecoration(
@@ -133,7 +141,16 @@ class _MyRegisterState extends State<MyRegister> {
                                 child: IconButton(
                                     color: Colors.white,
                                     onPressed: () {
-                                      Navigator.pushNamed(context, 'dashboard');
+                                      var username = _usernameController.text;
+                                      var password = _passwordController.text;
+                                      var email = _emailController.text;
+                                      
+                                      ApiModule.apiUtil().attemptSignUp(email, username, password).then((value) {
+                                        if(value == 201){
+                                          Navigator.pushNamed(context, 'login');
+                                        }
+                                      });
+                                      Navigator.pushNamed(context, 'register');
                                     },
                                     icon: const Icon(
                                       Icons.arrow_forward,

@@ -9,13 +9,13 @@ class AuthDataRepository extends AuthRepository{
   AuthDataRepository(this._apiUtil);
 
   @override
-  void attemptLogIn(String username, String password) async {
+  Future<int> attemptLogIn(String username, String password) async {
     return _apiUtil.attemptLogIn(username, password);
   }
 
   @override
-  Future<int> attemptSignUp(String username, String password) async {
-    return _apiUtil.attemptSignUp(username, password);
+  Future<int> attemptSignUp(String email, String username, String password) async {
+    return _apiUtil.attemptSignUp(email, username, password);
   }
 
   @override

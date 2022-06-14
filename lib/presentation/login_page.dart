@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:innocart_front/internal/dependencies/api_module.dart';
 
 class MyLogin extends StatefulWidget {
   const MyLogin({Key? key}) : super(key: key);
@@ -8,6 +9,9 @@ class MyLogin extends StatefulWidget {
 }
 
 class _MyLoginState extends State<MyLogin> {
+  final TextEditingController _usernameController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -43,11 +47,12 @@ class _MyLoginState extends State<MyLogin> {
                       child: Column(
                         children: [
                           TextField(
-                            style: const TextStyle(color: Colors.white),
+                            controller: _usernameController,
+                            style: const TextStyle(color: Colors.black),
                             decoration: InputDecoration(
                                 fillColor: Colors.grey.shade100,
                                 filled: true,
-                                hintText: "Email",
+                                hintText: "Username",
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
                                 )),
@@ -56,6 +61,7 @@ class _MyLoginState extends State<MyLogin> {
                             height: 30,
                           ),
                           TextField(
+                            controller: _passwordController,
                             style: const TextStyle(),
                             obscureText: true,
                             decoration: InputDecoration(
@@ -85,7 +91,15 @@ class _MyLoginState extends State<MyLogin> {
                                 child: IconButton(
                                     color: Colors.white,
                                     onPressed: () {
-                                      Navigator.pushNamed(context, 'dashboard');
+                                      var username = _usernameController.text;
+                                      var password = _passwordController.text;
+                                      ApiModule.apiUtil()
+                                          .attemptLogIn(username, password).then((value) {
+                                            if(value == 200) {
+                                              Navigator.pushNamed(context, 'dashboard');
+                                            }
+                                      });
+                                      Navigator.pushNamed(context, 'login');
                                     },
                                     icon: const Icon(
                                       Icons.arrow_forward,

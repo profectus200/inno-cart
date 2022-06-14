@@ -37,12 +37,12 @@ class ApiUtil {
     return requestCode;
   }
 
-  void attemptLogIn(String username, String password) async {
+  Future<int> attemptLogIn(String username, String password) async {
     return _authService.attemptLogIn(username, password);
   }
 
-  Future<int> attemptSignUp(String username, String password) async {
-    return _authService.attemptSignUp(username, password);
+  Future<int> attemptSignUp(String email, String username, String password) async {
+    return _authService.attemptSignUp(email, username, password);
   }
 
   Future<bool> isStorageEmpty() async {
