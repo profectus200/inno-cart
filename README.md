@@ -2,13 +2,13 @@
 ## An application that connects Innopolis residents with people moving around Kazan.
 
 ### Team
-Vladimir Ryabenko: _manager & developer_ 
+_Vladimir Ryabenko:_ manager & developer
 
-Ivan Chebykin: _manager & designer & developer_
+_Ivan Chebykin:_ manager & designer & developer
 
-Maxim Emelyanov: _designer & developer_
+_Maxim Emelyanov:_ designer & developer
 
-Polina Bazhenova & Ksenia Shchekina: _documentation writers & testers_
+_Polina Bazhenova & Ksenia Shchekina:_ documentation writers & testers
 
 
 ### Links
