@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-// import '../internal/dependencies/order_repo_module.dart'
-import '../data/api/model/api_order.dart';
+import 'package:innocart_front/internal/dependencies/order_repo_module.dart';
+import '../domain/model/order.dart';
 
 class MyDashboard extends StatefulWidget {
   const MyDashboard({Key? key}) : super(key: key);
@@ -13,33 +13,40 @@ class _MyDashboard extends State<MyDashboard> {
 
   @override
   Widget build(BuildContext context) {
+    Future<List<Order>> orders;
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
-          title: Text("Ejemplo ListView"),
+          title: const Text("InnoCart"),
         ),
-        body: ListView.builder(
-            itemCount: CatalogModel.orders.length,
-            itemBuilder: (context, index) {
-              return ItemWidget(item: CatalogModel.orders[index]);
-            }),
-      ),
-    );
+        body: FutureBuilder<List<Order>>(
+          future: OrderRepoModule.orderRepository().getOrderList(),
+          builder: (
+              BuildContext context,
+              AsyncSnapshot<List<Order>> orderList
+              ) {
+            if(orderList.hasData && orderList.connectionState == ConnectionState.done) {
+              return ListView.builder(
+                  itemCount: orderList.data!.length,
+                  itemBuilder: (context, index) {
+                    return ItemWidget(item: orderList.data![index]);
+                  });
+            } else {
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            }
+          },
+        )
+      ));
   }
-}
-
-class CatalogModel {
-  static final orders = [
-    ApiOrder(id: 1, imageUrl: "https://picsum.photos/id/213/4928/3264", productName: "pizza", weight: 1, size:"45x45cm", price: 10, reward:5, contacts: "robiul"),
-    ApiOrder(id: 2, imageUrl: "https://picsum.photos/id/213/4928/3264", productName: "pizza", weight: 1, size:"45x45cm", price: 10, reward:5, contacts: "robiul"),
-    ApiOrder(id: 3, imageUrl: "https://picsum.photos/id/213/4928/3264", productName: "pizza", weight: 1, size:"45x45cm", price: 10, reward:5, contacts: "robiul")
-  ];
 }
 
 
 class ItemWidget extends StatelessWidget {
-  final ApiOrder item;
+  final Order item;
   const ItemWidget({Key? key, required this.item}) : super(key: key);
 
   @override
@@ -53,18 +60,18 @@ class ItemWidget extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           child: ListTile(
             leading: Image.network(
-              item.imageUrl,
+              'https://avatars.mds.yandex.net/i?id=2c9c70afa4ab64820d347a195d161ded-5219960-images-thumbs&n=13&exp=1',
               height: 90,
               width: 90,
             ),
             title: Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Center(child: Text(item.productName, style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 18))),
+              child: Center(child: Text(item.productName, style: const TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 18))),
             ),
-            subtitle: Center(child: Text(item.size, style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 15))),
+            subtitle: Center(child: Text(item.size, style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 15))),
             trailing: Text(
               "${item.price}",
-              style: TextStyle(color: Colors.purple, fontWeight: FontWeight.bold, fontSize: 20),
+              style: const TextStyle(color: Colors.purple, fontWeight: FontWeight.bold, fontSize: 20),
             ),
           ),
         ),

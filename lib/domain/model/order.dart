@@ -1,6 +1,5 @@
 class Order {
   final int id;
-  final String imageUrl;
   final String productName;
   final int weight;
   final String size;
@@ -10,7 +9,6 @@ class Order {
 
   Order(
       {required this.id,
-      required this.imageUrl,
       required this.productName,
       required this.weight,
       required this.size,
