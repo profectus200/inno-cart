@@ -1,6 +1,5 @@
 class ApiOrder {
   final int id;
-  final String imageUrl;
   final String productName;
   final int weight;
   final String size;
@@ -10,7 +9,6 @@ class ApiOrder {
 
   ApiOrder(
       {required this.id,
-      required this.imageUrl,
       required this.productName,
       required this.weight,
       required this.size,
@@ -20,7 +18,6 @@ class ApiOrder {
 
   ApiOrder.fromApi(Map<String, dynamic> map)
       : id = map['id'],
-      imageUrl = map['imageUrl'],
         productName = map['productName'],
         weight = map['weight'],
         size = map['size'],

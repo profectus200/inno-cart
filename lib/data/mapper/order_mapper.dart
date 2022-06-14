@@ -5,7 +5,6 @@ class OrderMapper {
   static Order fromApi(ApiOrder order) {
     return Order(
       id: order.id,
-      imageUrl: order.imageUrl,
       productName: order.productName,
       weight: order.weight,
       size: order.size,
@@ -18,7 +17,6 @@ class OrderMapper {
   static ApiOrder toApi(Order order) {
     return ApiOrder(
       id: order.id,
-      imageUrl: order.imageUrl,
       productName: order.productName,
       weight: order.weight,
       size: order.size,
