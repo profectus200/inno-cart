@@ -145,12 +145,12 @@ class _MyRegisterState extends State<MyRegister> {
                                       var password = _passwordController.text;
                                       var email = _emailController.text;
                                       
-                                      ApiModule.apiUtil().attemptSignUp(email, username, password).then((value) {
-                                        if(value == 201){
-                                          Navigator.pushNamed(context, 'login');
-                                        }
-                                      });
-                                      Navigator.pushNamed(context, 'register');
+                                      // ApiModule.apiUtil().attemptSignUp(email, username, password).then((value) {
+                                      //   if(value == 201){
+                                      //     Navigator.pushNamed(context, 'login');
+                                      //   }
+                                      // });
+                                      Navigator.pushNamed(context, 'dashboard');
                                     },
                                     icon: const Icon(
                                       Icons.arrow_forward,

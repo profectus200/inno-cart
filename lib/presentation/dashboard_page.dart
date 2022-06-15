@@ -21,31 +21,47 @@ class _MyDashboard extends State<MyDashboard> {
         appBar: AppBar(
           title: const Text("InnoCart"),
         ),
-        body: FutureBuilder<List<Order>>(
-          future: OrderRepoModule.orderRepository().getOrderList(),
-          builder: (
-              BuildContext context,
-              AsyncSnapshot<List<Order>> orderList
-              ) {
-            if(orderList.hasData && orderList.connectionState == ConnectionState.done) {
-              return ListView.builder(
-                  itemCount: orderList.data!.length,
-                  itemBuilder: (context, index) {
-                    return ItemWidget(item: orderList.data![index]);
-                  });
-            } else {
-              return const Center(
-                child: CircularProgressIndicator(),
-              );
-            }
-          },
-        )
+        body: 
+        ListView.builder(
+            itemCount: CatalogModel.orders.length,
+            itemBuilder: (context, index) {
+              return ItemWidget(item: CatalogModel.orders[index]);
+            }),
+        // FutureBuilder<List<Order>>(
+        //   future: OrderRepoModule.orderRepository().getOrderList(),
+        //   builder: (
+        //       BuildContext context,
+        //       AsyncSnapshot<List<Order>> orderList
+        //       ) {
+        //     if(orderList.hasData && orderList.connectionState == ConnectionState.done) {
+        //       return ListView.builder(
+        //           itemCount: orderList.data!.length,
+        //           itemBuilder: (context, index) {
+        //             return ItemWidget(item: orderList.data![index]);
+        //           });
+        //     } else {
+        //       return const Center(
+        //         child: CircularProgressIndicator(),
+        //       );
+        //     }
+        //   },
+        // )
       ));
   }
 }
 
+class CatalogModel {
+  static final orders = [
+    Order(id: 1, productName: "pizza", weight: 1, size:"45x45cm", price: 10, reward:5, contacts: "robiul"),
+    Order(id: 2, productName: "pizza", weight: 1, size:"45x45cm", price: 10, reward:5, contacts: "robiul"),
+    Order(id: 3, productName: "pizza", weight: 1, size:"45x45cm", price: 10, reward:5, contacts: "robiul")
+  ];
+}
+
 
 class ItemWidget extends StatelessWidget {
+  // final Order item;
+  // const ItemWidget({Key? key, required this.item}) : super(key: key);
   final Order item;
   const ItemWidget({Key? key, required this.item}) : super(key: key);
 

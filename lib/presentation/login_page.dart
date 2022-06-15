@@ -93,13 +93,13 @@ class _MyLoginState extends State<MyLogin> {
                                     onPressed: () {
                                       var username = _usernameController.text;
                                       var password = _passwordController.text;
-                                      ApiModule.apiUtil()
-                                          .attemptLogIn(username, password).then((value) {
-                                            if(value == 200) {
-                                              Navigator.pushNamed(context, 'dashboard');
-                                            }
-                                      });
-                                      Navigator.pushNamed(context, 'login');
+                                      // ApiModule.apiUtil()
+                                      //     .attemptLogIn(username, password).then((value) {
+                                      //       if(value == 200) {
+                                      //         Navigator.pushNamed(context, 'dashboard');
+                                      //       }
+                                      // });
+                                      Navigator.pushNamed(context, 'dashboard');
                                     },
                                     icon: const Icon(
                                       Icons.arrow_forward,
