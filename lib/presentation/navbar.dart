@@ -6,7 +6,7 @@ import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 
 
 class CustomizedBottomNavigationbar extends StatefulWidget {
-  CustomizedBottomNavigationbar({Key? key}) : super(key: key);
+  const CustomizedBottomNavigationbar({Key? key}) : super(key: key);
 
   @override
   _CustomizedBottomNavigationbarState createState() =>
