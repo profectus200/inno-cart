@@ -1,33 +1,17 @@
-"""InnoCart URL Configuration
-
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/4.0/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
 from django.contrib import admin
 from django.urls import path, include, re_path
-from profile import views as profile_views
-from order import views as order_views
+from profile.views import ProfileViewSet
+from order.views import OrderViewSet, PersonalOrderViewSet
 from rest_framework import routers
 
-profile_router = routers.DefaultRouter(trailing_slash=False)
-order_router = routers.DefaultRouter(trailing_slash=False)
-profile_router.register('details', profile_views.ProfileViewSet)
-order_router.register('details', order_views.OrderViewSet)
+router = routers.DefaultRouter(trailing_slash=False)
+router.register('orders', OrderViewSet, basename='details')
+router.register('orders/personal', PersonalOrderViewSet, basename='personal-details')
+router.register('profiles', ProfileViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/v1/profiles', include(profile_router.urls)),
-    path('api/v1/orders', include(order_router.urls)),
+    path('api/v1/', include(router.urls)),
     path('api/v1/auth', include('djoser.urls')),
     re_path(r'^auth/', include('djoser.urls.authtoken')),
 ]
