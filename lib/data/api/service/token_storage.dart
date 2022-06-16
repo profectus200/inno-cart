@@ -1,19 +1,25 @@
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class TokenStorage {
-  static const storage = FlutterSecureStorage();
+  late final _storage = const FlutterSecureStorage();
+
+  static TokenStorage? _instance;
+
+  TokenStorage._();
+
+  static TokenStorage get instance => _instance ??= TokenStorage._();
 
   void saveToken(String token) {
-    storage.write(key: "token", value: token);
+    _storage.write(key: "token", value: token);
   }
 
   Future<String> get tokenOrEmpty async {
-    var token = await storage.read(key: "token");
+    var token = await _storage.read(key: "token");
     if (token == null) return "";
     return token;
   }
 
-  Future<bool> isEmpty() async{
-    return storage.containsKey(key: "token");
+  Future<bool> isEmpty() async {
+    return _storage.containsKey(key: "token");
   }
 }

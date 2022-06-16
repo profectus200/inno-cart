@@ -4,10 +4,6 @@ import 'package:http/http.dart' as http;
 import 'package:innocart_front/data/api/service/token_storage.dart';
 
 class AuthService {
-  late final TokenStorage _tokenStorage;
-
-  AuthService(this._tokenStorage);
-
   Future<int> attemptLogIn(String username, String password) async {
     Uri url = Uri.parse('http://10.0.2.2:8000/auth/token/login/');
     var res = await http.post(url,
@@ -15,7 +11,10 @@ class AuthService {
           "Content-Type": "application/json",
         },
         body: jsonEncode({"username": username, "password": password}));
-    if (res.statusCode == 200) _tokenStorage.saveToken(res.body);
+    if (res.statusCode == 200) {
+      var token = jsonDecode(res.body);
+      TokenStorage.instance.saveToken(token["auth_token"]);
+    }
     return res.statusCode;
   }
 
@@ -35,7 +34,6 @@ class AuthService {
   }
 
   Future<bool> isStorageEmpty() async {
-    Future<bool> token = _tokenStorage.isEmpty();
-    return _tokenStorage.isEmpty();
+    return TokenStorage.instance.isEmpty();
   }
 }

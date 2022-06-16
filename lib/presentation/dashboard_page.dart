@@ -10,59 +10,42 @@ class MyDashboard extends StatefulWidget {
 }
 
 class _MyDashboard extends State<MyDashboard> {
-
   @override
   Widget build(BuildContext context) {
     Future<List<Order>> orders;
 
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text("InnoCart"),
-        ),
-        body: 
-        ListView.builder(
-            itemCount: CatalogModel.orders.length,
-            itemBuilder: (context, index) {
-              return ItemWidget(item: CatalogModel.orders[index]);
-            }),
-        // FutureBuilder<List<Order>>(
-        //   future: OrderRepoModule.orderRepository().getOrderList(),
-        //   builder: (
-        //       BuildContext context,
-        //       AsyncSnapshot<List<Order>> orderList
-        //       ) {
-        //     if(orderList.hasData && orderList.connectionState == ConnectionState.done) {
-        //       return ListView.builder(
-        //           itemCount: orderList.data!.length,
-        //           itemBuilder: (context, index) {
-        //             return ItemWidget(item: orderList.data![index]);
-        //           });
-        //     } else {
-        //       return const Center(
-        //         child: CircularProgressIndicator(),
-        //       );
-        //     }
-        //   },
-        // )
-      ));
+        debugShowCheckedModeBanner: false,
+        home: Scaffold(
+            appBar: AppBar(
+              title: const Text("InnoCart"),
+            ),
+            body: FutureBuilder<List<Order>>(
+              future: OrderRepoModule.orderRepository().getOrderList(),
+              builder:
+                  (BuildContext context, AsyncSnapshot<List<Order>> orderList) {
+                if (orderList.hasData &&
+                    orderList.connectionState == ConnectionState.done) {
+                  return ListView.builder(
+                      itemCount: orderList.data!.length,
+                      itemBuilder: (context, index) {
+                        return ItemWidget(item: orderList.data![index]);
+                      });
+                } else {
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
+                }
+              },
+            )));
   }
 }
-
-class CatalogModel {
-  static final orders = [
-    Order(id: 1, productName: "pizza", weight: 1, size:"45x45cm", price: 10, reward:5, contacts: "robiul"),
-    Order(id: 2, productName: "pizza", weight: 1, size:"45x45cm", price: 10, reward:5, contacts: "robiul"),
-    Order(id: 3, productName: "pizza", weight: 1, size:"45x45cm", price: 10, reward:5, contacts: "robiul")
-  ];
-}
-
 
 class ItemWidget extends StatelessWidget {
   // final Order item;
   // const ItemWidget({Key? key, required this.item}) : super(key: key);
   final Order item;
+
   const ItemWidget({Key? key, required this.item}) : super(key: key);
 
   @override
@@ -82,12 +65,25 @@ class ItemWidget extends StatelessWidget {
             ),
             title: Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Center(child: Text(item.productName, style: const TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 18))),
+              child: Center(
+                  child: Text(item.productName,
+                      style: const TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18))),
             ),
-            subtitle: Center(child: Text(item.size, style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 15))),
+            subtitle: Center(
+                child: Text(item.size,
+                    style: const TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 15))),
             trailing: Text(
               "${item.price}",
-              style: const TextStyle(color: Colors.purple, fontWeight: FontWeight.bold, fontSize: 20),
+              style: const TextStyle(
+                  color: Colors.purple,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20),
             ),
           ),
         ),
