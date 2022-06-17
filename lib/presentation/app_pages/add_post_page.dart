@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:innocart_front/internal/dependencies/order_repo_module.dart';
-import 'package:innocart_front/presentation/dashboard_page.dart';
-
+import 'dashboard_page.dart';
 // import '../internal/dependencies/order_repo_module.dart'
-import '../data/api/model/api_order.dart';
-import '../domain/model/order.dart';
+import '../../data/api/model/api_order.dart';
+import '../../domain/model/order.dart';
 
 class MyAddPost extends StatefulWidget {
   const MyAddPost({Key? key}) : super(key: key);
@@ -22,7 +21,6 @@ class _MyAddPost extends State<MyAddPost> {
   double price = 0;
   double reward = 0;
   String contacts = "";
-  var measure;
 
   @override
   Widget build(BuildContext context) {

@@ -1,4 +1,4 @@
-import 'package:innocart_front/presentation/add_post_page.dart';
+import 'package:innocart_front/presentation/app_pages/add_post_page.dart';
 
 import 'dashboard_page.dart';
 import 'package:flutter/material.dart';
