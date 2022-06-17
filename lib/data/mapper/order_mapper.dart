@@ -8,8 +8,8 @@ class OrderMapper {
       productName: order.productName,
       weight: order.weight,
       size: order.size,
-      price: order.price.toDouble(),
-      reward: order.reward.toDouble(),
+      price: order.price,
+      reward: order.reward,
       contacts: order.contacts,
     );
   }
@@ -20,8 +20,8 @@ class OrderMapper {
       productName: order.productName,
       weight: order.weight,
       size: order.size,
-      price: order.price.toDouble(),
-      reward: order.reward.toDouble(),
+      price: order.price,
+      reward: order.reward,
       contacts: order.contacts,
     );
   }

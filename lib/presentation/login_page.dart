@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:innocart_front/internal/dependencies/api_module.dart';
+import 'package:innocart_front/internal/dependencies/auth_repo_module.dart';
 
 class MyLogin extends StatefulWidget {
   const MyLogin({Key? key}) : super(key: key);
@@ -93,7 +93,7 @@ class _MyLoginState extends State<MyLogin> {
                                     onPressed: () {
                                       var username = _usernameController.text;
                                       var password = _passwordController.text;
-                                      ApiModule.apiUtil()
+                                      AuthRepoModule.authRepository()
                                           .attemptLogIn(username, password)
                                           .then((value) {
                                         if (value == 200) {
