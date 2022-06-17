@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:innocart_front/internal/dependencies/api_module.dart';
+import 'package:innocart_front/internal/dependencies/auth_repo_module.dart';
 
 class MyRegister extends StatefulWidget {
   const MyRegister({Key? key}) : super(key: key);
@@ -12,7 +12,7 @@ class _MyRegisterState extends State<MyRegister> {
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
-  
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -145,7 +145,7 @@ class _MyRegisterState extends State<MyRegister> {
                                       var password = _passwordController.text;
                                       var email = _emailController.text;
 
-                                      ApiModule.apiUtil()
+                                      AuthRepoModule.authRepository()
                                           .attemptSignUp(
                                               email, username, password)
                                           .then((value) {

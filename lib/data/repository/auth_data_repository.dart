@@ -1,25 +1,24 @@
-import 'package:innocart_front/data/api/api_util.dart';
 import 'package:innocart_front/data/api/service/auth_service.dart';
-import 'package:innocart_front/data/api/service/token_storage.dart';
 import 'package:innocart_front/domain/repository/auth_repository.dart';
 
-class AuthDataRepository extends AuthRepository{
-  late final ApiUtil _apiUtil;
+class AuthDataRepository extends AuthRepository {
+  final AuthService _authService;
 
-  AuthDataRepository(this._apiUtil);
+  AuthDataRepository(this._authService);
 
   @override
   Future<int> attemptLogIn(String username, String password) async {
-    return _apiUtil.attemptLogIn(username, password);
+    return _authService.attemptLogIn(username, password);
   }
 
   @override
-  Future<int> attemptSignUp(String email, String username, String password) async {
-    return _apiUtil.attemptSignUp(email, username, password);
+  Future<int> attemptSignUp(
+      String email, String username, String password) async {
+    return _authService.attemptSignUp(email, username, password);
   }
 
   @override
   Future<bool> isStorageEmpty() async {
-    return _apiUtil.isStorageEmpty();
+    return _authService.isStorageEmpty();
   }
 }
