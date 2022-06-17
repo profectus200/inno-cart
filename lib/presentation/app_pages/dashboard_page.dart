@@ -54,7 +54,7 @@ class _MyDashboard extends State<MyDashboard> {
     return GestureDetector(
       onTap: () => {
         Navigator.push(context,
-            MaterialPageRoute(builder: (context) => PostDetail()))
+            MaterialPageRoute(builder: (context) => PostDetail(productName, weight, size, price, reward, contacts)))
       },
       child: Container(
         margin: const EdgeInsets.only(right: 25, left: 20, top: 25),
@@ -84,7 +84,7 @@ class _MyDashboard extends State<MyDashboard> {
                           const SizedBox(width: 10),
                           PrimaryText(
                             text: reward,
-                            size: 16,
+                            size: 20,
                           )
                         ],
                       ),
@@ -95,7 +95,7 @@ class _MyDashboard extends State<MyDashboard> {
                             text: productName, size: 22, fontWeight: FontWeight.w700),
                       ),
                       PrimaryText(
-                          text: weight, size: 18, color: AppColors.lightGray),
+                          text: "weight: $weight", size: 18, color: AppColors.lightGray),
                     ],
                   ),
                 ),
