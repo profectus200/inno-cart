@@ -153,7 +153,7 @@ class _MyRegisterState extends State<MyRegister> {
                                           Navigator.pushNamed(context, 'login');
                                         }
                                       });
-                                      Navigator.pushNamed(context, 'dashboard');
+                                      Navigator.pushNamed(context, 'register');
                                     },
                                     icon: const Icon(
                                       Icons.arrow_forward,

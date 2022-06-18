@@ -101,7 +101,7 @@ class _MyLoginState extends State<MyLogin> {
                                               context, 'dashboard');
                                         }
                                       });
-                                      Navigator.pushNamed(context, 'dashboard');
+                                      Navigator.pushNamed(context, 'login');
                                     },
                                     icon: const Icon(
                                       Icons.arrow_forward,
