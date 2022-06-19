@@ -14,7 +14,7 @@ _Polina Bazhenova & Ksenia Shchekina:_ documentation writers & testers
 * Link to the [UI design](https://www.figma.com/file/IwHlIEm6KW9Id4vlKFG09B/InnoCart?node-id=0%3A1)
 * Link to the [clickable prototype in Figma](https://www.figma.com/proto/IwHlIEm6KW9Id4vlKFG09B/InnoCart?node-id=83%3A59&scaling=scale-down&page-id=0%3A1&starting-point-node-id=83%3A59&show-proto-sidebar=1)
 
-## Current state
+## Current state 🤔
 We are working on the major part of MVP with the following featuries:
   * backEnd part of the appication with the profile, order models and authorization support
   * archetecture of the frontEnd and complete data/business-logic layers in order to connect frontEnd and backEnd parts
@@ -23,7 +23,7 @@ We are working on the major part of MVP with the following featuries:
  See the [open issues](https://github.com/InnoSWP/InnoCart/issues) for a full list of proposed features (and known issues).
 
 
-## History of project
+## History of project 🔎
 ### First week
 * [Summary](https://drive.google.com/file/d/1ezn0zbvN8qUjkdWopXG83LRekrY9s3Xf/view?usp=sharing)
 * [Notion](https://almond-roquefort-b37.notion.site/InnoCart-86db2b644ca344fd94527807bd4509ef)
@@ -35,3 +35,16 @@ We are working on the major part of MVP with the following featuries:
 * [First layout](https://drive.google.com/file/d/1R_6z6rO3wRPKUKCtmVTb0q_DZlBvm2ut/view?usp=sharing)
 ### Fourth week
 * [Summary](https://drive.google.com/file/d/1i1HB3jzVP3AVR2NQ-YTrISNrTc4lXrwb/view?usp=sharing)
+
+## Contributors ✨
+Thanks goes to these wonderful people:
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tr>
+   <td align="center"><a href="https://github.com/doechon"><img src="https://avatars.githubusercontent.com/u/45231817?v=4" width="100px;" alt=""/><br /><sub><b>Ivan Chebykin</b></sub></a><br /><a title="design">🎨</a><br /></td>
+   <td align="center"><a href="https://github.com/Vldmr314"><img src="https://avatars.githubusercontent.com/u/87092259?v=4" width="100px;" alt=""/><br /><sub><b>Vladimir Ryabenko</b></sub></a><br /><a title="code">💻</a><br /></td>
+   <td align="center"><a href="https://github.com/veriFCKation"><img src="https://avatars.githubusercontent.com/u/99489584?v=4" width="100px;" alt=""/><br /><sub><b>Ksenia Shchekina</b></sub></a><br /><a title="doc">📖</a><br /></td>
+   <td align="center"><a href="https://github.com/Poleeknow"><img src="https://avatars.githubusercontent.com/u/106336793?v=4" width="100px;" alt=""/><br /><sub><b>Polina Bazhenova</b></sub></a><br /><a title="design">👀</a><br /></td>
+
