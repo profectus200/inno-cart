@@ -6,8 +6,6 @@ _Vladimir Ryabenko:_ manager & developer
 
 _Ivan Chebykin:_ manager & designer & developer
 
-_Maxim Emelyanov:_ designer & developer
-
 _Polina Bazhenova & Ksenia Shchekina:_ documentation writers & testers
 
 
