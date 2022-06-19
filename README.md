@@ -1,12 +1,5 @@
 # 🛒InnoCart
-## _An application that connects Innopolis residents with people moving around Kazan_
-
-### Team
-_Vladimir Ryabenko:_ manager & developer
-
-_Ivan Chebykin:_ manager & designer & developer
-
-_Polina Bazhenova & Ksenia Shchekina:_ documentation writers & testers
+## An application that connects Innopolis residents with people moving around Kazan
 
 
 ### Links
@@ -41,10 +34,19 @@ Thanks goes to these wonderful people:
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
-<table>
+<table align="center">
   <tr>
    <td align="center"><a href="https://github.com/doechon"><img src="https://avatars.githubusercontent.com/u/45231817?v=4" width="100px;" alt=""/><br /> <sub><b>Ivan Chebykin</b></sub></a><br /> <a href="#projectManagement-doechon" title="Manager">📆</a> <a href="#design-doechon" title="Designer">🎨</a> <a href="#code-doechon" title="Developer">💻</a><br /></td>
    <td align="center"><a href="https://github.com/Vldmr314"><img src="https://avatars.githubusercontent.com/u/87092259?v=4" width="100px;" alt=""/><br /><sub><b>Vladimir Ryabenko</b></sub></a><br /> <a href="#projectManagement-Vldmr314" title="Manager">📆</a> <a href="code-Vldmr314" title="Developer">💻</a><br /></td>
    <td align="center"><a href="https://github.com/veriFCKation"><img src="https://avatars.githubusercontent.com/u/99489584?v=4" width="100px;" alt=""/><br /><sub><b>Ksenia Shchekina</b></sub></a><br /> <a href="#doc-veriFCKation" title="Documentation Writer">📖</a> <a href="test-veriFCKation" title="Tester">👀</a><br /></td>
    <td align="center"><a href="https://github.com/Poleeknow"><img src="https://avatars.githubusercontent.com/u/106336793?v=4" width="100px;" alt=""/><br /><sub><b>Polina Bazhenova</b></sub></a><br /> <a href="#doc-Poleeknow" title="Documentation Writer">📖</a> <a href="test-Poleeknow" title="Tester">👀</a><br /></td>
+</tr>
+</table>
 
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+## License
+   [MIT](https://github.com/InnoSWP/InnoCart/blob/main/LICENSE)
