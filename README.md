@@ -43,8 +43,8 @@ Thanks goes to these wonderful people:
 <!-- markdownlint-disable -->
 <table>
   <tr>
-   <td align="center"><a href="https://github.com/doechon"><img src="https://avatars.githubusercontent.com/u/45231817?v=4" width="100px;" alt=""/><br /><sub><b>Ivan Chebykin</b></sub></a><br /><a title="design">🎨</a><br /><a href="mailto:i.chebykin@innopolis.university>💌</a></td>
-   <td align="center"><a href="https://github.com/Vldmr314"><img src="https://avatars.githubusercontent.com/u/87092259?v=4" width="100px;" alt=""/><br /><sub><b>Vladimir Ryabenko</b></sub></a><br /><a title="code">💻</a><br /><a href="mailto:v.ryabenko@innopolis.university>💌</a></td>
-   <td align="center"><a href="https://github.com/veriFCKation"><img src="https://avatars.githubusercontent.com/u/99489584?v=4" width="100px;" alt=""/><br /><sub><b>Ksenia Shchekina</b></sub></a><br /><a title="doc">📖</a><br /><a href="mailto:k.shchekina@innopolis.university>💌</a></td>
-   <td align="center"><a href="https://github.com/Poleeknow"><img src="https://avatars.githubusercontent.com/u/106336793?v=4" width="100px;" alt=""/><br /><sub><b>Polina Bazhenova</b></sub></a><br /><a title="design">👀</a><br /><a href="mailto:p.bazhenova@innopolis.university>💌</a></td>
+   <td align="center"><a href="https://github.com/doechon"><img src="https://avatars.githubusercontent.com/u/45231817?v=4" width="100px;" alt=""/><br /><sub><b>Ivan Chebykin</b></sub></a><br /><a title="design">🎨</a><br /></td>
+   <td align="center"><a href="https://github.com/Vldmr314"><img src="https://avatars.githubusercontent.com/u/87092259?v=4" width="100px;" alt=""/><br /><sub><b>Vladimir Ryabenko</b></sub></a><br /><a title="code">💻</a><br /></td>
+   <td align="center"><a href="https://github.com/veriFCKation"><img src="https://avatars.githubusercontent.com/u/99489584?v=4" width="100px;" alt=""/><br /><sub><b>Ksenia Shchekina</b></sub></a><br /><a title="doc">📖</a><br /></td>
+   <td align="center"><a href="https://github.com/Poleeknow"><img src="https://avatars.githubusercontent.com/u/106336793?v=4" width="100px;" alt=""/><br /><sub><b>Polina Bazhenova</b></sub></a><br /><a title="design">👀</a><br /></td>
 
