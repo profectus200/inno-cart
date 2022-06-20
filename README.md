@@ -3,7 +3,7 @@
 
 
 ### Links
-* Link to our DEEP Product [backlog](https://github.com/InnoSWP/InnoCart/projects/1)
+* Link to our DEEP Product [backlog](https://github.com/orgs/InnoSWP/projects/66)
 * Link to the [UI design](https://www.figma.com/file/IwHlIEm6KW9Id4vlKFG09B/InnoCart?node-id=0%3A1)
 * Link to the [clickable prototype in Figma](https://www.figma.com/proto/IwHlIEm6KW9Id4vlKFG09B/InnoCart?node-id=83%3A59&scaling=scale-down&page-id=0%3A1&starting-point-node-id=83%3A59&show-proto-sidebar=1)
 
