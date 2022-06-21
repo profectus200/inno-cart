@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:innocart_front/internal/dependencies/order_repo_module.dart';
-import '../../domain/model/order.dart';
+import '../../../domain/model/order.dart';
 import 'post_details_page.dart';
-import '../extra/app_colors.dart';
-import '../extra/primary_text.dart';
+import '../../extra/app_colors.dart';
+import '../../extra/primary_text.dart';
 
 class MyDashboard extends StatefulWidget {
   const MyDashboard({Key? key}) : super(key: key);

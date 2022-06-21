@@ -1,6 +1,6 @@
 import 'package:innocart_front/presentation/app_pages/add_post_page.dart';
 
-import 'dashboard_page.dart';
+import 'dashboard/dashboard_page.dart';
 import 'package:flutter/material.dart';
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'profile/profile_page.dart';
@@ -32,6 +32,7 @@ class _CustomizedBottomNavigationbarState
       case 1 :
         return MyAddPost();
       case 2 :
+        return Text('TBD');
         // return MessagesPage();
       case 3:
         return ProfileScreen();

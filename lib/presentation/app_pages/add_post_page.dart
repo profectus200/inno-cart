@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:innocart_front/internal/dependencies/order_repo_module.dart';
-import 'dashboard_page.dart';
+import 'dashboard/dashboard_page.dart';
 // import '../internal/dependencies/order_repo_module.dart'
 import '../../data/api/model/api_order.dart';
 import '../../domain/model/order.dart';
