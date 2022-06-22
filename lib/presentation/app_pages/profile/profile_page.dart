@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:innocart_front/presentation/extra/primary_text.dart';
 import 'package:innocart_front/presentation/extra/app_colors.dart';
 import '../../auth/login_page.dart';
+import 'active_orders.dart';
 import 'profile_list_item.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -19,7 +20,6 @@ class ProfileScreen extends StatelessWidget {
               children: <Widget>[
                 CircleAvatar(
                   radius: 10 * 5,
-                  // backgroundImage: AssetImage('assets/images/avatar.png'),
                 ),
                 Align(
                   alignment: Alignment.bottomRight,
@@ -70,14 +70,21 @@ class ProfileScreen extends StatelessWidget {
           Expanded(
             child: ListView(
               children: <Widget>[
-                ProfileListItem(icon: Icons.list, text: "active orders"),
+                GestureDetector(
+                    onTap: () => {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => ActiveOrders()))
+                    },
+                    child: ProfileListItem(
+                        icon: Icons.list,
+                        text: "active orders")
+                ),
                 ProfileListItem(icon: Icons.history, text: "go to history"),
                 GestureDetector(
                     onTap: () => {
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) => MyLogin()))
                     },
-                  // onTap: (context, 'login'),
                   child: ProfileListItem(
                     icon: Icons.logout_outlined,
                     text: 'logout',

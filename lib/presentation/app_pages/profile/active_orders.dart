@@ -5,14 +5,14 @@ import '../post_details_page.dart';
 import '../../extra/app_colors.dart';
 import '../../extra/primary_text.dart';
 
-class MyDashboard extends StatefulWidget {
-  const MyDashboard({Key? key}) : super(key: key);
+class ActiveOrders extends StatefulWidget {
+  const ActiveOrders({Key? key}) : super(key: key);
 
   @override
-  _MyDashboard createState() => _MyDashboard();
+  _ActiveOrders createState() => _ActiveOrders();
 }
 
-class _MyDashboard extends State<MyDashboard> {
+class _ActiveOrders extends State<ActiveOrders> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -29,17 +29,17 @@ class _MyDashboard extends State<MyDashboard> {
                   if (orderList.hasData &&
                       orderList.connectionState == ConnectionState.done) {
                     return Column(
-                      children: List.generate(
-                        orderList.data!.length,
-                            (index) => itemCard(
-                            orderList.data![index].productName,
-                                orderList.data![index].weight.toString(),
-                                orderList.data![index].size,
-                      orderList.data![index].price.toString(),
+                        children: List.generate(
+                          orderList.data!.length,
+                              (index) => itemCard(
+                              orderList.data![index].productName,
+                              orderList.data![index].weight.toString(),
+                              orderList.data![index].size,
+                              orderList.data![index].price.toString(),
                               orderList.data![index].reward.toString(),
                               orderList.data![index].contacts
-                      ),
-                    ));
+                          ),
+                        ));
                   } else {
                     return const Center(
                       child: CircularProgressIndicator(),
@@ -141,13 +141,13 @@ class _MyDashboard extends State<MyDashboard> {
                     BoxShadow(color: Colors.grey.shade400, blurRadius: 20)
                   ]),
               child: Hero(
-                tag: "imagePath",
-                child:
-                Image.network(
-              'https://avatars.mds.yandex.net/i?id=2c9c70afa4ab64820d347a195d161ded-5219960-images-thumbs&n=13&exp=1',
-              height: 90,
-              width: 90,
-            )
+                  tag: "imagePath",
+                  child:
+                  Image.network(
+                    'https://avatars.mds.yandex.net/i?id=2c9c70afa4ab64820d347a195d161ded-5219960-images-thumbs&n=13&exp=1',
+                    height: 90,
+                    width: 90,
+                  )
                 // Image.asset('https://avatars.mds.yandex.net/i?id=2c9c70afa4ab64820d347a195d161ded-5219960-images-thumbs&n=13&exp=1',
                 //     width: MediaQuery.of(context).size.width/2.9),
               ),

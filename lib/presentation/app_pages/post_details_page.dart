@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../extra/primary_text.dart';
-import '../../extra/app_colors.dart';
+import '../extra/primary_text.dart';
+import '../extra/app_colors.dart';
 
 class PostDetail extends StatelessWidget {
   String productName = "";
