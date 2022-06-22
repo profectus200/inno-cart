@@ -40,4 +40,15 @@ class OrderDataRepository extends OrderRepository {
     Future<int> requestCode = _orderService.deleteOrder(id);
     return requestCode;
   }
+
+  @override
+  Future<List<Order>> getPersonalOrders() async {
+    final list = await _orderService.getPersonalOrders();
+    List<Order> orderList = [];
+    for (var element in list) {
+      Order order = OrderMapper.fromApi(element);
+      orderList.add(order);
+    }
+    return orderList;
+  }
 }

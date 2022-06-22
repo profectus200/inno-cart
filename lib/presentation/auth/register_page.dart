@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:innocart_front/internal/dependencies/auth_repo_module.dart';
+import 'package:innocart_front/internal/dependencies/profile_repo_module.dart';
+
+import '../../domain/model/profile.dart';
 
 class MyRegister extends StatefulWidget {
   const MyRegister({Key? key}) : super(key: key);
@@ -150,6 +153,13 @@ class _MyRegisterState extends State<MyRegister> {
                                               email, username, password)
                                           .then((value) {
                                         if (value == 201) {
+                                          Profile profile = Profile(
+                                              rating: 5,
+                                              nickname: username,
+                                              dealsCompleted: 0,
+                                              id: -1);
+                                          ProfileRepoModule.profileRepository()
+                                              .addProfile(profile);
                                           Navigator.pushNamed(context, 'login');
                                         }
                                       });
