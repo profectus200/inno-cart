@@ -6,7 +6,7 @@ from rest_framework import routers
 
 router = routers.DefaultRouter(trailing_slash=False)
 router.register('orders', OrderViewSet, basename='details')
-router.register('orders/personal', PersonalOrderViewSet, basename='personal-details')
+router.register('personal', PersonalOrderViewSet, basename='personal-details')
 router.register('profiles', ProfileViewSet)
 
 urlpatterns = [
