@@ -33,6 +33,7 @@ class _ActiveOrders extends State<ActiveOrders> {
                         children: List.generate(
                       orderList.data!.length,
                       (index) => itemCard(
+                          orderList.data![index].id,
                           orderList.data![index].productName,
                           orderList.data![index].weight.toString(),
                           orderList.data![index].description,
@@ -50,15 +51,14 @@ class _ActiveOrders extends State<ActiveOrders> {
             )));
   }
 
-  Widget itemCard(String productName, String weight, String size, String price,
+  Widget itemCard(int id, String productName, String weight, String size, String price,
       String reward, String contacts) {
     return GestureDetector(
       onTap: () => {
         Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (context) => PostDetail(
-                    productName, weight, size, price, reward, contacts, true)))
+                builder: (context) => PostDetail(id, productName, weight, size, price, reward, contacts, true)))
       },
       child: Container(
         margin: const EdgeInsets.only(right: 25, left: 20, top: 25),

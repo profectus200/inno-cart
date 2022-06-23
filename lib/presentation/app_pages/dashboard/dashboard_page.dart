@@ -33,6 +33,7 @@ class _MyDashboard extends State<MyDashboard> {
                         children: List.generate(
                       orderList.data!.length,
                       (index) => itemCard(
+                          orderList.data![index].id,
                           orderList.data![index].productName,
                           orderList.data![index].weight.toString(),
                           orderList.data![index].description,
@@ -50,14 +51,14 @@ class _MyDashboard extends State<MyDashboard> {
             )));
   }
 
-  Widget itemCard(String productName, String weight, String size, String price,
+  Widget itemCard(int id, String productName, String weight, String size, String price,
       String reward, String contacts) {
     return GestureDetector(
       onTap: () => {
         Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (context) => PostDetail(
+                builder: (context) => PostDetail(id,
                     productName, weight, size, price, reward, contacts, false)))
       },
       child: Container(
