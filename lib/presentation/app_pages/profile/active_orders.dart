@@ -23,7 +23,7 @@ class _ActiveOrders extends State<ActiveOrders> {
             ),
             body: SingleChildScrollView(
               child: FutureBuilder<List<Order>>(
-                future: OrderRepoModule.orderRepository().getOrderList(),
+                future: OrderRepoModule.orderRepository().getPersonalOrders(),
                 builder:
                     (BuildContext context, AsyncSnapshot<List<Order>> orderList) {
                   if (orderList.hasData &&
