@@ -32,7 +32,8 @@ class ProfileService {
     return response.statusCode;
   }
 
-  Future<int> updateProfile(ApiProfile profile, int id) async { //Working?
+  Future<int> updateProfile(ApiProfile profile, int id) async {
+    //Working?
     Uri url = Uri.parse('http://10.0.2.2:8000/api/v1/profiles/$id');
     var token = await TokenStorage.instance.tokenOrEmpty;
     var response = await http.post(url,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:innocart_front/presentation/extra/primary_text.dart';
 import 'package:innocart_front/presentation/extra/app_colors.dart';
+import 'package:innocart_front/presentation/extra/primary_text.dart';
+
 import '../../auth/login_page.dart';
 import 'active_orders.dart';
 import 'profile_list_item.dart';
@@ -15,10 +16,10 @@ class ProfileScreen extends StatelessWidget {
           Container(
             height: 10 * 10,
             width: 10 * 10,
-            margin: EdgeInsets.only(top: 10 * 3),
+            margin: const EdgeInsets.only(top: 10 * 3),
             child: Stack(
               children: <Widget>[
-                CircleAvatar(
+                const CircleAvatar(
                   radius: 10 * 5,
                 ),
                 Align(
@@ -30,7 +31,7 @@ class ProfileScreen extends StatelessWidget {
                       color: Theme.of(context).colorScheme.onSecondary,
                       shape: BoxShape.circle,
                     ),
-                    child: Center(
+                    child: const Center(
                       heightFactor: 10 * 1.5,
                       widthFactor: 10 * 1.5,
                       child: Icon(
@@ -44,11 +45,11 @@ class ProfileScreen extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(height: 10 * 2),
-          PrimaryText(text: 'Nicolas Adams', size : 28),
-          SizedBox(height: 10 * 0.5),
-          PrimaryText(text: 'nicolasadams@gmail.com', size: 14),
-          SizedBox(height: 10 * 2),
+          const SizedBox(height: 10 * 2),
+          const PrimaryText(text: 'Nicolas Adams', size: 28),
+          const SizedBox(height: 10 * 0.5),
+          const PrimaryText(text: 'nicolasadams@gmail.com', size: 14),
+          const SizedBox(height: 10 * 2),
         ],
       ),
     );
@@ -57,37 +58,37 @@ class ProfileScreen extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        SizedBox(width: 10 * 3),
+        const SizedBox(width: 10 * 3),
         profileInfo,
-        SizedBox(width: 10 * 3),
+        const SizedBox(width: 10 * 3),
       ],
     );
     return Scaffold(
       body: Column(
         children: <Widget>[
-          SizedBox(height: 10 * 5),
+          const SizedBox(height: 10 * 5),
           header,
           Expanded(
             child: ListView(
               children: <Widget>[
                 GestureDetector(
                     onTap: () => {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => ActiveOrders()))
-                    },
-                    child: ProfileListItem(
-                        icon: Icons.list,
-                        text: "active orders")
-                ),
-                ProfileListItem(icon: Icons.history, text: "go to history"),
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const ActiveOrders()))
+                        },
+                    child: const ProfileListItem(
+                        icon: Icons.list, text: "Active orders")),
+                const ProfileListItem(icon: Icons.history, text: "Go to history"),
                 GestureDetector(
-                    onTap: () => {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => MyLogin()))
-                    },
-                  child: ProfileListItem(
+                  onTap: () => {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => MyLogin()))
+                  },
+                  child: const ProfileListItem(
                     icon: Icons.logout_outlined,
-                    text: 'logout',
+                    text: 'Logout',
                     hasNavigation: false,
                   ),
                 ),

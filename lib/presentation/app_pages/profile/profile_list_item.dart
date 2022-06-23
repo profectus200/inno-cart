@@ -36,7 +36,7 @@ class ProfileListItem extends StatelessWidget {
             size: 10 * 2.5,
           ),
           SizedBox(width: 10 * 1.5),
-          PrimaryText(text: this.text, size : 20),
+          PrimaryText(text: this.text, size: 20),
           Spacer(),
           if (this.hasNavigation)
             Icon(
