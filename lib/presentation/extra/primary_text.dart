@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'app_colors.dart';
 
 class PrimaryText extends StatelessWidget {
@@ -18,13 +19,15 @@ class PrimaryText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(text,
+    return Text(
+      text,
       style: TextStyle(
         color: color,
         height: height,
         fontFamily: 'Poppins',
         fontSize: size,
         fontWeight: fontWeight,
-      ),);
+      ),
+    );
   }
 }

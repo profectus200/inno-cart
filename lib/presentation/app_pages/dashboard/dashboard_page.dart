@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:innocart_front/internal/dependencies/order_repo_module.dart';
+
 import '../../../domain/model/order.dart';
-import '../post_details_page.dart';
 import '../../extra/app_colors.dart';
 import '../../extra/primary_text.dart';
+import '../post_details_page.dart';
 
 class MyDashboard extends StatefulWidget {
   const MyDashboard({Key? key}) : super(key: key);
@@ -24,21 +25,20 @@ class _MyDashboard extends State<MyDashboard> {
             body: SingleChildScrollView(
               child: FutureBuilder<List<Order>>(
                 future: OrderRepoModule.orderRepository().getOrderList(),
-                builder:
-                    (BuildContext context, AsyncSnapshot<List<Order>> orderList) {
+                builder: (BuildContext context,
+                    AsyncSnapshot<List<Order>> orderList) {
                   if (orderList.hasData &&
                       orderList.connectionState == ConnectionState.done) {
                     return Column(
-                      children: List.generate(
-                        orderList.data!.length,
-                            (index) => itemCard(
-                            orderList.data![index].productName,
-                                orderList.data![index].weight.toString(),
-                                orderList.data![index].size,
-                      orderList.data![index].price.toString(),
-                              orderList.data![index].reward.toString(),
-                              orderList.data![index].contacts
-                      ),
+                        children: List.generate(
+                      orderList.data!.length,
+                      (index) => itemCard(
+                          orderList.data![index].productName,
+                          orderList.data![index].weight.toString(),
+                          orderList.data![index].description,
+                          orderList.data![index].price.toString(),
+                          orderList.data![index].reward.toString(),
+                          orderList.data![index].contacts),
                     ));
                   } else {
                     return const Center(
@@ -49,18 +49,24 @@ class _MyDashboard extends State<MyDashboard> {
               ),
             )));
   }
-  Widget itemCard(
-      String productName, String weight,String size, String price, String reward,String contacts) {
+
+  Widget itemCard(String productName, String weight, String size, String price,
+      String reward, String contacts) {
     return GestureDetector(
       onTap: () => {
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => PostDetail(productName, weight, size, price, reward, contacts)))
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => PostDetail(
+                    productName, weight, size, price, reward, contacts)))
       },
       child: Container(
         margin: const EdgeInsets.only(right: 25, left: 20, top: 25),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
-          boxShadow: const [BoxShadow(blurRadius: 10, color: AppColors.lighterGray)],
+          boxShadow: const [
+            BoxShadow(blurRadius: 10, color: AppColors.lighterGray)
+          ],
           color: AppColors.white,
         ),
         child: Row(
@@ -90,12 +96,16 @@ class _MyDashboard extends State<MyDashboard> {
                       ),
                       const SizedBox(height: 15),
                       SizedBox(
-                        width: MediaQuery.of(context).size.width/2.2,
+                        width: MediaQuery.of(context).size.width / 2.2,
                         child: PrimaryText(
-                            text: productName, size: 22, fontWeight: FontWeight.w700),
+                            text: productName,
+                            size: 22,
+                            fontWeight: FontWeight.w700),
                       ),
                       PrimaryText(
-                          text: "weight: $weight", size: 18, color: AppColors.lightGray),
+                          text: "Weight: $weight",
+                          size: 18,
+                          color: AppColors.lightGray),
                     ],
                   ),
                 ),
@@ -105,8 +115,8 @@ class _MyDashboard extends State<MyDashboard> {
                 Row(
                   children: [
                     Container(
-                      padding:
-                      const EdgeInsets.symmetric(horizontal: 45, vertical: 20),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 45, vertical: 20),
                       decoration: const BoxDecoration(
                           color: AppColors.primary,
                           borderRadius: BorderRadius.only(
@@ -141,25 +151,19 @@ class _MyDashboard extends State<MyDashboard> {
                     BoxShadow(color: Colors.grey.shade400, blurRadius: 20)
                   ]),
               child: Hero(
-                tag: "imagePath",
-                child:
-                Image.network(
-              'https://avatars.mds.yandex.net/i?id=2c9c70afa4ab64820d347a195d161ded-5219960-images-thumbs&n=13&exp=1',
-              height: 90,
-              width: 90,
-            )
-                // Image.asset('https://avatars.mds.yandex.net/i?id=2c9c70afa4ab64820d347a195d161ded-5219960-images-thumbs&n=13&exp=1',
-                //     width: MediaQuery.of(context).size.width/2.9),
-              ),
+                  tag: productName + weight,
+                  child: Image.network(
+                    'https://avatars.mds.yandex.net/i?id=2c9c70afa4ab64820d347a195d161ded-5219960-images-thumbs&n=13&exp=1',
+                    height: 90,
+                    width: 90,
+                  )
+                  // Image.asset('https://avatars.mds.yandex.net/i?id=2c9c70afa4ab64820d347a195d161ded-5219960-images-thumbs&n=13&exp=1',
+                  //     width: MediaQuery.of(context).size.width/2.9),
+                  ),
             ),
           ],
-
         ),
-
       ),
-
     );
-
   }
 }
-

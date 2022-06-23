@@ -1,8 +1,8 @@
 class ApiOrder {
   final int id;
   final String productName;
-  final int weight;
-  final String size;
+  final double weight;
+  final String description;
   final double price;
   final double reward;
   final String contacts;
@@ -11,7 +11,7 @@ class ApiOrder {
       {required this.id,
       required this.productName,
       required this.weight,
-      required this.size,
+      required this.description,
       required this.price,
       required this.reward,
       required this.contacts});
@@ -20,7 +20,7 @@ class ApiOrder {
       : id = map['id'],
         productName = map['productName'],
         weight = map['weight'],
-        size = map['size'],
+        description = map['description'],
         price = map['price'],
         reward = map['reward'],
         contacts = map['contacts'];
@@ -29,7 +29,7 @@ class ApiOrder {
     return {
       'productName': productName,
       'weight': weight,
-      'size': size,
+      'size': description,
       'price': price,
       'reward': reward,
       'contacts': contacts

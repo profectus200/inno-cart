@@ -1,8 +1,8 @@
+import 'package:bottom_navy_bar/bottom_navy_bar.dart';
+import 'package:flutter/material.dart';
 import 'package:innocart_front/presentation/app_pages/add_post_page.dart';
 
 import 'dashboard/dashboard_page.dart';
-import 'package:flutter/material.dart';
-import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'profile/profile_page.dart';
 
 class CustomizedBottomNavigationbar extends StatefulWidget {
@@ -16,6 +16,7 @@ class CustomizedBottomNavigationbar extends StatefulWidget {
 class _CustomizedBottomNavigationbarState
     extends State<CustomizedBottomNavigationbar> {
   int index = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,17 +27,17 @@ class _CustomizedBottomNavigationbarState
 
 // * Body Section Components
   bodySection() {
-    switch (index){
+    switch (index) {
       case 0:
         return MyDashboard();
-      case 1 :
+      case 1:
         return MyAddPost();
-      case 2 :
+      case 2:
         return Text('TBD');
-        // return MessagesPage();
+      // return MessagesPage();
       case 3:
         return ProfileScreen();
-        // return SettingPage();
+      // return SettingPage();
     }
   }
 

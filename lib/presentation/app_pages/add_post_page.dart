@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:innocart_front/internal/dependencies/order_repo_module.dart';
-import 'dashboard/dashboard_page.dart';
-// import '../internal/dependencies/order_repo_module.dart'
-import '../../data/api/model/api_order.dart';
+
 import '../../domain/model/order.dart';
+import 'dashboard/dashboard_page.dart';
 
 class MyAddPost extends StatefulWidget {
   const MyAddPost({Key? key}) : super(key: key);
@@ -16,8 +15,8 @@ class _MyAddPost extends State<MyAddPost> {
   final GlobalKey<FormState> _formKey = GlobalKey();
 
   String productName = "";
-  int weight = 0;
-  String size = "";
+  double weight = 0;
+  String description = "";
   double price = 0;
   double reward = 0;
   String contacts = "";
@@ -105,13 +104,13 @@ class _MyAddPost extends State<MyAddPost> {
                         },
                         onFieldSubmitted: (value) {
                           setState(() {
-                            weight = int.parse(value);
+                            weight = double.parse(value);
                             // contactsList.add(contacts);
                           });
                         },
                         onChanged: (value) {
                           setState(() {
-                            weight = int.parse(value);
+                            weight = double.parse(value);
                           });
                         },
                       ),
@@ -120,7 +119,7 @@ class _MyAddPost extends State<MyAddPost> {
                       ),
                       TextFormField(
                         decoration: const InputDecoration(
-                            labelText: 'Size',
+                            labelText: 'Description',
                             enabledBorder: OutlineInputBorder(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(20.0)),
@@ -130,13 +129,13 @@ class _MyAddPost extends State<MyAddPost> {
                             border: OutlineInputBorder()),
                         onFieldSubmitted: (value) {
                           setState(() {
-                            size = value;
+                            description = value;
                             // productNameList.add(productName);
                           });
                         },
                         onChanged: (value) {
                           setState(() {
-                            size = value;
+                            description = value;
                           });
                         },
                         validator: (value) {
@@ -287,7 +286,7 @@ class _MyAddPost extends State<MyAddPost> {
                         style: TextStyle(fontWeight: FontWeight.w700))),
                 Align(
                   alignment: Alignment.topLeft,
-                  child: Text("$productName $weight $size"),
+                  child: Text("$productName $weight $description"),
                 ),
                 const SizedBox(
                   height: 10,
@@ -342,7 +341,7 @@ class _MyAddPost extends State<MyAddPost> {
                         id: -1,
                         productName: productName,
                         weight: weight,
-                        size: size,
+                        description: description,
                         price: price,
                         reward: reward,
                         contacts: contacts);
