@@ -58,7 +58,7 @@ class _MyDashboard extends State<MyDashboard> {
             context,
             MaterialPageRoute(
                 builder: (context) => PostDetail(
-                    productName, weight, size, price, reward, contacts)))
+                    productName, weight, size, price, reward, contacts, false)))
       },
       child: Container(
         margin: const EdgeInsets.only(right: 25, left: 20, top: 25),

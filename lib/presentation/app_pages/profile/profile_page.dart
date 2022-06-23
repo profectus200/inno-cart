@@ -9,7 +9,6 @@ import 'profile_list_item.dart';
 class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // ScreenUtil.init(context);
     var profileInfo = Expanded(
       child: Column(
         children: <Widget>[
@@ -46,9 +45,9 @@ class ProfileScreen extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 10 * 2),
-          const PrimaryText(text: 'Nicolas Adams', size: 28),
+          const PrimaryText(text: 'Vladimir', size: 28),
           const SizedBox(height: 10 * 0.5),
-          const PrimaryText(text: 'nicolasadams@gmail.com', size: 14),
+          const PrimaryText(text: 'vldmr314@gmail.com', size: 14),
           const SizedBox(height: 10 * 2),
         ],
       ),
