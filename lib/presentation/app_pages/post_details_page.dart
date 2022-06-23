@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:innocart_front/internal/dependencies/order_repo_module.dart';
 
 import '../extra/app_colors.dart';
 import '../extra/primary_text.dart';
 
 class PostDetail extends StatelessWidget {
+  int id = -1;
   String productName = "";
   String weight = "";
   String description = "";
@@ -12,7 +14,8 @@ class PostDetail extends StatelessWidget {
   String contacts = "";
   bool profile_page = false;
 
-  PostDetail(this.productName, this.weight, this.description, this.price,
+  PostDetail(this.id, this.productName, this.weight, this.description,
+      this.price,
       this.reward, this.contacts, this.profile_page);
 
   @override
@@ -20,8 +23,11 @@ class PostDetail extends StatelessWidget {
     return Scaffold(
       floatingActionButton: ConstrainedBox(
         constraints:
-            BoxConstraints(minWidth: MediaQuery.of(context).size.width - 40),
-        child: !profile_page ?  ElevatedButton(
+        BoxConstraints(minWidth: MediaQuery
+            .of(context)
+            .size
+            .width - 40),
+        child: !profile_page ? ElevatedButton(
           onPressed: () => {},
           style: ElevatedButton.styleFrom(
               primary: AppColors.primary,
@@ -29,7 +35,7 @@ class PostDetail extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10.0)),
               padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 20),
               textStyle:
-                  const TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
+              const TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: const [
@@ -42,11 +48,15 @@ class PostDetail extends StatelessWidget {
             ],
           ),
         ) : ElevatedButton(
-          onPressed: () => {},
+          onPressed: () => {
+          OrderRepoModule.orderRepository().deleteOrder(id),
+          Navigator.pushNamed(context, 'activeOrders')
+        },
           style: ElevatedButton.styleFrom(
               primary: AppColors.white,
               shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10.0), side: BorderSide(color: Colors.red)),
+                  borderRadius: BorderRadius.circular(10.0),
+                  side: BorderSide(color: Colors.red)),
               padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 20),
               textStyle:
               const TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
