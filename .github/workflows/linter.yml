@@ -16,7 +16,8 @@ name: Lint Code Base
 #############################
 on:
   push:
-    branches-ignore: [flutter_mobile]
+    branches: [flutter_mobile]
+    # branches-ignore: [flutter_mobile]
     # Remove the line above to run when pushing to master
   pull_request:
     branches: [flutter_mobile]
