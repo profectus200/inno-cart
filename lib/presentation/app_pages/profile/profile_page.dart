@@ -7,6 +7,8 @@ import 'active_orders.dart';
 import 'profile_list_item.dart';
 
 class ProfileScreen extends StatelessWidget {
+  const ProfileScreen({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     var profileInfo = Expanded(
@@ -78,12 +80,12 @@ class ProfileScreen extends StatelessWidget {
                                   builder: (context) => const ActiveOrders()))
                         },
                     child: const ProfileListItem(
-                        icon: Icons.list, text: "Active orders")),
-                const ProfileListItem(icon: Icons.history, text: "Go to history"),
+                        icon: Icons.list, text: "Active orders", hasNavigation: true,)),
+                const ProfileListItem(icon: Icons.history, text: "Go to history", hasNavigation: true,),
                 GestureDetector(
                   onTap: () => {
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => MyLogin()))
+                        MaterialPageRoute(builder: (context) => const MyLogin()))
                   },
                   child: const ProfileListItem(
                     icon: Icons.logout_outlined,

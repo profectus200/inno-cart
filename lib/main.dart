@@ -12,7 +12,7 @@ void main() {
     routes: {
       'register': (context) => const MyRegister(),
       'login': (context) => const MyLogin(),
-      'dashboard': (context) => const CustomizedBottomNavigationbar(),
+      'dashboard': (context) => const CustomizedBottomNavigationBar(),
       'activeOrders': (context) => const ActiveOrders()
     },
   ));

@@ -6,7 +6,7 @@ class MyLogin extends StatefulWidget {
   const MyLogin({Key? key}) : super(key: key);
 
   @override
-  _MyLoginState createState() => _MyLoginState();
+  State<MyLogin> createState() => _MyLoginState();
 }
 Color colors = const Color(0xfffe9721);
 

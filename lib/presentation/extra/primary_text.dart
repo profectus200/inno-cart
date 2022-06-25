@@ -9,12 +9,13 @@ class PrimaryText extends StatelessWidget {
   final String text;
   final double height;
 
+  // ignore: use_key_in_widget_constructors
   const PrimaryText({
     required this.text,
-    this.fontWeight: FontWeight.w400,
-    this.color: AppColors.secondary,
-    this.size: 20,
-    this.height: 1.3,
+    this.fontWeight = FontWeight.w400,
+    this.color = AppColors.secondary,
+    this.size = 20,
+    this.height = 1.3,
   });
 
   @override

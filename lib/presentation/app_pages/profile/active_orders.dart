@@ -10,7 +10,7 @@ class ActiveOrders extends StatefulWidget {
   const ActiveOrders({Key? key}) : super(key: key);
 
   @override
-  _ActiveOrders createState() => _ActiveOrders();
+  State<ActiveOrders> createState() => _ActiveOrders();
 }
 
 class _ActiveOrders extends State<ActiveOrders> {

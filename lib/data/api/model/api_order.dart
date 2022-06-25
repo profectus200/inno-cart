@@ -9,7 +9,7 @@ class ApiOrder extends Equatable {
   final double reward;
   final String contacts;
 
-  ApiOrder(
+  const ApiOrder(
       {required this.id,
       required this.productName,
       required this.weight,

@@ -9,7 +9,7 @@ class Order extends Equatable{
   final double reward;
   final String contacts;
 
-  Order(
+  const Order(
       {required this.id,
       required this.productName,
       required this.weight,
