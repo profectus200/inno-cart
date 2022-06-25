@@ -1,0 +1,71 @@
+---
+#################################
+#################################
+## Super Linter GitHub Actions ##
+#################################
+#################################
+name: Lint Code Base
+
+#
+# Documentation:
+# https://docs.github.com/en/actions/learn-github-actions/workflow-syntax-for-github-actions
+#
+
+#############################
+# Start the job on all push #
+#############################
+on:
+  push:
+    branches: [flutter_mobile]
+    # branches-ignore: [flutter_mobile]
+    # Remove the line above to run when pushing to master
+  pull_request:
+    branches: [flutter_mobile]
+  workflow_dispatch:
+
+###############
+# Set the Job #
+###############
+jobs:
+  build:
+    # Name the Job
+    name: Lint Code Base
+    # Set the agent to run on
+    runs-on: ubuntu-latest
+
+    ##################
+    # Load all steps #
+    ##################
+    steps:
+      - name: Setup Flutter SDK
+        # You may pin to the exact commit or the version.
+        # uses: flutter-actions/setup-flutter@74fc21b209e70873f3caff52c4caf25d862f2a39
+        uses: flutter-actions/setup-flutter@v2.2
+        with:
+          # The version to install: Default: 3.0.2
+          version: 3.0.2 # optional, default is 3.0.2
+          # The version to install. Default: stable
+          channel: stable # optional, default is stable
+          # Cache the installed Flutter SDK. Default: false
+          cache: false # optional, default is false
+          # An explicit key for restoring and saving the Flutter SDK to/from cache
+          cache-key: flutter # optional, default is flutter
+
+      ##########################
+      # Checkout the code base #
+      ##########################
+      - name: Checkout Code
+        uses: actions/checkout@v3
+        with:
+          # Full git history is needed to get a proper list of changed files within `super-linter`
+          fetch-depth: 0
+
+      ################################
+      # Run Linter against code base #
+      ################################
+      - name: Lint Code Base
+        uses: github/super-linter@v4
+        env:
+          VALIDATE_ALL_CODEBASE: false
+          DEFAULT_BRANCH: master
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
