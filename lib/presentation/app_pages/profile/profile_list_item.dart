@@ -6,23 +6,30 @@ class ProfileListItem extends StatelessWidget {
   final String text;
   final bool hasNavigation;
 
-  const ProfileListItem({
-    // Key key,
-    required this.icon,
-    required this.text,
-    this.hasNavigation = true,
-  });
+  const ProfileListItem(
+      {Key? key,
+      required this.icon,
+      required this.text,
+      required this.hasNavigation})
+      : super(key: key);
+
+  // const ProfileListItem({
+  //   // Key key,
+  //   required this.icon,
+  //   required this.text,
+  //   this.hasNavigation = true,
+  // });
 
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 10 * 5.5,
-      margin: EdgeInsets.symmetric(
+      margin: const EdgeInsets.symmetric(
         horizontal: 10 * 4,
       ).copyWith(
         bottom: 10 * 2,
       ),
-      padding: EdgeInsets.symmetric(
+      padding: const EdgeInsets.symmetric(
         horizontal: 10 * 2,
       ),
       decoration: BoxDecoration(
@@ -32,14 +39,14 @@ class ProfileListItem extends StatelessWidget {
       child: Row(
         children: <Widget>[
           Icon(
-            this.icon,
+            icon,
             size: 10 * 2.5,
           ),
-          SizedBox(width: 10 * 1.5),
-          PrimaryText(text: this.text, size: 20),
-          Spacer(),
-          if (this.hasNavigation)
-            Icon(
+          const SizedBox(width: 10 * 1.5),
+          PrimaryText(text: text, size: 20),
+          const Spacer(),
+          if (hasNavigation)
+            const Icon(
               Icons.keyboard_arrow_right,
               size: 10 * 2.5,
             ),

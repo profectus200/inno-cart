@@ -6,7 +6,7 @@ class ApiProfile extends Equatable{
   final double rating;
   final int dealsCompleted;
 
-  ApiProfile({
+  const ApiProfile({
     required this.id,
     required this.nickname,
     required this.rating,

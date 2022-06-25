@@ -5,18 +5,18 @@ import '../extra/app_colors.dart';
 import '../extra/primary_text.dart';
 
 class PostDetail extends StatelessWidget {
-  int id = -1;
-  String productName = "";
-  String weight = "";
-  String description = "";
-  String price = "";
-  String reward = "";
-  String contacts = "";
-  bool profile_page = false;
+  final int id;
+  final String productName;
+  final String weight;
+  final String description;
+  final String price;
+  final String reward;
+  final String contacts;
+  final bool profilePage;
 
-  PostDetail(this.id, this.productName, this.weight, this.description,
+  const PostDetail(this.id, this.productName, this.weight, this.description,
       this.price,
-      this.reward, this.contacts, this.profile_page);
+      this.reward, this.contacts, this.profilePage, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +27,7 @@ class PostDetail extends StatelessWidget {
             .of(context)
             .size
             .width - 40),
-        child: !profile_page ? ElevatedButton(
+        child: !profilePage ? ElevatedButton(
           onPressed: () => {},
           style: ElevatedButton.styleFrom(
               primary: AppColors.primary,
@@ -56,7 +56,7 @@ class PostDetail extends StatelessWidget {
               primary: AppColors.white,
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10.0),
-                  side: BorderSide(color: Colors.red)),
+                  side: const BorderSide(color: Colors.red)),
               padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 20),
               textStyle:
               const TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
@@ -122,41 +122,41 @@ class PostDetail extends StatelessWidget {
                       child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            PrimaryText(
+                            const PrimaryText(
                               text: 'Description',
                               color: AppColors.lightGray,
                               size: 16,
                               fontWeight: FontWeight.w500,
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 8,
                             ),
                             PrimaryText(
                                 text: description, fontWeight: FontWeight.w600),
-                            SizedBox(
+                            const SizedBox(
                               height: 20,
                             ),
-                            PrimaryText(
+                            const PrimaryText(
                               text: 'Weight',
                               color: AppColors.lightGray,
                               size: 16,
                               fontWeight: FontWeight.w500,
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 8,
                             ),
                             PrimaryText(
                                 text: weight, fontWeight: FontWeight.w600),
-                            SizedBox(
+                            const SizedBox(
                               height: 20,
                             ),
-                            PrimaryText(
+                            const PrimaryText(
                               text: 'Price',
                               color: AppColors.lightGray,
                               size: 16,
                               fontWeight: FontWeight.w500,
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 8,
                             ),
                             PrimaryText(
@@ -217,7 +217,7 @@ class PostDetail extends StatelessWidget {
           GestureDetector(
             onTap: () => Navigator.pop(context),
             child: Container(
-              padding: EdgeInsets.all(10),
+              padding: const EdgeInsets.all(10),
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15),
                   border: Border.all(width: 1, color: Colors.grey.shade400)),
