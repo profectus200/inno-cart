@@ -60,4 +60,3 @@ class OrderModelTest(TestCase):
         order = OrderModel.objects.get(id=1)
         max_length = order._meta.get_field('productName').max_length
         self.assertEquals(max_length, 100)
-
