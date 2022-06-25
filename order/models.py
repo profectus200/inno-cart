@@ -9,10 +9,10 @@ class OrderModel(models.Model):
     id = models.AutoField(primary_key=True)
     productName = models.CharField(max_length=100)
     weight = models.FloatField()
-    description = models.CharField(max_length=10)
+    description = models.CharField(max_length=200)
     price = models.FloatField()
     reward = models.FloatField()
-    contacts = models.CharField(max_length=100)
+    contacts = models.CharField(max_length=50)
     user = models.ForeignKey(User, verbose_name='User', on_delete=models.CASCADE)
 
     class Meta:
