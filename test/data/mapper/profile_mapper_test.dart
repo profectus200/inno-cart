@@ -5,12 +5,12 @@ import 'package:innocart_front/domain/model/profile.dart';
 
 void main() {
   group('ApiProfile', () {
-    Profile profile = Profile(id: 1,
+    Profile profile = const Profile(id: 1,
         nickname: 'Vanya',
         rating: 5.0,
         dealsCompleted: 3);
 
-    ApiProfile apiProfile = ApiProfile(id: 1,
+    ApiProfile apiProfile = const ApiProfile(id: 1,
         nickname: 'Vanya',
         rating: 5.0,
         dealsCompleted: 3);

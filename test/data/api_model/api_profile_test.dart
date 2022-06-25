@@ -3,7 +3,7 @@ import 'package:innocart_front/data/api/model/api_profile.dart';
 
 void main() {
   group('ApiProfile', () {
-    ApiProfile apiProfile = ApiProfile(id: 1,
+    ApiProfile apiProfile = const ApiProfile(id: 1,
         nickname: 'Vanya',
         rating: 5.0,
         dealsCompleted: 3);
