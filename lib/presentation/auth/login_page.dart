@@ -5,7 +5,7 @@ class MyLogin extends StatefulWidget {
   const MyLogin({Key? key}) : super(key: key);
 
   @override
-  _MyLoginState createState() => _MyLoginState();
+  State<MyLogin> createState() => _MyLoginState();
 }
 
 class _MyLoginState extends State<MyLogin> {

@@ -6,7 +6,7 @@ class Profile extends Equatable{
   final double rating;
   final int dealsCompleted;
 
-  Profile({
+  const Profile({
     required this.id,
     required this.nickname,
     required this.rating,

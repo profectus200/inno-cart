@@ -8,7 +8,7 @@ class MyAddPost extends StatefulWidget {
   const MyAddPost({Key? key}) : super(key: key);
 
   @override
-  _MyAddPost createState() => _MyAddPost();
+  State<MyAddPost> createState() => _MyAddPost();
 }
 
 class _MyAddPost extends State<MyAddPost> {
@@ -78,6 +78,7 @@ class _MyAddPost extends State<MyAddPost> {
                               .contains(RegExp(r'^[0-9_\-=@,\.;]+$'))) {
                             return 'Product name cannot contain special characters';
                           }
+                          return null;
                         },
                       ),
                       const SizedBox(
@@ -243,6 +244,7 @@ class _MyAddPost extends State<MyAddPost> {
                           if (value == null || value.isEmpty) {
                             return 'Value cannot be empty';
                           }
+                          return null;
                         },
                       ),
                       const SizedBox(

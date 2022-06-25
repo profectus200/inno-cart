@@ -5,16 +5,16 @@ import 'package:innocart_front/presentation/app_pages/add_post_page.dart';
 import 'dashboard/dashboard_page.dart';
 import 'profile/profile_page.dart';
 
-class CustomizedBottomNavigationbar extends StatefulWidget {
-  const CustomizedBottomNavigationbar({Key? key}) : super(key: key);
+class CustomizedBottomNavigationBar extends StatefulWidget {
+  const CustomizedBottomNavigationBar({Key? key}) : super(key: key);
 
   @override
-  _CustomizedBottomNavigationbarState createState() =>
-      _CustomizedBottomNavigationbarState();
+  State<CustomizedBottomNavigationBar> createState() =>
+      _CustomizedBottomNavigationBarState();
 }
 
-class _CustomizedBottomNavigationbarState
-    extends State<CustomizedBottomNavigationbar> {
+class _CustomizedBottomNavigationBarState
+    extends State<CustomizedBottomNavigationBar> {
   int index = 0;
 
   @override
@@ -29,14 +29,14 @@ class _CustomizedBottomNavigationbarState
   bodySection() {
     switch (index) {
       case 0:
-        return MyDashboard();
+        return const MyDashboard();
       case 1:
-        return MyAddPost();
+        return const MyAddPost();
       case 2:
-        return Text('TBD');
+        return const Text('TBD');
       // return MessagesPage();
       case 3:
-        return ProfileScreen();
+        return const ProfileScreen();
       // return SettingPage();
     }
   }
@@ -47,25 +47,25 @@ class _CustomizedBottomNavigationbarState
       selectedIndex: index,
       items: [
         BottomNavyBarItem(
-          icon: Icon(Icons.apps),
-          title: Text('Home'),
+          icon: const Icon(Icons.apps),
+          title: const Text('Home'),
           activeColor: Colors.red,
           textAlign: TextAlign.center,
         ),
         BottomNavyBarItem(
-            icon: Icon(Icons.post_add),
-            title: Text('Post'),
+            icon: const Icon(Icons.post_add),
+            title: const Text('Post'),
             activeColor: Colors.purpleAccent,
             textAlign: TextAlign.center),
         BottomNavyBarItem(
-          icon: Icon(Icons.message),
-          title: Text('Messages'),
+          icon: const Icon(Icons.message),
+          title: const Text('Messages'),
           activeColor: Colors.pink,
           textAlign: TextAlign.center,
         ),
         BottomNavyBarItem(
-          icon: Icon(Icons.account_circle),
-          title: Text('Profile'),
+          icon: const Icon(Icons.account_circle),
+          title: const Text('Profile'),
           activeColor: Colors.blue,
           textAlign: TextAlign.center,
         ),

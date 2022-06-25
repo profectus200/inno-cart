@@ -10,7 +10,7 @@ class MyDashboard extends StatefulWidget {
   const MyDashboard({Key? key}) : super(key: key);
 
   @override
-  _MyDashboard createState() => _MyDashboard();
+  State<MyDashboard> createState() => _MyDashboard();
 }
 
 class _MyDashboard extends State<MyDashboard> {
