@@ -8,7 +8,7 @@ class AppColors {
   static const black = Colors.black;
   static const primary = Color(0xfffdc912);
   static const orange = Color(0xfffe9721);
-  static const tertiary = Color(0xffff36b6b);
+  static const tertiary = Color(0xffff5b36);
 }
 // additional
 // const kDarkPrimaryColor = Color(0xFF212121);

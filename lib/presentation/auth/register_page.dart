@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:innocart_front/internal/dependencies/auth_repo_module.dart';
 import 'package:innocart_front/internal/dependencies/profile_repo_module.dart';
+import 'package:innocart_front/presentation/extra/app_colors.dart';
 
 import '../../domain/model/profile.dart';
-
 class MyRegister extends StatefulWidget {
   const MyRegister({Key? key}) : super(key: key);
 
@@ -75,10 +75,10 @@ class _MyRegisterState extends State<MyRegister> {
                           fillColor: const Color(0xff161d27).withOpacity(0.9),
                           enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(30),
-                              borderSide: BorderSide(color: colors)),
+                              borderSide: const BorderSide(color: AppColors.orange)),
                           focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(30),
-                              borderSide: BorderSide(color: colors)),
+                              borderSide: const BorderSide(color: AppColors.orange)),
                         ),
                       ),
                     ),
@@ -98,10 +98,10 @@ class _MyRegisterState extends State<MyRegister> {
                           fillColor: const Color(0xff161d27).withOpacity(0.9),
                           enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(30),
-                              borderSide: BorderSide(color: colors)),
+                              borderSide: const BorderSide(color: AppColors.orange)),
                           focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(30),
-                              borderSide: BorderSide(color: colors)),
+                              borderSide: const BorderSide(color: AppColors.orange)),
                         ),
                       ),
                     ),
@@ -122,10 +122,10 @@ class _MyRegisterState extends State<MyRegister> {
                           fillColor: const Color(0xff161d27).withOpacity(0.9),
                           enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(30),
-                              borderSide: BorderSide(color: colors)),
+                              borderSide: const BorderSide(color: AppColors.orange)),
                           focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(30),
-                              borderSide: BorderSide(color: colors)),
+                              borderSide: const BorderSide(color: AppColors.orange)),
                         ),
                       ),
                     ),
@@ -160,7 +160,7 @@ class _MyRegisterState extends State<MyRegister> {
                           Navigator.pushNamed(context, 'register');
                         },
                         style: ButtonStyle(
-                            backgroundColor: MaterialStateProperty.all<Color>(colors),
+                            backgroundColor: MaterialStateProperty.all<Color>(AppColors.orange),
                             shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                                 RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(18.0),
@@ -193,10 +193,10 @@ class _MyRegisterState extends State<MyRegister> {
                           onPressed: () {
                             Navigator.pushNamed(context, 'login');
                           },
-                          child: Text(
+                          child: const Text(
                             "Sign in",
                             style:
-                            TextStyle(color: colors, fontWeight: FontWeight.bold),
+                            TextStyle(color: AppColors.orange, fontWeight: FontWeight.bold),
                           ),
                         )
                       ],

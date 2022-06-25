@@ -8,7 +8,6 @@ class MyLogin extends StatefulWidget {
   @override
   State<MyLogin> createState() => _MyLoginState();
 }
-Color colors = const Color(0xfffe9721);
 
 class _MyLoginState extends State<MyLogin> {
   final TextEditingController _usernameController = TextEditingController();
@@ -67,10 +66,10 @@ class _MyLoginState extends State<MyLogin> {
                       fillColor: const Color(0xff161d27).withOpacity(0.9),
                       enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(30),
-                          borderSide: BorderSide(color: colors)),
+                          borderSide: const BorderSide(color: AppColors.orange)),
                       focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(30),
-                          borderSide: BorderSide(color: colors)),
+                          borderSide: const BorderSide(color: AppColors.orange)),
                     ),
                   ),
                 ),
@@ -91,20 +90,20 @@ class _MyLoginState extends State<MyLogin> {
                       fillColor: const Color(0xff161d27).withOpacity(0.9),
                       enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(30),
-                          borderSide: BorderSide(color: colors)),
+                          borderSide: const BorderSide(color: AppColors.orange)),
                       focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(30),
-                          borderSide: BorderSide(color: colors)),
+                          borderSide: const BorderSide(color: AppColors.orange)),
                     ),
                   ),
                 ),
                 const SizedBox(
                   height: 12,
                 ),
-                Text(
+                const Text(
                   "Forgot Password?",
                   style: TextStyle(
-                      color: colors, fontSize: 14, fontWeight: FontWeight.bold),
+                      color: AppColors.orange, fontSize: 14, fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(
                   height: 20,
@@ -128,7 +127,7 @@ class _MyLoginState extends State<MyLogin> {
                       Navigator.pushNamed(context, 'login');
                     },
                     style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all<Color>(colors),
+                        backgroundColor: MaterialStateProperty.all<Color>(AppColors.orange),
                         shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                             RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(18.0),
@@ -161,10 +160,10 @@ class _MyLoginState extends State<MyLogin> {
                       onPressed: () {
                         Navigator.pushNamed(context, 'register');
                       },
-                      child: Text(
+                      child: const Text(
                         "Sign up",
                         style:
-                        TextStyle(color: colors, fontWeight: FontWeight.bold),
+                        TextStyle(color: AppColors.orange, fontWeight: FontWeight.bold),
                       ),
                     )
                   ],
