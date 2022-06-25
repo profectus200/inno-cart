@@ -7,9 +7,9 @@ name: Dart
 
 on:
   push:
-    branches: [ "flutter_mobile" ]
+    branches: [ "main" ]
   pull_request:
-    branches: [ "flutter_mobile" ]
+    branches: [ "main" ]
   workflow_dispatch:
 
 jobs:
