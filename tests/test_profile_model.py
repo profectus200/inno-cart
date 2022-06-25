@@ -33,3 +33,4 @@ class ProfileModelTest(TestCase):
         profile = ProfileModel.objects.get(id=1)
         max_length = profile._meta.get_field('nickname').max_length
         self.assertEquals(max_length, 100)
+       
