@@ -17,10 +17,37 @@ class _MyDashboard extends State<MyDashboard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-            appBar: AppBar(
-              title: const Text("InnoCart"),
-            ),
-            body: SingleChildScrollView(
+            body:
+            ListView(
+                padding: const EdgeInsets.only(top: 40, bottom: 20),
+                children: [
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: const [
+                      SizedBox(width: 20),
+                      Icon(
+                        Icons.search,
+                        color: AppColors.secondary,
+                        size: 25,
+                      ),
+                      SizedBox(width: 10),
+                      Expanded(
+                          child: TextField(
+                            decoration: InputDecoration(
+                              enabledBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(
+                                      width: 2, color: AppColors.lighterGray)),
+                              hintText: 'Search..',
+                              hintStyle: TextStyle(
+                                  color: AppColors.lightGray,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w500),
+                            ),
+                          )),
+                    ],
+                  ),
+                  const SizedBox(width: 20),
+            SingleChildScrollView(
               child: FutureBuilder<List<Order>>(
                 future: OrderRepoModule.orderRepository().getOrderList(),
                 builder: (BuildContext context,
@@ -46,7 +73,7 @@ class _MyDashboard extends State<MyDashboard> {
                   }
                 },
               ),
-            ));
+            )]));
   }
 
   Widget itemCard(int id, String productName, String weight, String size, String price,
