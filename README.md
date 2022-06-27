@@ -6,6 +6,7 @@
 * Link to our DEEP Product [backlog](https://github.com/orgs/InnoSWP/projects/66)
 * Link to the [UI design](https://www.figma.com/file/IwHlIEm6KW9Id4vlKFG09B/InnoCart?node-id=0%3A1)
 * Link to the [clickable prototype in Figma](https://www.figma.com/proto/IwHlIEm6KW9Id4vlKFG09B/InnoCart?node-id=83%3A59&scaling=scale-down&page-id=0%3A1&starting-point-node-id=83%3A59&show-proto-sidebar=1)
+* Link to our github pages [pipeline](https://github.com/InnoSWP/InnoCart/actions)
 
 ## Current state🤔
 We are working on the major part of MVP with the following featuries:
@@ -38,10 +39,10 @@ Thanks goes to these wonderful people:
 <!-- markdownlint-disable -->
 <table align="center">
   <tr>
-   <td align="center"><a href="https://github.com/doechon"><img src="https://avatars.githubusercontent.com/u/45231817?v=4" width="100px;" alt=""/ class="avatar"><br /> <b>Ivan Chebykin</b></a><br /> <a href="#projectManagement-doechon" title="Manager">📆</a> <a href="#design-doechon" title="Designer">🎨</a> <a href="#code-doechon" title="Developer">💻</a><br /> <sub><b><a href="mailto:i.chebykin@innopolis.university" title="mail to Ivan">hallo?</a></b></sub><br /></td>
-   <td align="center"><a href="https://github.com/Vldmr314"><img src="https://avatars.githubusercontent.com/u/87092259?v=4" width="100px;" alt=""/><br /> <b>Vladimir Ryabenko</b></a><br /> <a href="#projectManagement-Vldmr314" title="Manager">📆</a> <a href="code-Vldmr314" title="Developer">💻</a><br /> <sub><b><a href="mailto:v.ryabenko@innopolis.university" title="mail to Vladimir">hallo?</a></b></sub><br /></td>
-   <td align="center"><a href="https://github.com/veriFCKation"><img src="https://avatars.githubusercontent.com/u/99489584?v=4" width="100px;" alt=""/><br /><b>Ksenia Shchekina</b></a><br /> <a href="#doc-veriFCKation" title="Documentation Writer">📖</a> <a href="test-veriFCKation" title="Tester">👀</a><br /> <sub><b><a href="mailto:k.shchekina@innopolis.university" title="mail to Ksenia">hallo?</a></b></sub><br /></td>
-   <td align="center"><a href="https://github.com/Poleeknow"><img src="https://avatars.githubusercontent.com/u/106336793?v=4" width="100px;" alt=""/><br /> <b>Polina Bazhenova</b></a><br /> <a href="#doc-Poleeknow" title="Documentation Writer">📖</a> <a href="test-Poleeknow" title="Tester">👀</a><br /> <sub><b><a href="mailto:p.bazhenova@innopolis.university" title="mail to Polina">hallo?</a></b></sub><br /></td>
+   <td align="center" width = "170px"><a href="https://github.com/doechon"><img src="https://avatars.githubusercontent.com/u/45231817?v=4" width="100px;" alt=""/ class="avatar"><br /> <b>Ivan Chebykin</b></a><br /> <a href="#projectManagement-doechon" title="Manager">📆</a> <a href="#design-doechon" title="Designer">🎨</a> <a href="#code-doechon" title="Developer">💻</a><br /> <sub><b><a href="mailto:i.chebykin@innopolis.university" title="mail to Ivan">hallo?</a></b></sub><br /></td>
+   <td align="center" width = "170px"><a href="https://github.com/Vldmr314"><img src="https://avatars.githubusercontent.com/u/87092259?v=4" width="100px;" alt=""/><br /> <b>Vladimir Ryabenko</b></a><br /> <a href="#projectManagement-Vldmr314" title="Manager">📆</a> <a href="code-Vldmr314" title="Developer">💻</a><br /> <sub><b><a href="mailto:v.ryabenko@innopolis.university" title="mail to Vladimir">hallo?</a></b></sub><br /></td>
+   <td align="center" width = "170px"><a href="https://github.com/veriFCKation"><img src="https://avatars.githubusercontent.com/u/99489584?v=4" width="100px;" alt=""/><br /><b>Ksenia Shchekina</b></a><br /> <a href="#doc-veriFCKation" title="Documentation Writer">📖</a> <a href="test-veriFCKation" title="Tester">👀</a><br /> <sub><b><a href="mailto:k.shchekina@innopolis.university" title="mail to Ksenia">hallo?</a></b></sub><br /></td>
+   <td align="center" width = "170px"><a href="https://github.com/Poleeknow"><img src="https://avatars.githubusercontent.com/u/106336793?v=4" width="100px;" alt=""/><br /> <b>Polina Bazhenova</b></a><br /> <a href="#doc-Poleeknow" title="Documentation Writer">📖</a> <a href="test-Poleeknow" title="Tester">👀</a><br /> <sub><b><a href="mailto:p.bazhenova@innopolis.university" title="mail to Polina">hallo?</a></b></sub><br /></td>
 </tr>
 </table>
 
