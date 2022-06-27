@@ -296,19 +296,9 @@ class _MyAddPost extends State<MyAddPost> {
                     shape: const RoundedRectangleBorder(
                         borderRadius: BorderRadius.all(Radius.circular(10))),
                   ),
-                  child: const Text('Go to dashboard'),
+                  child: const Text('Cancel'),
                   onPressed: () async {
-                    FocusScope.of(context)
-                        .unfocus(); // unfocused last selected input field
                     Navigator.pop(context);
-                    await Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    const MyDashboard())) // Open my profile
-                        .then((_) => _formKey.currentState
-                            ?.reset()); // Empty the form fields
-                    setState(() {});
                   }, // so the alert dialog is closed when navigating back to main page
                 ),
                 TextButton(
@@ -319,7 +309,7 @@ class _MyAddPost extends State<MyAddPost> {
                         borderRadius: BorderRadius.all(Radius.circular(10))),
                   ),
                   child: const Text('OK'),
-                  onPressed: () {
+                  onPressed: () async {
                     Order newOrder = Order(
                         id: -1,
                         productName: productName,
@@ -333,6 +323,7 @@ class _MyAddPost extends State<MyAddPost> {
                     FocusScope.of(context)
                         .unfocus(); // Unfocus the last selected input field
                     _formKey.currentState?.reset();
+                    Navigator.pushNamed(context, 'dashboard');
                     // Empty the form fields
                   },
                 )

@@ -63,7 +63,7 @@ class _ActiveOrders extends State<ActiveOrders> {
             context,
             MaterialPageRoute(
                 builder: (context) => PostDetail(id, productName, weight, size,
-                    price, reward, contacts, false)))
+                    price, reward, contacts, true)))
       },
       child: Container(
         margin: const EdgeInsets.only(right: 25, left: 20, top: 25),
