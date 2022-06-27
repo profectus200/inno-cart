@@ -50,7 +50,7 @@ class PostDetail extends StatelessWidget {
         ) : ElevatedButton(
           onPressed: () => {
           OrderRepoModule.orderRepository().deleteOrder(id),
-          Navigator.pushNamed(context, 'activeOrders')
+          Navigator.pushNamed(context, 'dashboard')
         },
           style: ElevatedButton.styleFrom(
               primary: AppColors.white,

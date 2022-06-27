@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:innocart_front/internal/dependencies/order_repo_module.dart';
+import 'package:innocart_front/presentation/extra/app_colors.dart';
 
 import '../../domain/model/order.dart';
+import '../extra/app_colors.dart';
 import 'dashboard_page.dart';
 
 class MyAddPost extends StatefulWidget {
@@ -19,254 +21,236 @@ class _MyAddPost extends State<MyAddPost> {
   String description = "";
   double price = 0;
   double reward = 0;
-  String contacts = "";
 
   @override
   Widget build(BuildContext context) {
+    //            padding: const EdgeInsets.all(16.0),
     return Scaffold(
-        resizeToAvoidBottomInset: false,
-        appBar: AppBar(
-          title: const Text("Add post"),
-        ),
-        body: SingleChildScrollView(
-          child: Padding(
+      body: ListView(
+        padding: const EdgeInsets.only(top: 50),
+        children: <Widget>[
+          const Align(
+            alignment: Alignment.center,
+            child: Text("Enter your data",
+                style: TextStyle(
+                  fontSize: 24,
+                )),
+          ),
+          Padding(
             padding: const EdgeInsets.all(16.0),
-            child: Column(
-              children: <Widget>[
-                const Align(
-                  alignment: Alignment.topLeft,
-                  child: Text("Enter your data",
-                      style: TextStyle(
-                        fontSize: 24,
-                      )),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                Form(
-                  key: _formKey,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: <Widget>[
-                      TextFormField(
-                        decoration: const InputDecoration(
-                            labelText: 'Product name',
-                            enabledBorder: OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(20.0)),
-                              borderSide:
-                                  BorderSide(color: Colors.grey, width: 0.0),
-                            ),
-                            border: OutlineInputBorder()),
-                        onFieldSubmitted: (value) {
-                          setState(() {
-                            productName = value;
-                            // productNameList.add(productName);
-                          });
-                        },
-                        onChanged: (value) {
-                          setState(() {
-                            productName = value;
-                          });
-                        },
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Product name cannot be empty';
-                          } else if (value
-                              .contains(RegExp(r'^[0-9_\-=@,\.;]+$'))) {
-                            return 'Product name cannot contain special characters';
-                          }
-                          return null;
-                        },
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      TextFormField(
-                        decoration: const InputDecoration(
-                            labelText: 'Weight',
-                            enabledBorder: OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(20.0)),
-                              borderSide:
-                                  BorderSide(color: Colors.grey, width: 0.0),
-                            ),
-                            border: OutlineInputBorder()),
-                        keyboardType: TextInputType.number,
-                        validator: (value) {
-                          if (value == null ||
-                              value.isEmpty ||
-                              value.contains(RegExp(r'^[a-zA-Z\-]'))) {
-                            return 'Use only numbers!';
-                          }
-                          return null;
-                        },
-                        onFieldSubmitted: (value) {
-                          setState(() {
-                            weight = double.parse(value);
-                            // contactsList.add(contacts);
-                          });
-                        },
-                        onChanged: (value) {
-                          setState(() {
-                            weight = double.parse(value);
-                          });
-                        },
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      TextFormField(
-                        decoration: const InputDecoration(
-                            labelText: 'Description',
-                            enabledBorder: OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(20.0)),
-                              borderSide:
-                                  BorderSide(color: Colors.grey, width: 0.0),
-                            ),
-                            border: OutlineInputBorder()),
-                        onFieldSubmitted: (value) {
-                          setState(() {
-                            description = value;
-                            // productNameList.add(productName);
-                          });
-                        },
-                        onChanged: (value) {
-                          setState(() {
-                            description = value;
-                          });
-                        },
-                        validator: (value) {
-                          if (value == null ||
-                              value.isEmpty ||
-                              value.contains(RegExp(r'^[a-zA-Z\-]'))) {
-                            return 'Use only numbers!';
-                          }
-                          return null;
-                        },
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      TextFormField(
-                        decoration: const InputDecoration(
-                            labelText: 'Price',
-                            enabledBorder: OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(20.0)),
-                              borderSide:
-                                  BorderSide(color: Colors.grey, width: 0.0),
-                            ),
-                            border: OutlineInputBorder()),
-                        keyboardType: TextInputType.number,
-                        validator: (value) {
-                          if (value == null ||
-                              value.isEmpty ||
-                              value.contains(RegExp(r'^[a-zA-Z\-]'))) {
-                            return 'Use only numbers!';
-                          }
-                          return null;
-                        },
-                        onFieldSubmitted: (value) {
-                          setState(() {
-                            price = double.parse(value);
-                            // contactsList.add(contacts);
-                          });
-                        },
-                        onChanged: (value) {
-                          setState(() {
-                            price = double.parse(value);
-                          });
-                        },
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      TextFormField(
-                        decoration: const InputDecoration(
-                            labelText: 'Reward',
-                            enabledBorder: OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(20.0)),
-                              borderSide:
-                                  BorderSide(color: Colors.grey, width: 0.0),
-                            ),
-                            border: OutlineInputBorder()),
-                        keyboardType: TextInputType.number,
-                        validator: (value) {
-                          if (value == null ||
-                              value.isEmpty ||
-                              value.contains(RegExp(r'^[a-zA-Z\-]'))) {
-                            return 'Use only numbers!';
-                          }
-                          return null;
-                        },
-                        onFieldSubmitted: (value) {
-                          setState(() {
-                            reward = double.parse(value);
-                            // contactsList.add(contacts);
-                          });
-                        },
-                        onChanged: (value) {
-                          setState(() {
-                            reward = double.parse(value);
-                          });
-                        },
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      TextFormField(
-                        decoration: const InputDecoration(
-                            labelText: 'Contacts',
-                            enabledBorder: OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(20.0)),
-                              borderSide:
-                                  BorderSide(color: Colors.grey, width: 0.0),
-                            ),
-                            border: OutlineInputBorder()),
-                        onFieldSubmitted: (value) {
-                          setState(() {
-                            contacts = value;
-                            // productNameList.add(productName);
-                          });
-                        },
-                        onChanged: (value) {
-                          setState(() {
-                            contacts = value;
-                          });
-                        },
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Value cannot be empty';
-                          }
-                          return null;
-                        },
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                            minimumSize: const Size.fromHeight(60)),
-                        onPressed: () {
-                          // Validate returns true if the form is valid, or false otherwise.
-                          if (_formKey.currentState!.validate()) {
-                            _submit();
-                          }
-                        },
-                        child: const Text("Submit"),
-                      ),
-                    ],
+            child: Form(
+              key: _formKey,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+              Container(
+                height: 50,
+                // width: double.infinity,
+                margin: const EdgeInsets.only(left: 20, right: 20),
+                child: ElevatedButton(
+                  style: ButtonStyle(
+                      backgroundColor:
+                      MaterialStateProperty.all<Color>(AppColors.orange),
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(18.0),
+                          ))),
+                  onPressed: () {
+                  },
+                  child: const Text("Add image"),
+                )),
+                  const SizedBox(
+                    height: 20,
                   ),
-                ),
-              ],
+                  TextFormField(
+                    decoration: const InputDecoration(
+                        labelText: 'Product name',
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                          borderSide: BorderSide(color: Colors.grey, width: 0.0),
+                        ),
+                        border: OutlineInputBorder()),
+                    onFieldSubmitted: (value) {
+                      setState(() {
+                        productName = value;
+                        // productNameList.add(productName);
+                      });
+                    },
+                    onChanged: (value) {
+                      setState(() {
+                        productName = value;
+                      });
+                    },
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Product name cannot be empty';
+                      } else if (value.contains(RegExp(r'^[0-9_\-=@,\.;]+$'))) {
+                        return 'Product name cannot contain special characters';
+                      }
+                      return null;
+                    },
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  TextFormField(
+                    keyboardType: TextInputType.multiline,
+                    maxLines: null,
+                    decoration: const InputDecoration(
+                        labelText: 'Description',
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                          borderSide: BorderSide(color: Colors.grey, width: 0.0),
+                        ),
+                        border: OutlineInputBorder()),
+                    onFieldSubmitted: (value) {
+                      setState(() {
+                        description = value;
+                        // productNameList.add(productName);
+                      });
+                    },
+                    onChanged: (value) {
+                      setState(() {
+                        description = value;
+                      });
+                    },
+                    // validator: (value) {
+                    //   if (value == null || value.isEmpty) {
+                    //     return 'Description cannot be empty';
+                    //   }
+                    //   return null;
+                    // },
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  SizedBox(
+                    height: 50,
+                    child: TextFormField(
+                      decoration: const InputDecoration(
+                          labelText: 'Weight (g.)',
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                            borderSide: BorderSide(color: Colors.grey, width: 0.0),
+                          ),
+                          border: OutlineInputBorder()),
+                      keyboardType: TextInputType.number,
+                      validator: (value) {
+                        if (value == null ||
+                            value.isEmpty ||
+                            value.contains(RegExp(r'^[a-zA-Z\-]'))) {
+                          return 'Use only numbers!';
+                        }
+                        return null;
+                      },
+                      onFieldSubmitted: (value) {
+                        setState(() {
+                          weight = double.parse(value);
+                        });
+                      },
+                      onChanged: (value) {
+                        setState(() {
+                          weight = double.parse(value);
+                        });
+                      },
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  TextFormField(
+                    decoration: const InputDecoration(
+                        labelText: 'Price (\$)',
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                          borderSide: BorderSide(color: Colors.grey, width: 0.0),
+                        ),
+                        border: OutlineInputBorder()),
+                    keyboardType: TextInputType.number,
+                    validator: (value) {
+                      if (value == null ||
+                          value.isEmpty ||
+                          value.contains(RegExp(r'^[a-zA-Z\-]'))) {
+                        return 'Use only numbers!';
+                      }
+                      return null;
+                    },
+                    onFieldSubmitted: (value) {
+                      setState(() {
+                        price = double.parse(value);
+                      });
+                    },
+                    onChanged: (value) {
+                      setState(() {
+                        price = double.parse(value);
+                      });
+                    },
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  TextFormField(
+                    decoration: const InputDecoration(
+                        labelText: 'Reward (\$)',
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                          borderSide: BorderSide(color: Colors.grey, width: 0.0),
+                        ),
+                        border: OutlineInputBorder()),
+                    keyboardType: TextInputType.number,
+                    validator: (value) {
+                      if (value == null ||
+                          value.isEmpty ||
+                          value.contains(RegExp(r'^[a-zA-Z\-]'))) {
+                        return 'Use only numbers!';
+                      }
+                      return null;
+                    },
+                    onFieldSubmitted: (value) {
+                      setState(() {
+                        reward = double.parse(value);
+                      });
+                    },
+                    onChanged: (value) {
+                      setState(() {
+                        reward = double.parse(value);
+                      });
+                    },
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Container(
+                    height: 50,
+                    width: double.infinity,
+                    margin: const EdgeInsets.only(left: 20, right: 20),
+                    child: ElevatedButton(
+                      style: ButtonStyle(
+                          backgroundColor:
+                              MaterialStateProperty.all<Color>(AppColors.orange),
+                          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                              RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(18.0),
+                          ))),
+                      onPressed: () {
+                        // Validate returns true if the form is valid, or false otherwise.
+                        if (_formKey.currentState!.validate()) {
+                          _submit();
+                        }
+                      },
+                      child: const Text("Submit"),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
-        ),
-      );
+        ],
+      ),
+    );
   }
 
   void _submit() {
@@ -292,11 +276,11 @@ class _MyAddPost extends State<MyAddPost> {
                 ),
                 const Align(
                     alignment: Alignment.topLeft,
-                    child: Text("Price Reward Contacts",
+                    child: Text("Price Reward",
                         style: TextStyle(fontWeight: FontWeight.w700))),
                 Align(
                   alignment: Alignment.topLeft,
-                  child: Text("$price $reward $contacts"),
+                  child: Text("$price $reward"),
                 )
               ],
             ),
@@ -343,12 +327,13 @@ class _MyAddPost extends State<MyAddPost> {
                         description: description,
                         price: price,
                         reward: reward,
-                        contacts: contacts);
+                        contacts: "@vldmr314");
                     OrderRepoModule.orderRepository().addOrder(newOrder);
                     Navigator.of(context).pop(); // Close the dialog
                     FocusScope.of(context)
                         .unfocus(); // Unfocus the last selected input field
-                    _formKey.currentState?.reset(); // Empty the form fields
+                    _formKey.currentState?.reset();
+                    // Empty the form fields
                   },
                 )
               ],

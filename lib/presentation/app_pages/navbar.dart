@@ -1,5 +1,6 @@
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:innocart_front/presentation/app_pages/active_orders.dart';
 import 'package:innocart_front/presentation/app_pages/add_post_page.dart';
 
 import 'dashboard_page.dart';
@@ -31,9 +32,10 @@ class _CustomizedBottomNavigationBarState
       case 0:
         return const MyDashboard();
       case 1:
-        return const MyAddPost();
+        return const Text('');
       case 2:
-        return const Text('TBD');
+        return const ActiveOrders();
+        // return const ActiveOrders();
       // return MessagesPage();
       case 3:
         return const ProfileScreen();
@@ -53,13 +55,13 @@ class _CustomizedBottomNavigationBarState
           textAlign: TextAlign.center,
         ),
         BottomNavyBarItem(
-            icon: const Icon(Icons.post_add),
-            title: const Text('Post'),
+            icon: const Icon(Icons.not_accessible),
+            title: const Text('...'),
             activeColor: Colors.purpleAccent,
             textAlign: TextAlign.center),
         BottomNavyBarItem(
-          icon: const Icon(Icons.message),
-          title: const Text('Messages'),
+          icon: const Icon(Icons.post_add_outlined),
+          title: const Text('My posts'),
           activeColor: Colors.pink,
           textAlign: TextAlign.center,
         ),

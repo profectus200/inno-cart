@@ -139,7 +139,7 @@ class _MyLoginState extends State<MyLogin> {
                             )
                         ),
                         child: const Text(
-                          "SIGN IN",
+                          "LOGIN",
                           style: TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.bold,

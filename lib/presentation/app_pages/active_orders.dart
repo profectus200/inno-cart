@@ -6,73 +6,53 @@ import '../extra/app_colors.dart';
 import '../extra/primary_text.dart';
 import 'post_details_page.dart';
 
-class MyDashboard extends StatefulWidget {
-  const MyDashboard({Key? key}) : super(key: key);
+class ActiveOrders extends StatefulWidget {
+  const ActiveOrders({Key? key}) : super(key: key);
 
   @override
-  State<MyDashboard> createState() => _MyDashboard();
+  State<ActiveOrders> createState() => _ActiveOrders();
 }
 
-class _MyDashboard extends State<MyDashboard> {
+class _ActiveOrders extends State<ActiveOrders> {
   @override
   Widget build(BuildContext context) {
-    return ListView(
+    return Scaffold(
+      body: SingleChildScrollView(
         padding: const EdgeInsets.only(top: 40, bottom: 20),
-        children: [
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: const [
-              SizedBox(width: 20),
-              Icon(
-                Icons.search,
-                color: AppColors.secondary,
-                size: 25,
-              ),
-              SizedBox(width: 10),
-              Expanded(
-                  child: TextField(
-                decoration: InputDecoration(
-                  enabledBorder: UnderlineInputBorder(
-                      borderSide:
-                          BorderSide(width: 2, color: AppColors.lightGray)),
-                  hintText: 'Search..',
-                  hintStyle: TextStyle(
-                      color: AppColors.lightGray,
-                      fontSize: 20,
-                      fontWeight: FontWeight.w500),
-                ),
-              )),
-            ],
-          ),
-          const SizedBox(width: 20),
-          SingleChildScrollView(
-            child: FutureBuilder<List<Order>>(
-              future: OrderRepoModule.orderRepository().getOrderList(),
-              builder:
-                  (BuildContext context, AsyncSnapshot<List<Order>> orderList) {
-                if (orderList.hasData &&
-                    orderList.connectionState == ConnectionState.done) {
-                  return Column(
-                      children: List.generate(
-                    orderList.data!.length,
-                    (index) => itemCard(
-                        orderList.data![index].id,
-                        orderList.data![index].productName,
-                        orderList.data![index].weight.toString(),
-                        orderList.data![index].description,
-                        orderList.data![index].price.toString(),
-                        orderList.data![index].reward.toString(),
-                        orderList.data![index].contacts),
-                  ));
-                } else {
-                  return const Center(
-                    child: CircularProgressIndicator(),
-                  );
-                }
-              },
-            ),
-          )
-        ]);
+        child: FutureBuilder<List<Order>>(
+          future: OrderRepoModule.orderRepository().getPersonalOrders(),
+          builder:
+              (BuildContext context, AsyncSnapshot<List<Order>> orderList) {
+            if (orderList.hasData &&
+                orderList.connectionState == ConnectionState.done) {
+              return Column(
+                  children: List.generate(
+                orderList.data!.length,
+                (index) => itemCard(
+                    orderList.data![index].id,
+                    orderList.data![index].productName,
+                    orderList.data![index].weight.toString(),
+                    orderList.data![index].description,
+                    orderList.data![index].price.toString(),
+                    orderList.data![index].reward.toString(),
+                    orderList.data![index].contacts),
+              ));
+            } else {
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            }
+          },
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.pushNamed(context, 'addPost');
+        },
+        child: Icon(Icons.add),
+        backgroundColor: Colors.orange,
+      ),
+    );
   }
 
   Widget itemCard(int id, String productName, String weight, String size,
@@ -149,19 +129,18 @@ class _MyDashboard extends State<MyDashboard> {
               ],
             ),
             Container(
-                transform: Matrix4.translationValues(55.0, -5.0, 0.0),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20)
+              transform: Matrix4.translationValues(55.0, -5.0, 0.0),
+              decoration:
+                  BoxDecoration(borderRadius: BorderRadius.circular(20)),
+              // decoration: Cont,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(8.0),
+                child: Image.network(
+                  'https://avatars.mds.yandex.net/i?id=2c9c70afa4ab64820d347a195d161ded-5219960-images-thumbs&n=13&exp=1',
+                  width: 120,
                 ),
-                // decoration: Cont,
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(8.0),
-                  child: Image.network(
-                      'https://avatars.mds.yandex.net/i?id=2c9c70afa4ab64820d347a195d161ded-5219960-images-thumbs&n=13&exp=1',
-                      width: 120,
-                    ),
-                ),
-                )
+              ),
+            )
           ],
         ),
       ),
