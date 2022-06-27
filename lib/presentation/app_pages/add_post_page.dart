@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:innocart_front/internal/dependencies/order_repo_module.dart';
 
 import '../../domain/model/order.dart';
-import 'dashboard/dashboard_page.dart';
+import 'dashboard_page.dart';
 
 class MyAddPost extends StatefulWidget {
   const MyAddPost({Key? key}) : super(key: key);
@@ -23,9 +23,7 @@ class _MyAddPost extends State<MyAddPost> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
+    return Scaffold(
         resizeToAvoidBottomInset: false,
         appBar: AppBar(
           title: const Text("Add post"),
@@ -268,8 +266,7 @@ class _MyAddPost extends State<MyAddPost> {
             ),
           ),
         ),
-      ),
-    );
+      );
   }
 
   void _submit() {

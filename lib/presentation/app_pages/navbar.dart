@@ -2,7 +2,7 @@ import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:innocart_front/presentation/app_pages/add_post_page.dart';
 
-import 'dashboard/dashboard_page.dart';
+import 'dashboard_page.dart';
 import 'profile/profile_page.dart';
 
 class CustomizedBottomNavigationBar extends StatefulWidget {

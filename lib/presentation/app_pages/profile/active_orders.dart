@@ -16,9 +16,7 @@ class ActiveOrders extends StatefulWidget {
 class _ActiveOrders extends State<ActiveOrders> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: Scaffold(
+    return Scaffold(
             appBar: AppBar(
               title: const Text("InnoCart"),
             ),
@@ -48,7 +46,7 @@ class _ActiveOrders extends State<ActiveOrders> {
                   }
                 },
               ),
-            )));
+            ));
   }
 
   Widget itemCard(int id, String productName, String weight, String size, String price,

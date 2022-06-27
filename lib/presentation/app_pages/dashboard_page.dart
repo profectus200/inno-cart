@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:innocart_front/internal/dependencies/order_repo_module.dart';
 
-import '../../../domain/model/order.dart';
-import '../../extra/app_colors.dart';
-import '../../extra/primary_text.dart';
-import '../post_details_page.dart';
+import '../../domain/model/order.dart';
+import '../extra/app_colors.dart';
+import '../extra/primary_text.dart';
+import 'post_details_page.dart';
 
 class MyDashboard extends StatefulWidget {
   const MyDashboard({Key? key}) : super(key: key);
@@ -16,9 +16,7 @@ class MyDashboard extends StatefulWidget {
 class _MyDashboard extends State<MyDashboard> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: Scaffold(
+    return Scaffold(
             appBar: AppBar(
               title: const Text("InnoCart"),
             ),
@@ -48,7 +46,7 @@ class _MyDashboard extends State<MyDashboard> {
                   }
                 },
               ),
-            )));
+            ));
   }
 
   Widget itemCard(int id, String productName, String weight, String size, String price,

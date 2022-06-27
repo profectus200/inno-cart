@@ -7,8 +7,17 @@ import 'package:innocart_front/presentation/auth/register_page.dart';
 void main() {
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
-    // home: const MyLogin(),
     home: const MyLogin(),
+    theme: ThemeData(
+      // Define the default brightness and colors.
+      brightness: Brightness.dark,
+      primaryColor: Colors.orange,
+
+      // Define the default font family.
+      fontFamily: 'Poppins',
+
+
+    ),
     routes: {
       'register': (context) => const MyRegister(),
       'login': (context) => const MyLogin(),
