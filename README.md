@@ -30,9 +30,9 @@ We are working on the major part of MVP with the following featuries:
 ### Fourth week
 * [Summary](https://drive.google.com/file/d/1i1HB3jzVP3AVR2NQ-YTrISNrTc4lXrwb/view?usp=sharing)
 ### Fifth week
+* [Summary](https://drive.google.com/file/d/1Nav7A7rbXueTYMvxVq3DV7bgxx1stfSk/view?usp=sharing)
 * [MVP](https://drive.google.com/file/d/1VBormCeep39NyjvxGLbwIu1md5oPruyA/view?usp=sharing)
-### Sixth week
-* [Summary](https://moodle.innopolis.university/pluginfile.php/145434/assignsubmission_file/submission_files/374824/InnoCart-03_Ass-05.pdf?forcedownload=1)
+
 
 ## Contributors✨
 Thanks goes to these wonderful people:
