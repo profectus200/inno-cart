@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:innocart_front/internal/dependencies/profile_repo_module.dart';
 import 'package:innocart_front/presentation/style/app_colors.dart';
 import 'package:innocart_front/presentation/style/primary_text.dart';
-import '../../../domain/model/profile.dart';
 import '../../auth/login_page.dart';
 import 'profile_list_item.dart';
 
@@ -28,7 +26,7 @@ class ProfileScreen extends StatelessWidget {
                   child: Container(
                     height: 10 * 2.5,
                     width: 10 * 2.5,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       color: AppColors.lightGray,
                       shape: BoxShape.circle,
                     ),
@@ -47,11 +45,12 @@ class ProfileScreen extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 10 * 2),
-          FutureBuilder(future: ProfileRepoModule.profileRepository().getProfile(1),
-            builder: (BuildContext context, AsyncSnapshot<Profile> profile) {
-            return PrimaryText(text: profile.data!.nickname);
-            }
-          ),
+          const PrimaryText(text: 'Vladimir'),
+          // FutureBuilder(future: ProfileRepoModule.profileRepository().getProfile(1),
+          //   builder: (BuildContext context, AsyncSnapshot<Profile> profile) {
+          //   return PrimaryText(text: profile.data!.nickname);
+          //   }
+          // ),
           const SizedBox(height: 10 * 0.5),
           //
           // FutureBuilder(future: ProfileRepoModule.profileRepository().getProfile(1),

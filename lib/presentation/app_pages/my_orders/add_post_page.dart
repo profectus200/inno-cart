@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:innocart_front/domain/model/order.dart';
 import 'package:innocart_front/internal/dependencies/order_repo_module.dart';
 import 'package:innocart_front/presentation/style/app_colors.dart';
+import 'package:innocart_front/presentation/style/primary_text.dart';
 
 class MyAddPost extends StatefulWidget {
   const MyAddPost({Key? key}) : super(key: key);
@@ -14,10 +15,10 @@ class _MyAddPost extends State<MyAddPost> {
   final GlobalKey<FormState> _formKey = GlobalKey();
 
   String productName = "";
-  double weight = 0;
+  double weight = 0.0;
   String description = "";
-  double price = 0;
-  double reward = 0;
+  double price = 0.0;
+  double reward = 0.0;
 
   @override
   Widget build(BuildContext context) {
@@ -267,22 +268,24 @@ class _MyAddPost extends State<MyAddPost> {
               children: <Widget>[
                 const Align(
                     alignment: Alignment.topLeft,
-                    child: Text("Product name and characteristics",
-                        style: TextStyle(fontWeight: FontWeight.w700))),
+                    child: PrimaryText(text: "Product name and characteristics",
+                        fontWeight: FontWeight.w600, color: AppColors.black,)),
                 Align(
                   alignment: Alignment.topLeft,
-                  child: Text("$productName $weight $description"),
+                  child: PrimaryText(text: "$productName $weight $description",
+                    color: AppColors.black,),
                 ),
                 const SizedBox(
                   height: 10,
                 ),
                 const Align(
                     alignment: Alignment.topLeft,
-                    child: Text("Price Reward",
-                        style: TextStyle(fontWeight: FontWeight.w700))),
+                    child:
+                    PrimaryText(text: "Price Reward",
+                      fontWeight: FontWeight.w600, color: AppColors.black,)),
                 Align(
                   alignment: Alignment.topLeft,
-                  child: Text("$price $reward"),
+                  child: PrimaryText(text: "$price $reward", color: AppColors.black),
                 )
               ],
             ),
@@ -328,7 +331,8 @@ class _MyAddPost extends State<MyAddPost> {
                     FocusScope.of(context)
                         .unfocus(); // Unfocus the last selected input field
                     _formKey.currentState?.reset();
-                    Navigator.pushNamed(context, 'dashboard');
+                    Navigator.pushNamed(context, 'activeOrders');
+                    // Navigator.pushNamed(context, 'dashboard');
                     // Empty the form fields
                   },
                 )
