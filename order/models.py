@@ -3,12 +3,6 @@ from django.db import models
 
 
 class OrderModel(models.Model):
-    STATUS = (
-        ('0', 'CREATED'),
-        ('1', 'IN_PROGRESS'),
-        ('2', 'COMPLETED'),
-    )
-
     id = models.AutoField(primary_key=True)
     user = models.ForeignKey(User, verbose_name='User', on_delete=models.CASCADE)
     product_name = models.CharField(max_length=100, null=False, blank=False)
@@ -17,7 +11,7 @@ class OrderModel(models.Model):
     price = models.FloatField(null=False, blank=False)
     reward = models.FloatField(null=False, blank=False)
     deliverer_id = models.IntegerField(null=True, blank=True, default=-1)
-    status = models.CharField(max_length=1, choices=STATUS, null=False, blank=False)
+    status = models.CharField(max_length=11, null=False, blank=False)
     picture = models.CharField(max_length=3000, null=True, blank=True, default='')
 
     # contacts = models.CharField(max_length=50)
