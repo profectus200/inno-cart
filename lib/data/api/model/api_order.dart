@@ -7,38 +7,56 @@ class ApiOrder extends Equatable {
   final String description;
   final double price;
   final double reward;
-  final String contacts;
+  late final String status;
+  late int delivererID;
+  final String picture;
 
-  const ApiOrder(
-      {required this.id,
-      required this.productName,
-      required this.weight,
-      required this.description,
-      required this.price,
-      required this.reward,
-      required this.contacts});
+  ApiOrder({
+    required this.id,
+    required this.productName,
+    required this.weight,
+    required this.description,
+    required this.price,
+    required this.reward,
+    required this.status,
+    required this.delivererID,
+    required this.picture,
+  });
 
   ApiOrder.fromApi(Map<String, dynamic> map)
       : id = map['id'],
-        productName = map['productName'],
+        productName = map['product_name'],
         weight = map['weight'],
         description = map['description'],
         price = map['price'],
         reward = map['reward'],
-        contacts = map['contacts'];
+        status = map['status'],
+        delivererID = map['deliverer_id'],
+        picture = map['picture'];
 
   Map<String, dynamic> toApi() {
     return {
-      'productName': productName,
+      'product_name': productName,
       'weight': weight,
       'description': description,
       'price': price,
       'reward': reward,
-      'contacts': contacts
+      'status': status,
+      'deliverer_id': delivererID,
+      'picture': picture,
     };
   }
 
   @override
-  List<Object> get props =>
-      [id, productName, weight, description, price, reward, contacts];
+  List<Object> get props => [
+        id,
+        productName,
+        weight,
+        description,
+        price,
+        reward,
+        status,
+        delivererID,
+        picture
+      ];
 }

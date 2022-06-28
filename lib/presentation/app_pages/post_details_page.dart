@@ -12,12 +12,13 @@ class PostDetail extends StatelessWidget {
   final String description;
   final String price;
   final String reward;
-  final String contacts;
+  final String status;
   final bool profilePage;
 
   const PostDetail(this.id, this.productName, this.weight, this.description,
-      this.price,
-      this.reward, this.contacts, this.profilePage, {Key? key}) : super(key: key);
+      this.price, this.reward, this.status, this.profilePage,
+      {Key? key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +43,6 @@ class PostDetail extends StatelessWidget {
             children: const [
               PrimaryText(
                 text: 'Reply',
-                color: AppColors.black,
                 fontWeight: FontWeight.w600,
                 size: 18,
               ),
@@ -52,7 +52,7 @@ class PostDetail extends StatelessWidget {
         ) : ElevatedButton(
           onPressed: () => {
           OrderRepoModule.orderRepository().deleteOrder(id),
-          Navigator.pushNamed(context, 'dashboard')
+          Navigator.pushNamed(context, 'activeOrders')
         },
           style: ElevatedButton.styleFrom(
               primary: AppColors.white,
@@ -190,7 +190,7 @@ class PostDetail extends StatelessWidget {
                   height: 50,
                 ),
                 PrimaryText(
-                    text: 'Contacts: $contacts',
+                    text: 'Status: $status',
                     fontWeight: FontWeight.w700,
                     size: 22),
                 const SizedBox(

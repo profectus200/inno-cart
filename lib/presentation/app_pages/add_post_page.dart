@@ -311,15 +311,18 @@ class _MyAddPost extends State<MyAddPost> {
                         borderRadius: BorderRadius.all(Radius.circular(10))),
                   ),
                   child: const Text('OK'),
-                  onPressed: () async {
+                  onPressed: () {
                     Order newOrder = Order(
-                        id: -1,
-                        productName: productName,
-                        weight: weight,
-                        description: description,
-                        price: price,
-                        reward: reward,
-                        contacts: "@vldmr314");
+                      id: -1,
+                      productName: productName,
+                      weight: weight,
+                      description: description,
+                      price: price,
+                      reward: reward,
+                      status: 'CREATED',
+                      delivererID: -1,
+                      picture: '',
+                    );
                     OrderRepoModule.orderRepository().addOrder(newOrder);
                     Navigator.of(context).pop(); // Close the dialog
                     FocusScope.of(context)
