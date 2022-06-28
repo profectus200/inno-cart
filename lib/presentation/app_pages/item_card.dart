@@ -50,7 +50,7 @@ class ItemCard extends StatelessWidget {
                         children: [
                           const Icon(
                             Icons.attach_money_outlined,
-                            color: AppColors.primary,
+                            color: AppColors.yellow,
                             size: 28,
                           ),
                           // const SizedBox(width: 5),
@@ -96,7 +96,7 @@ class ItemCard extends StatelessWidget {
               ),
               // decoration: Cont,
               child: ClipRRect(
-                borderRadius: BorderRadius.circular(20.0),
+                borderRadius: BorderRadius.circular(10.0),
                 child: Image.network(
                   'https://avatars.mds.yandex.net/i?id=2c9c70afa4ab64820d347a195d161ded-5219960-images-thumbs&n=13&exp=1',
                   height: 100,

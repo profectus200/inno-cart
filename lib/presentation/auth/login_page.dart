@@ -70,10 +70,10 @@ class _MyLoginState extends State<MyLogin> {
                           fillColor: const Color(0xff161d27).withOpacity(0.9),
                           enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(30),
-                              borderSide: const BorderSide(color: AppColors.orange)),
+                              borderSide: const BorderSide(color: AppColors.primary)),
                           focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(30),
-                              borderSide: const BorderSide(color: AppColors.orange)),
+                              borderSide: const BorderSide(color: AppColors.primary)),
                         ),
                       ),
                     ),
@@ -94,10 +94,10 @@ class _MyLoginState extends State<MyLogin> {
                           fillColor: const Color(0xff161d27).withOpacity(0.9),
                           enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(30),
-                              borderSide: const BorderSide(color: AppColors.orange)),
+                              borderSide: const BorderSide(color: AppColors.primary)),
                           focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(30),
-                              borderSide: const BorderSide(color: AppColors.orange)),
+                              borderSide: const BorderSide(color: AppColors.primary)),
                         ),
                       ),
                     ),
@@ -107,7 +107,7 @@ class _MyLoginState extends State<MyLogin> {
                     const Text(
                       "Forgot Password?",
                       style: TextStyle(
-                          color: AppColors.orange, fontSize: 14, fontWeight: FontWeight.bold),
+                          color: AppColors.primary, fontSize: 14, fontWeight: FontWeight.bold),
                     ),
                     const SizedBox(
                       height: 20,
@@ -131,7 +131,7 @@ class _MyLoginState extends State<MyLogin> {
                           Navigator.pushNamed(context, 'login');
                         },
                         style: ButtonStyle(
-                            backgroundColor: MaterialStateProperty.all<Color>(AppColors.orange),
+                            backgroundColor: MaterialStateProperty.all<Color>(AppColors.primary),
                             shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                                 RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(18.0),
@@ -141,7 +141,7 @@ class _MyLoginState extends State<MyLogin> {
                         child: const Text(
                           "LOGIN",
                           style: TextStyle(
-                              color: Colors.white,
+                              // color: Colors.white,
                               fontWeight: FontWeight.bold,
                               fontSize: 16),
                         ),
@@ -167,7 +167,7 @@ class _MyLoginState extends State<MyLogin> {
                           child: const Text(
                             "Sign up",
                             style:
-                            TextStyle(color: AppColors.orange, fontWeight: FontWeight.bold),
+                            TextStyle(color: AppColors.primary, fontWeight: FontWeight.bold),
                           ),
                         )
                       ],

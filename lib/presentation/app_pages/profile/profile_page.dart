@@ -20,6 +20,7 @@ class ProfileScreen extends StatelessWidget {
               children: <Widget>[
                 const CircleAvatar(
                   radius: 10 * 5,
+                  backgroundColor: Color(0xFF23232D),
                 ),
                 Align(
                   alignment: Alignment.bottomRight,

@@ -81,11 +81,11 @@ class _MyRegisterState extends State<MyRegister> {
                             enabledBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(30),
                                 borderSide:
-                                    const BorderSide(color: AppColors.orange)),
+                                    const BorderSide(color: AppColors.primary)),
                             focusedBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(30),
                                 borderSide:
-                                    const BorderSide(color: AppColors.orange)),
+                                    const BorderSide(color: AppColors.primary)),
                           ),
                         ),
                       ),
@@ -107,11 +107,11 @@ class _MyRegisterState extends State<MyRegister> {
                             enabledBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(30),
                                 borderSide:
-                                    const BorderSide(color: AppColors.orange)),
+                                    const BorderSide(color: AppColors.primary)),
                             focusedBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(30),
                                 borderSide:
-                                    const BorderSide(color: AppColors.orange)),
+                                    const BorderSide(color: AppColors.primary)),
                           ),
                         ),
                       ),
@@ -134,11 +134,11 @@ class _MyRegisterState extends State<MyRegister> {
                             enabledBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(30),
                                 borderSide:
-                                    const BorderSide(color: AppColors.orange)),
+                                    const BorderSide(color: AppColors.primary)),
                             focusedBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(30),
                                 borderSide:
-                                    const BorderSide(color: AppColors.orange)),
+                                    const BorderSide(color: AppColors.primary)),
                           ),
                         ),
                       ),
@@ -175,7 +175,7 @@ class _MyRegisterState extends State<MyRegister> {
                           },
                           style: ButtonStyle(
                               backgroundColor: MaterialStateProperty.all<Color>(
-                                  AppColors.orange),
+                                  AppColors.primary),
                               shape: MaterialStateProperty.all<
                                       RoundedRectangleBorder>(
                                   RoundedRectangleBorder(
@@ -184,7 +184,7 @@ class _MyRegisterState extends State<MyRegister> {
                           child: const Text(
                             "SIGN UP",
                             style: TextStyle(
-                                color: Colors.white,
+                                // color: Colors.white,
                                 fontWeight: FontWeight.bold,
                                 fontSize: 16),
                           ),
@@ -210,7 +210,7 @@ class _MyRegisterState extends State<MyRegister> {
                             child: const Text(
                               "Sign in",
                               style: TextStyle(
-                                  color: AppColors.orange,
+                                  color: AppColors.primary,
                                   fontWeight: FontWeight.bold),
                             ),
                           )

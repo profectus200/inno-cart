@@ -27,13 +27,6 @@ class _MyAddPost extends State<MyAddPost> {
       body: ListView(
         padding: const EdgeInsets.only(top: 50),
         children: <Widget>[
-          const Align(
-            alignment: Alignment.center,
-            child: Text("Enter your data",
-                style: TextStyle(
-                  fontSize: 24,
-                )),
-          ),
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: Form(
@@ -55,7 +48,7 @@ class _MyAddPost extends State<MyAddPost> {
                           ))),
                   onPressed: () {
                   },
-                  child: const Text("Add image"),
+                  child: const PrimaryText(text: "Add image", color: AppColors.black, size: 20,),
                 )),
                   const SizedBox(
                     height: 20,
@@ -114,12 +107,6 @@ class _MyAddPost extends State<MyAddPost> {
                         description = value;
                       });
                     },
-                    // validator: (value) {
-                    //   if (value == null || value.isEmpty) {
-                    //     return 'Description cannot be empty';
-                    //   }
-                    //   return null;
-                    // },
                   ),
                   const SizedBox(
                     height: 20,
@@ -244,7 +231,7 @@ class _MyAddPost extends State<MyAddPost> {
                           _submit();
                         }
                       },
-                      child: const Text("Submit"),
+                      child: const PrimaryText(text: "Submit", color: AppColors.black, size: 24,),
                     ),
                   ),
                 ],
@@ -331,8 +318,7 @@ class _MyAddPost extends State<MyAddPost> {
                     FocusScope.of(context)
                         .unfocus(); // Unfocus the last selected input field
                     _formKey.currentState?.reset();
-                    Navigator.pushNamed(context, 'activeOrders');
-                    // Navigator.pushNamed(context, 'dashboard');
+                    Navigator.pushNamed(context, 'dashboard');
                     // Empty the form fields
                   },
                 )
