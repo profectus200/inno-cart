@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:innocart_front/presentation/extra/app_colors.dart';
-import 'package:innocart_front/presentation/extra/primary_text.dart';
+import 'package:innocart_front/presentation/style/app_colors.dart';
+import 'package:innocart_front/presentation/style/primary_text.dart';
 import '../../auth/login_page.dart';
 import 'profile_list_item.dart';
 

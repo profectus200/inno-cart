@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:innocart_front/internal/dependencies/order_repo_module.dart';
-import 'package:innocart_front/presentation/style/primary_text.dart';
-import 'package:innocart_front/presentation/style/app_colors.dart';
-
+import 'package:innocart_front/presentation/app_pages/item_card.dart';
 import '../../domain/model/order.dart';
-import 'post_details_page.dart';
 
 class ActiveOrders extends StatefulWidget {
   const ActiveOrders({Key? key}) : super(key: key);
@@ -28,7 +25,7 @@ class _ActiveOrders extends State<ActiveOrders> {
               return Column(
                   children: List.generate(
                 orderList.data!.length,
-                (index) => itemCard(
+                (index) => ItemCard(
                     orderList.data![index].id,
                     orderList.data![index].productName,
                     orderList.data![index].weight.toString(),
@@ -51,98 +48,6 @@ class _ActiveOrders extends State<ActiveOrders> {
         },
         backgroundColor: Colors.orange,
         child: const Icon(Icons.add),
-      ),
-    );
-  }
-
-  Widget itemCard(int id, String productName, String weight, String size,
-      String price, String reward, String contacts) {
-    return GestureDetector(
-      onTap: () => {
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) => PostDetail(id, productName, weight, size,
-                    price, reward, contacts, true)))
-      },
-      child: Container(
-        margin: const EdgeInsets.only(right: 25, left: 20, top: 25),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
-          boxShadow: const [
-            BoxShadow(blurRadius: 10, color: AppColors.lighterGray)
-          ],
-          color: AppColors.white,
-        ),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 10, left: 5),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        children: [
-                          const Icon(
-                            Icons.attach_money_outlined,
-                            color: AppColors.primary,
-                            size: 28,
-                          ),
-                          // const SizedBox(width: 5),
-                          PrimaryText(
-                            text: reward,
-                            size: 22,
-                          )
-                        ],
-                      ),
-                      const SizedBox(height: 5),
-                      SizedBox(
-                        width: MediaQuery.of(context).size.width / 2.2,
-                        child: PrimaryText(
-                            text: productName,
-                            size: 22,
-                            fontWeight: FontWeight.w700),
-                      ),
-                      const SizedBox(height: 5),
-                      Row(children: [
-                        PrimaryText(
-                            text: "Weight: $weight",
-                            size: 18,
-                            color: AppColors.lightGray),
-                        const SizedBox(width: 10),
-                        // const Icon(Icons.person, size: 20),
-                        // const SizedBox(width: 5),
-                        // const PrimaryText(
-                        //   text: "4.5",
-                        //   size: 18,
-                        //   fontWeight: FontWeight.w600,
-                        // )
-                      ]),
-                      const SizedBox(height: 15),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-            Container(
-              transform: Matrix4.translationValues(55.0, -5.0, 0.0),
-              decoration:
-                  BoxDecoration(borderRadius: BorderRadius.circular(20)),
-              // decoration: Cont,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(8.0),
-                child: Image.network(
-                  'https://avatars.mds.yandex.net/i?id=2c9c70afa4ab64820d347a195d161ded-5219960-images-thumbs&n=13&exp=1',
-                  width: 120,
-                ),
-              ),
-            )
-          ],
-        ),
       ),
     );
   }

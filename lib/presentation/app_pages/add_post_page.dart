@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:innocart_front/domain/model/order.dart';
 import 'package:innocart_front/internal/dependencies/order_repo_module.dart';
-import '../../domain/model/order.dart';
 import 'package:innocart_front/presentation/style/app_colors.dart';
 
 class MyAddPost extends StatefulWidget {

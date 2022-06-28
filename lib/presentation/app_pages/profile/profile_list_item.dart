@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:innocart_front/presentation/extra/primary_text.dart';
+import 'package:innocart_front/presentation/style/primary_text.dart';
 
 class ProfileListItem extends StatelessWidget {
   final IconData icon;
