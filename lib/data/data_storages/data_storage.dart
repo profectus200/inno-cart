@@ -1,20 +1,30 @@
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
-class TokenStorage {
+class DataStorage {
   late final _storage = const FlutterSecureStorage();
 
-  static TokenStorage? _instance;
+  static DataStorage? _instance;
 
-  TokenStorage._();
+  DataStorage._();
 
-  static TokenStorage get instance => _instance ??= TokenStorage._();
+  static DataStorage get instance => _instance ??= DataStorage._();
+
+  void saveAlias(String alias) {
+    _storage.write(key: "alias", value: alias);
+  }
 
   void saveToken(String token) {
     _storage.write(key: "token", value: token);
   }
 
-  void saveID(int id) {
+  void savePersonID(int id) {
     _storage.write(key: "id", value: "$id");
+  }
+
+  Future<String> get getAlias async {
+    var alias = await _storage.read(key: "alias");
+    if (alias == null) return "";
+    return alias;
   }
 
   Future<String> get getToken async {
@@ -23,7 +33,7 @@ class TokenStorage {
     return token;
   }
 
-  Future<int> get getID async {
+  Future<int> get getPersonID async {
     var id = await _storage.read(key: "id");
     if (id == null) return -1;
     return int.parse(id);

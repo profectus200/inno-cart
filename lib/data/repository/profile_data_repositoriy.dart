@@ -27,4 +27,10 @@ class ProfileDataRepository extends ProfileRepository {
     ApiProfile apiProfile = ProfileMapper.toApi(profile);
     return _profileService.updateProfile(apiProfile, id);
   }
+
+  @override
+  Future<Profile> getMyProfile() async {
+    ApiProfile profile = await _profileService.getMyProfile();
+    return ProfileMapper.fromApi(profile);
+  }
 }

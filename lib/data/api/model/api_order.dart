@@ -41,8 +41,8 @@ class ApiOrder extends Equatable {
       'description': description,
       'price': price,
       'reward': reward,
-      'status': status,
       'deliverer_id': delivererID,
+      'status': status,
       'picture': picture,
     };
   }

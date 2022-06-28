@@ -1,7 +1,8 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
-import 'package:innocart_front/data/api/service/token_storage.dart';
+import 'package:innocart_front/data/api/service/profile_service.dart';
+import 'package:innocart_front/data/data_storages/data_storage.dart';
 
 class AuthService {
   Future<int> attemptLogIn(String username, String password) async {
@@ -13,7 +14,8 @@ class AuthService {
         body: jsonEncode({"username": username, "password": password}));
     if (res.statusCode == 200) {
       var token = jsonDecode(res.body);
-      TokenStorage.instance.saveToken(token["auth_token"]);
+      DataStorage.instance.saveToken(token["auth_token"]);
+      ProfileService().getMyProfile();
     }
     return res.statusCode;
   }
@@ -34,6 +36,6 @@ class AuthService {
   }
 
   Future<bool> isStorageEmpty() async {
-    return TokenStorage.instance.isEmpty();
+    return DataStorage.instance.isEmpty();
   }
 }
