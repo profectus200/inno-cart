@@ -1,14 +1,14 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
-import 'package:innocart_front/data/api/service/token_storage.dart';
+import 'package:innocart_front/data/data_storages/data_storage.dart';
 
 import '../model/api_profile.dart';
 
 class ProfileService {
   Future<ApiProfile> getProfile(int id) async {
     Uri url = Uri.parse('http://10.0.2.2:8000/api/v1/profiles/$id');
-    var token = await TokenStorage.instance.getToken;
+    var token = await DataStorage.instance.getToken;
     var response = await http.get(
       url,
       headers: {'Authorization': 'Token $token'},
@@ -22,7 +22,7 @@ class ProfileService {
 
   Future<int> addProfile(ApiProfile profile) async {
     Uri url = Uri.parse('http://10.0.2.2:8000/api/v1/profiles');
-    var token = await TokenStorage.instance.getToken;
+    var token = await DataStorage.instance.getToken;
     var response = await http.post(url,
         headers: {
           'Content-Type': 'application/json',
@@ -35,7 +35,7 @@ class ProfileService {
   Future<int> updateProfile(ApiProfile profile, int id) async {
     //Working?
     Uri url = Uri.parse('http://10.0.2.2:8000/api/v1/profiles/$id');
-    var token = await TokenStorage.instance.getToken;
+    var token = await DataStorage.instance.getToken;
     var response = await http.put(url,
         headers: {
           'Content-Type': 'application/json',
@@ -43,5 +43,19 @@ class ProfileService {
         },
         body: jsonEncode(profile.toApi()));
     return response.statusCode;
+  }
+
+  Future<ApiProfile> getMyProfile() async {
+    Uri url = Uri.parse('http://10.0.2.2:8000/api/v1/my-profile');
+    var token = await DataStorage.instance.getToken;
+    var response =
+        await http.get(url, headers: {'Authorization': 'Token $token'});
+    var profile = jsonDecode(response.body)[0];
+
+    if (response.statusCode == 200) {
+      DataStorage.instance.saveAlias(profile["telegram_alias"]);
+      DataStorage.instance.savePersonID(profile["person_id"]);
+    }
+    return ApiProfile.fromApi(profile);
   }
 }
