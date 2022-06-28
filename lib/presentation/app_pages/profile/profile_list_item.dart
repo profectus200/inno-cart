@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:innocart_front/presentation/extra/primary_text.dart';
+import 'package:innocart_front/presentation/style/primary_text.dart';
 
 class ProfileListItem extends StatelessWidget {
   final IconData icon;
@@ -34,7 +34,8 @@ class ProfileListItem extends StatelessWidget {
       ),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10 * 3),
-        color: Theme.of(context).backgroundColor,
+        color:const Color(0xFF23232D),
+        // color: Theme.of(context).backgroundColor,
       ),
       child: Row(
         children: <Widget>[

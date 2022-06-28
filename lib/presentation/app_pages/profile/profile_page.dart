@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:innocart_front/presentation/extra/app_colors.dart';
-import 'package:innocart_front/presentation/extra/primary_text.dart';
-
+import 'package:innocart_front/presentation/style/app_colors.dart';
+import 'package:innocart_front/presentation/style/primary_text.dart';
 import '../../auth/login_page.dart';
-import 'active_orders.dart';
 import 'profile_list_item.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -22,14 +20,15 @@ class ProfileScreen extends StatelessWidget {
               children: <Widget>[
                 const CircleAvatar(
                   radius: 10 * 5,
+                  backgroundColor: Color(0xFF23232D),
                 ),
                 Align(
                   alignment: Alignment.bottomRight,
                   child: Container(
                     height: 10 * 2.5,
                     width: 10 * 2.5,
-                    decoration: BoxDecoration(
-                      color: Theme.of(context).colorScheme.onSecondary,
+                    decoration: const BoxDecoration(
+                      color: AppColors.lightGray,
                       shape: BoxShape.circle,
                     ),
                     child: const Center(
@@ -47,9 +46,19 @@ class ProfileScreen extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 10 * 2),
-          const PrimaryText(text: 'Vladimir', size: 28),
+          const PrimaryText(text: 'Vladimir'),
+          // FutureBuilder(future: ProfileRepoModule.profileRepository().getProfile(1),
+          //   builder: (BuildContext context, AsyncSnapshot<Profile> profile) {
+          //   return PrimaryText(text: profile.data!.nickname);
+          //   }
+          // ),
           const SizedBox(height: 10 * 0.5),
-          const PrimaryText(text: 'vldmr314@gmail.com', size: 14),
+          //
+          // FutureBuilder(future: ProfileRepoModule.profileRepository().getProfile(1),
+          //     builder: (BuildContext context, AsyncSnapshot<Profile> profile) {
+          //       return PrimaryText(text: 'rating ' + profile.data!.rating.toString());
+          //     }
+          // ),
           const SizedBox(height: 10 * 2),
         ],
       ),
@@ -72,29 +81,11 @@ class ProfileScreen extends StatelessWidget {
           Expanded(
             child: ListView(
               children: <Widget>[
-                GestureDetector(
-                    onTap: () => {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const ActiveOrders()))
-                        },
-                    child: const ProfileListItem(
-                      icon: Icons.list,
-                      text: "Active orders",
-                      hasNavigation: true,
-                    )),
-                const ProfileListItem(
-                  icon: Icons.history,
-                  text: "Go to history",
-                  hasNavigation: true,
-                ),
+                const ProfileListItem(icon: Icons.history, text: "Go to history", hasNavigation: true,),
                 GestureDetector(
                   onTap: () => {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const MyLogin()))
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => const MyLogin()))
                   },
                   child: const ProfileListItem(
                     icon: Icons.logout_outlined,

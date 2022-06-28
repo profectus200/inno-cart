@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:innocart_front/internal/dependencies/order_repo_module.dart';
 
-import '../extra/app_colors.dart';
-import '../extra/primary_text.dart';
+import 'package:innocart_front/presentation/style/primary_text.dart';
+import 'package:innocart_front/presentation/style/app_colors.dart';
+
 
 class PostDetail extends StatelessWidget {
   final int id;
@@ -24,58 +25,58 @@ class PostDetail extends StatelessWidget {
     return Scaffold(
       floatingActionButton: ConstrainedBox(
         constraints:
-            BoxConstraints(minWidth: MediaQuery.of(context).size.width - 40),
-        child: !profilePage
-            ? ElevatedButton(
-                onPressed: () => {},
-                style: ElevatedButton.styleFrom(
-                    primary: AppColors.primary,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10.0)),
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 50, vertical: 20),
-                    textStyle: const TextStyle(
-                        fontSize: 30, fontWeight: FontWeight.bold)),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: const [
-                    PrimaryText(
-                      text: 'Reply',
-                      fontWeight: FontWeight.w600,
-                      size: 18,
-                    ),
-                    Icon(Icons.chevron_right)
-                  ],
-                ),
-              )
-            : ElevatedButton(
-                onPressed: () => {
-                  OrderRepoModule.orderRepository().deleteOrder(id),
-                  Navigator.pushNamed(context, 'activeOrders')
-                },
-                style: ElevatedButton.styleFrom(
-                    primary: AppColors.white,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10.0),
-                        side: const BorderSide(color: Colors.red)),
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 50, vertical: 20),
-                    textStyle: const TextStyle(
-                        fontSize: 30, fontWeight: FontWeight.bold)),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: const [
-                    Icon(Icons.remove_circle_outlined,
-                        color: Colors.red, size: 24),
-                    PrimaryText(
-                      text: ' Remove',
-                      fontWeight: FontWeight.w600,
-                      size: 20,
-                      color: Colors.red,
-                    )
-                  ],
-                ),
+        BoxConstraints(minWidth: MediaQuery
+            .of(context)
+            .size
+            .width - 40),
+        child: !profilePage ? ElevatedButton(
+          onPressed: () => {},
+          style: ElevatedButton.styleFrom(
+              primary: AppColors.primary,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10.0)),
+              padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 20),
+              textStyle:
+              const TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: const [
+              PrimaryText(
+                text: 'Reply',
+                color: AppColors.black,
+                fontWeight: FontWeight.w600,
+                size: 18,
               ),
+              Icon(Icons.chevron_right)
+            ],
+          ),
+        ) : ElevatedButton(
+          onPressed: () => {
+          OrderRepoModule.orderRepository().deleteOrder(id),
+          Navigator.pushNamed(context, 'activeOrders')
+        },
+          style: ElevatedButton.styleFrom(
+              primary: AppColors.white,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10.0),
+                  side: const BorderSide(color: Colors.red)),
+              padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 20),
+              textStyle:
+              const TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: const [
+              Icon(Icons.remove_circle_outlined, color: Colors.red, size: 24),
+              PrimaryText(
+                text: ' Remove',
+                fontWeight: FontWeight.w600,
+                size: 20,
+                color: Colors.red,
+              )
+            ],
+          ),
+        )
+        ,
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       body: ListView(
@@ -124,17 +125,6 @@ class PostDetail extends StatelessWidget {
                       child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            const PrimaryText(
-                              text: 'Description',
-                              color: AppColors.lightGray,
-                              size: 16,
-                              fontWeight: FontWeight.w500,
-                            ),
-                            const SizedBox(
-                              height: 8,
-                            ),
-                            PrimaryText(
-                                text: description, fontWeight: FontWeight.w600),
                             const SizedBox(
                               height: 20,
                             ),
@@ -148,9 +138,9 @@ class PostDetail extends StatelessWidget {
                               height: 8,
                             ),
                             PrimaryText(
-                                text: weight, fontWeight: FontWeight.w600),
+                                text: '$weight g', fontWeight: FontWeight.w600),
                             const SizedBox(
-                              height: 20,
+                              height: 8,
                             ),
                             const PrimaryText(
                               text: 'Price',
@@ -162,7 +152,24 @@ class PostDetail extends StatelessWidget {
                               height: 8,
                             ),
                             PrimaryText(
-                                text: price, fontWeight: FontWeight.w600),
+                                text: '$price \$', fontWeight: FontWeight.w600),
+                            const SizedBox(
+                              height: 8,
+                            ),
+                            const PrimaryText(
+                              text: 'Time',
+                              color: AppColors.lightGray,
+                              size: 16,
+                              fontWeight: FontWeight.w500,
+                            ),
+                            const SizedBox(
+                              height: 8,
+                            ),
+                            const PrimaryText(
+                                text: "18:00-20:00", fontWeight: FontWeight.w600),
+                            const SizedBox(
+                              height: 8,
+                            ),
                           ]),
                     ),
                     Hero(
@@ -171,14 +178,17 @@ class PostDetail extends StatelessWidget {
                         decoration: BoxDecoration(
                           boxShadow: [
                             BoxShadow(
-                                color: Colors.grey.shade400, blurRadius: 30),
+                                color: Colors.grey.shade400, blurRadius: 20),
                           ],
-                          borderRadius: BorderRadius.circular(100),
+                          // borderRadius: BorderRadius.circular(100),
                         ),
                         height: 170,
-                        child: Image.network(
-                          'https://avatars.mds.yandex.net/i?id=2c9c70afa4ab64820d347a195d161ded-5219960-images-thumbs&n=13&exp=1',
-                          fit: BoxFit.cover,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(20.0),
+                          child: Image.network(
+                            'https://avatars.mds.yandex.net/i?id=2c9c70afa4ab64820d347a195d161ded-5219960-images-thumbs&n=13&exp=1',
+                            fit: BoxFit.cover,
+                          ),
                         ),
                         // Image.asset('https://avatars.mds.yandex.net/i?id=2c9c70afa4ab64820d347a195d161ded-5219960-images-thumbs&n=13&exp=1',
                         //     fit: BoxFit.cover)
@@ -187,10 +197,10 @@ class PostDetail extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(
-                  height: 50,
+                  height: 20,
                 ),
                 PrimaryText(
-                    text: 'Status: $status',
+                    text: 'Description: $description',
                     fontWeight: FontWeight.w700,
                     size: 22),
                 const SizedBox(
@@ -216,16 +226,16 @@ class PostDetail extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          GestureDetector(
-            onTap: () => Navigator.pop(context),
-            child: Container(
-              padding: const EdgeInsets.all(10),
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15),
-                  border: Border.all(width: 1, color: Colors.grey.shade400)),
-              child: const Icon(Icons.chevron_left),
-            ),
-          ),
+          // GestureDetector(
+          //   onTap: () => Navigator.pop(context),
+          //   child: Container(
+          //     padding: const EdgeInsets.all(10),
+          //     decoration: BoxDecoration(
+          //         borderRadius: BorderRadius.circular(15),
+          //         border: Border.all(width: 1, color: Colors.grey.shade400)),
+          //     child: const Icon(Icons.chevron_left),
+          //   ),
+          // ),
           // Container(
           //   padding: const EdgeInsets.all(10),
           //   decoration: BoxDecoration(

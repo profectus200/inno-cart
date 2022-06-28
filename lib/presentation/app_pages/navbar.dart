@@ -1,8 +1,9 @@
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:innocart_front/presentation/app_pages/add_post_page.dart';
+import 'package:innocart_front/presentation/app_pages/my_orders/active_orders.dart';
+import 'package:innocart_front/presentation/style/app_colors.dart';
 
-import 'dashboard/dashboard_page.dart';
+import 'dashboard_page.dart';
 import 'profile/profile_page.dart';
 
 class CustomizedBottomNavigationBar extends StatefulWidget {
@@ -31,9 +32,10 @@ class _CustomizedBottomNavigationBarState
       case 0:
         return const MyDashboard();
       case 1:
-        return const MyAddPost();
+        return const Text('');
       case 2:
-        return const Text('TBD');
+        return const ActiveOrders();
+        // return const ActiveOrders();
       // return MessagesPage();
       case 3:
         return const ProfileScreen();
@@ -44,29 +46,34 @@ class _CustomizedBottomNavigationBarState
 // * BottomNavigationBar Section Components
   customBottomNavigationBar() {
     return BottomNavyBar(
+      backgroundColor: const Color(0xFF1E1F24),
       selectedIndex: index,
       items: [
         BottomNavyBarItem(
           icon: const Icon(Icons.apps),
-          title: const Text('Home'),
-          activeColor: Colors.red,
+          title: const Text('Dashboard'),
+          activeColor: AppColors.primary,
+          inactiveColor: AppColors.lightGray,
           textAlign: TextAlign.center,
         ),
         BottomNavyBarItem(
-            icon: const Icon(Icons.post_add),
-            title: const Text('Post'),
-            activeColor: Colors.purpleAccent,
+            icon: const Icon(Icons.delivery_dining),
+            title: const Text('Deliveries'),
+            activeColor: AppColors.primary,
+            inactiveColor: AppColors.lightGray,
             textAlign: TextAlign.center),
         BottomNavyBarItem(
-          icon: const Icon(Icons.message),
-          title: const Text('Messages'),
-          activeColor: Colors.pink,
+          icon: const Icon(Icons.post_add_outlined),
+          title: const Text('My orders'),
+          activeColor: AppColors.primary,
+          inactiveColor: AppColors.lightGray,
           textAlign: TextAlign.center,
         ),
         BottomNavyBarItem(
           icon: const Icon(Icons.account_circle),
           title: const Text('Profile'),
-          activeColor: Colors.blue,
+          activeColor: AppColors.primary,
+          inactiveColor: AppColors.lightGray,
           textAlign: TextAlign.center,
         ),
       ],
