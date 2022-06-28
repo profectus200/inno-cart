@@ -13,7 +13,7 @@ class PrimaryText extends StatelessWidget {
   const PrimaryText({
     required this.text,
     this.fontWeight = FontWeight.w400,
-    this.color = AppColors.secondary,
+    this.color = AppColors.lightGray,
     this.size = 20,
     this.height = 1.3,
   });

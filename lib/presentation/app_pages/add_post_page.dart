@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:innocart_front/internal/dependencies/order_repo_module.dart';
-import 'package:innocart_front/presentation/extra/app_colors.dart';
-
 import '../../domain/model/order.dart';
-import '../extra/app_colors.dart';
-import 'dashboard_page.dart';
+import 'package:innocart_front/presentation/style/app_colors.dart';
 
 class MyAddPost extends StatefulWidget {
   const MyAddPost({Key? key}) : super(key: key);

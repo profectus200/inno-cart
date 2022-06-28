@@ -1,7 +1,7 @@
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:innocart_front/presentation/app_pages/active_orders.dart';
-import 'package:innocart_front/presentation/app_pages/add_post_page.dart';
+import 'package:innocart_front/presentation/style/app_colors.dart';
 
 import 'dashboard_page.dart';
 import 'profile/profile_page.dart';
@@ -46,29 +46,30 @@ class _CustomizedBottomNavigationBarState
 // * BottomNavigationBar Section Components
   customBottomNavigationBar() {
     return BottomNavyBar(
+      backgroundColor: const Color(0xFF1E1F24),
       selectedIndex: index,
       items: [
         BottomNavyBarItem(
           icon: const Icon(Icons.apps),
           title: const Text('Home'),
-          activeColor: Colors.red,
+          activeColor: Color(0xFFFDFEFF),
           textAlign: TextAlign.center,
         ),
         BottomNavyBarItem(
             icon: const Icon(Icons.not_accessible),
             title: const Text('...'),
-            activeColor: Colors.purpleAccent,
+            activeColor: Color(0xFFFDFEFF),
             textAlign: TextAlign.center),
         BottomNavyBarItem(
           icon: const Icon(Icons.post_add_outlined),
-          title: const Text('My posts'),
-          activeColor: Colors.pink,
+          title: const Text('My orders'),
+          activeColor: Color(0xFFFDFEFF),
           textAlign: TextAlign.center,
         ),
         BottomNavyBarItem(
           icon: const Icon(Icons.account_circle),
           title: const Text('Profile'),
-          activeColor: Colors.blue,
+          activeColor: Color(0xFFFDFEFF),
           textAlign: TextAlign.center,
         ),
       ],

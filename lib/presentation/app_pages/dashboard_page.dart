@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:innocart_front/internal/dependencies/order_repo_module.dart';
 
 import '../../domain/model/order.dart';
-import '../extra/app_colors.dart';
-import '../extra/primary_text.dart';
+import 'package:innocart_front/presentation/style/app_colors.dart';
+import 'package:innocart_front/presentation/style/primary_text.dart';
+
 import 'post_details_page.dart';
 
 class MyDashboard extends StatefulWidget {
@@ -25,7 +26,7 @@ class _MyDashboard extends State<MyDashboard> {
               SizedBox(width: 20),
               Icon(
                 Icons.search,
-                color: AppColors.secondary,
+                color: AppColors.lighterGray,
                 size: 25,
               ),
               SizedBox(width: 10),
@@ -90,9 +91,9 @@ class _MyDashboard extends State<MyDashboard> {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
           boxShadow: const [
-            BoxShadow(blurRadius: 10, color: AppColors.lighterGray)
+            BoxShadow(blurRadius: 4, color: AppColors.lighterGray)
           ],
-          color: AppColors.white,
+          color: Color(0xFF23232D),
         ),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -149,16 +150,16 @@ class _MyDashboard extends State<MyDashboard> {
               ],
             ),
             Container(
-                transform: Matrix4.translationValues(55.0, -5.0, 0.0),
+                transform: Matrix4.translationValues(32.0, 7.5, 0.0),
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20)
+                  borderRadius: BorderRadius.circular(20),
                 ),
                 // decoration: Cont,
                 child: ClipRRect(
-                  borderRadius: BorderRadius.circular(8.0),
+                  borderRadius: BorderRadius.circular(20.0),
                   child: Image.network(
                       'https://avatars.mds.yandex.net/i?id=2c9c70afa4ab64820d347a195d161ded-5219960-images-thumbs&n=13&exp=1',
-                      width: 120,
+                      height: 100,
                     ),
                 ),
                 )

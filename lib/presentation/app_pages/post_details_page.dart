@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:innocart_front/internal/dependencies/order_repo_module.dart';
 
-import '../extra/app_colors.dart';
-import '../extra/primary_text.dart';
+import 'package:innocart_front/presentation/style/primary_text.dart';
+import 'package:innocart_front/presentation/style/app_colors.dart';
+
 
 class PostDetail extends StatelessWidget {
   final int id;
@@ -41,6 +42,7 @@ class PostDetail extends StatelessWidget {
             children: const [
               PrimaryText(
                 text: 'Reply',
+                color: AppColors.black,
                 fontWeight: FontWeight.w600,
                 size: 18,
               ),

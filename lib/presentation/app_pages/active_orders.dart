@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:innocart_front/internal/dependencies/order_repo_module.dart';
+import 'package:innocart_front/presentation/style/primary_text.dart';
+import 'package:innocart_front/presentation/style/app_colors.dart';
 
 import '../../domain/model/order.dart';
-import '../extra/app_colors.dart';
-import '../extra/primary_text.dart';
 import 'post_details_page.dart';
 
 class ActiveOrders extends StatefulWidget {
@@ -49,8 +49,8 @@ class _ActiveOrders extends State<ActiveOrders> {
         onPressed: () {
           Navigator.pushNamed(context, 'addPost');
         },
-        child: Icon(Icons.add),
         backgroundColor: Colors.orange,
+        child: const Icon(Icons.add),
       ),
     );
   }
@@ -114,13 +114,13 @@ class _ActiveOrders extends State<ActiveOrders> {
                             size: 18,
                             color: AppColors.lightGray),
                         const SizedBox(width: 10),
-                        const Icon(Icons.person, size: 20),
-                        const SizedBox(width: 5),
-                        const PrimaryText(
-                          text: "4.5",
-                          size: 18,
-                          fontWeight: FontWeight.w600,
-                        )
+                        // const Icon(Icons.person, size: 20),
+                        // const SizedBox(width: 5),
+                        // const PrimaryText(
+                        //   text: "4.5",
+                        //   size: 18,
+                        //   fontWeight: FontWeight.w600,
+                        // )
                       ]),
                       const SizedBox(height: 15),
                     ],
