@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:innocart_front/internal/dependencies/auth_repo_module.dart';
-import 'package:innocart_front/presentation/extra/app_colors.dart';
+import 'package:innocart_front/presentation/style/app_colors.dart';
 
 class MyLogin extends StatefulWidget {
   const MyLogin({Key? key}) : super(key: key);
