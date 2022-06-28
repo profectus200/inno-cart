@@ -26,11 +26,11 @@ class _MyLoginState extends State<MyLogin> {
           Container(
             decoration: BoxDecoration(
                 gradient: LinearGradient(colors: [
-                  Colors.transparent,
-                  Colors.transparent,
-                  const Color(0xff161d27).withOpacity(0.9),
-                  const Color(0xff161d27),
-                ], begin: Alignment.topCenter, end: Alignment.bottomCenter)),
+              Colors.transparent,
+              Colors.transparent,
+              const Color(0xff161d27).withOpacity(0.9),
+              const Color(0xff161d27),
+            ], begin: Alignment.topCenter, end: Alignment.bottomCenter)),
           ),
           Center(
             child: Column(
@@ -66,10 +66,12 @@ class _MyLoginState extends State<MyLogin> {
                       fillColor: const Color(0xff161d27).withOpacity(0.9),
                       enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(30),
-                          borderSide: const BorderSide(color: AppColors.orange)),
+                          borderSide:
+                              const BorderSide(color: AppColors.orange)),
                       focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(30),
-                          borderSide: const BorderSide(color: AppColors.orange)),
+                          borderSide:
+                              const BorderSide(color: AppColors.orange)),
                     ),
                   ),
                 ),
@@ -90,10 +92,12 @@ class _MyLoginState extends State<MyLogin> {
                       fillColor: const Color(0xff161d27).withOpacity(0.9),
                       enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(30),
-                          borderSide: const BorderSide(color: AppColors.orange)),
+                          borderSide:
+                              const BorderSide(color: AppColors.orange)),
                       focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(30),
-                          borderSide: const BorderSide(color: AppColors.orange)),
+                          borderSide:
+                              const BorderSide(color: AppColors.orange)),
                     ),
                   ),
                 ),
@@ -103,7 +107,9 @@ class _MyLoginState extends State<MyLogin> {
                 const Text(
                   "Forgot Password?",
                   style: TextStyle(
-                      color: AppColors.orange, fontSize: 14, fontWeight: FontWeight.bold),
+                      color: AppColors.orange,
+                      fontSize: 14,
+                      fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(
                   height: 20,
@@ -120,20 +126,19 @@ class _MyLoginState extends State<MyLogin> {
                           .attemptLogIn(username, password)
                           .then((value) {
                         if (value == 200) {
-                          Navigator.pushNamed(
-                              context, 'dashboard');
+                          Navigator.pushNamed(context, 'dashboard');
                         }
                       });
                       Navigator.pushNamed(context, 'login');
                     },
                     style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all<Color>(AppColors.orange),
-                        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                            RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(18.0),
-                            )
-                        )
-                    ),
+                        backgroundColor:
+                            MaterialStateProperty.all<Color>(AppColors.orange),
+                        shape:
+                            MaterialStateProperty.all<RoundedRectangleBorder>(
+                                RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(18.0),
+                        ))),
                     child: const Text(
                       "SIGN IN",
                       style: TextStyle(
@@ -162,8 +167,9 @@ class _MyLoginState extends State<MyLogin> {
                       },
                       child: const Text(
                         "Sign up",
-                        style:
-                        TextStyle(color: AppColors.orange, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            color: AppColors.orange,
+                            fontWeight: FontWeight.bold),
                       ),
                     )
                   ],
