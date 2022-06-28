@@ -6,4 +6,6 @@ abstract class ProfileRepository {
   Future<int> addProfile(Profile profile);
 
   Future<int> updateProfile(Profile profile, int id);
+
+  Future<Profile> getMyProfile();
 }

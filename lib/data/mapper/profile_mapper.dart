@@ -2,21 +2,23 @@ import '../../domain/model/profile.dart';
 import '../api/model/api_profile.dart';
 
 class ProfileMapper {
-  static Profile fromApi(ApiProfile order) {
+  static Profile fromApi(ApiProfile profile) {
     return Profile(
-      id: order.id,
-      nickname: order.nickname,
-      rating: order.rating,
-      dealsCompleted: order.dealsCompleted,
+      id: profile.id,
+      nickname: profile.nickname,
+      rating: profile.rating,
+      dealsCompleted: profile.dealsCompleted,
+      alias: profile.alias,
     );
   }
 
-  static ApiProfile toApi(Profile order) {
+  static ApiProfile toApi(Profile profile) {
     return ApiProfile(
-      id: order.id,
-      nickname: order.nickname,
-      rating: order.rating,
-      dealsCompleted: order.dealsCompleted,
+      id: profile.id,
+      nickname: profile.nickname,
+      rating: profile.rating,
+      dealsCompleted: profile.dealsCompleted,
+      alias: profile.alias,
     );
   }
 }

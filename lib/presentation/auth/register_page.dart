@@ -17,6 +17,7 @@ Color colors = const Color(0xfffe9721);
 class _MyRegisterState extends State<MyRegister> {
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _aliasController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
 
   @override
@@ -153,6 +154,7 @@ class _MyRegisterState extends State<MyRegister> {
                             var username = _usernameController.text;
                             var password = _passwordController.text;
                             var email = _emailController.text;
+                            var alias = _aliasController.text;
 
                             AuthRepoModule.authRepository()
                                 .attemptSignUp(email, username, password)
@@ -162,6 +164,7 @@ class _MyRegisterState extends State<MyRegister> {
                                     rating: 5,
                                     nickname: username,
                                     dealsCompleted: 0,
+                                    alias: alias,
                                     id: -1);
                                 ProfileRepoModule.profileRepository()
                                     .addProfile(profile);
