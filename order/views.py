@@ -19,7 +19,7 @@ class OrderViewSet(viewsets.ModelViewSet):
         return queryset
 
 
-class PersonalOrderViewSet(viewsets.ModelViewSet):
+class PersonalOrdersViewSet(viewsets.ModelViewSet):
     queryset = OrderModel.objects.all()
     serializer_class = OrderSerializer
     permission_classes = (IsAuthenticated,)
