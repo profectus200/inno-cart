@@ -11,69 +11,71 @@ class PostDetail extends StatelessWidget {
   final String description;
   final String price;
   final String reward;
-  final String contacts;
+  final String status;
   final bool profilePage;
 
   const PostDetail(this.id, this.productName, this.weight, this.description,
-      this.price,
-      this.reward, this.contacts, this.profilePage, {Key? key}) : super(key: key);
+      this.price, this.reward, this.status, this.profilePage,
+      {Key? key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: ConstrainedBox(
         constraints:
-        BoxConstraints(minWidth: MediaQuery
-            .of(context)
-            .size
-            .width - 40),
-        child: !profilePage ? ElevatedButton(
-          onPressed: () => {},
-          style: ElevatedButton.styleFrom(
-              primary: AppColors.primary,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10.0)),
-              padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 20),
-              textStyle:
-              const TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: const [
-              PrimaryText(
-                text: 'Reply',
-                fontWeight: FontWeight.w600,
-                size: 18,
-              ),
-              Icon(Icons.chevron_right)
-            ],
-          ),
-        ) : ElevatedButton(
-          onPressed: () => {
-          OrderRepoModule.orderRepository().deleteOrder(id),
-          Navigator.pushNamed(context, 'activeOrders')
-        },
-          style: ElevatedButton.styleFrom(
-              primary: AppColors.white,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10.0),
-                  side: const BorderSide(color: Colors.red)),
-              padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 20),
-              textStyle:
-              const TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: const [
-              Icon(Icons.remove_circle_outlined, color: Colors.red, size: 24),
-              PrimaryText(
-                text: ' Remove',
-                fontWeight: FontWeight.w600,
-                size: 20,
-                color: Colors.red,
+            BoxConstraints(minWidth: MediaQuery.of(context).size.width - 40),
+        child: !profilePage
+            ? ElevatedButton(
+                onPressed: () => {},
+                style: ElevatedButton.styleFrom(
+                    primary: AppColors.primary,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10.0)),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 50, vertical: 20),
+                    textStyle: const TextStyle(
+                        fontSize: 30, fontWeight: FontWeight.bold)),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: const [
+                    PrimaryText(
+                      text: 'Reply',
+                      fontWeight: FontWeight.w600,
+                      size: 18,
+                    ),
+                    Icon(Icons.chevron_right)
+                  ],
+                ),
               )
-            ],
-          ),
-        )
-        ,
+            : ElevatedButton(
+                onPressed: () => {
+                  OrderRepoModule.orderRepository().deleteOrder(id),
+                  Navigator.pushNamed(context, 'activeOrders')
+                },
+                style: ElevatedButton.styleFrom(
+                    primary: AppColors.white,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                        side: const BorderSide(color: Colors.red)),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 50, vertical: 20),
+                    textStyle: const TextStyle(
+                        fontSize: 30, fontWeight: FontWeight.bold)),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: const [
+                    Icon(Icons.remove_circle_outlined,
+                        color: Colors.red, size: 24),
+                    PrimaryText(
+                      text: ' Remove',
+                      fontWeight: FontWeight.w600,
+                      size: 20,
+                      color: Colors.red,
+                    )
+                  ],
+                ),
+              ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       body: ListView(
@@ -188,7 +190,7 @@ class PostDetail extends StatelessWidget {
                   height: 50,
                 ),
                 PrimaryText(
-                    text: 'Contacts: $contacts',
+                    text: 'Status: $status',
                     fontWeight: FontWeight.w700,
                     size: 22),
                 const SizedBox(

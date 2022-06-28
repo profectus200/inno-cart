@@ -7,7 +7,7 @@ import 'package:innocart_front/data/api/service/token_storage.dart';
 class OrderService {
   Future<List<ApiOrder>> getOrderList() async {
     Uri url = Uri.parse('http://10.0.2.2:8000/api/v1/orders');
-    var token = await TokenStorage.instance.tokenOrEmpty;
+    var token = await TokenStorage.instance.getToken;
     var response = await http.get(
       url,
       headers: {'Authorization': 'Token $token'},
@@ -24,7 +24,7 @@ class OrderService {
 
   Future<ApiOrder> getOrder(int id) async {
     Uri url = Uri.parse('http://10.0.2.2:8000/api/v1/orders/$id');
-    var token = await TokenStorage.instance.tokenOrEmpty;
+    var token = await TokenStorage.instance.getToken;
     var response = await http.get(
       url,
       headers: {'Authorization': 'Token $token'},
@@ -37,7 +37,7 @@ class OrderService {
 
   Future<int> addOrder(ApiOrder order) async {
     Uri url = Uri.parse('http://10.0.2.2:8000/api/v1/orders');
-    var token = await TokenStorage.instance.tokenOrEmpty;
+    var token = await TokenStorage.instance.getToken;
     var response = await http.post(url,
         headers: {
           'Content-Type': 'application/json',
@@ -49,7 +49,7 @@ class OrderService {
 
   Future<int> deleteOrder(int id) async {
     Uri url = Uri.parse('http://10.0.2.2:8000/api/v1/orders/$id');
-    var token = await TokenStorage.instance.tokenOrEmpty;
+    var token = await TokenStorage.instance.getToken;
     var response = await http.delete(
       url,
       headers: {'Authorization': 'Token $token'},
@@ -59,7 +59,7 @@ class OrderService {
 
   Future<List<ApiOrder>> getPersonalOrders() async {
     Uri url = Uri.parse('http://10.0.2.2:8000/api/v1/personal');
-    var token = await TokenStorage.instance.tokenOrEmpty;
+    var token = await TokenStorage.instance.getToken;
     var response = await http.get(
       url,
       headers: {'Authorization': 'Token $token'},

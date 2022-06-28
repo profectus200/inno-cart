@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 
-class Profile extends Equatable{
+class Profile extends Equatable {
   final int id;
   final String nickname;
   final double rating;

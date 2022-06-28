@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 
-class ApiProfile extends Equatable{
+class ApiProfile extends Equatable {
   final int id;
   final String nickname;
   final double rating;

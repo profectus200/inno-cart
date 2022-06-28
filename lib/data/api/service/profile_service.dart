@@ -8,7 +8,7 @@ import '../model/api_profile.dart';
 class ProfileService {
   Future<ApiProfile> getProfile(int id) async {
     Uri url = Uri.parse('http://10.0.2.2:8000/api/v1/profiles/$id');
-    var token = await TokenStorage.instance.tokenOrEmpty;
+    var token = await TokenStorage.instance.getToken;
     var response = await http.get(
       url,
       headers: {'Authorization': 'Token $token'},
@@ -22,7 +22,7 @@ class ProfileService {
 
   Future<int> addProfile(ApiProfile profile) async {
     Uri url = Uri.parse('http://10.0.2.2:8000/api/v1/profiles');
-    var token = await TokenStorage.instance.tokenOrEmpty;
+    var token = await TokenStorage.instance.getToken;
     var response = await http.post(url,
         headers: {
           'Content-Type': 'application/json',
@@ -35,8 +35,8 @@ class ProfileService {
   Future<int> updateProfile(ApiProfile profile, int id) async {
     //Working?
     Uri url = Uri.parse('http://10.0.2.2:8000/api/v1/profiles/$id');
-    var token = await TokenStorage.instance.tokenOrEmpty;
-    var response = await http.post(url,
+    var token = await TokenStorage.instance.getToken;
+    var response = await http.put(url,
         headers: {
           'Content-Type': 'application/json',
           'Authorization': 'Token $token'

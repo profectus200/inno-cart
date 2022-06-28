@@ -13,10 +13,20 @@ class TokenStorage {
     _storage.write(key: "token", value: token);
   }
 
-  Future<String> get tokenOrEmpty async {
+  void saveID(int id) {
+    _storage.write(key: "id", value: "$id");
+  }
+
+  Future<String> get getToken async {
     var token = await _storage.read(key: "token");
     if (token == null) return "";
     return token;
+  }
+
+  Future<int> get getID async {
+    var id = await _storage.read(key: "id");
+    if (id == null) return -1;
+    return int.parse(id);
   }
 
   Future<bool> isEmpty() async {

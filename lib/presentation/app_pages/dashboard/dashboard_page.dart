@@ -33,13 +33,13 @@ class _MyDashboard extends State<MyDashboard> {
                         children: List.generate(
                       orderList.data!.length,
                       (index) => itemCard(
-                          orderList.data![index].id,
-                          orderList.data![index].productName,
-                          orderList.data![index].weight.toString(),
-                          orderList.data![index].description,
-                          orderList.data![index].price.toString(),
-                          orderList.data![index].reward.toString(),
-                          orderList.data![index].contacts),
+                        orderList.data![index].id,
+                        orderList.data![index].productName,
+                        orderList.data![index].weight.toString(),
+                        orderList.data![index].description,
+                        orderList.data![index].price.toString(),
+                        orderList.data![index].reward.toString(),
+                      ),
                     ));
                   } else {
                     return const Center(
@@ -51,15 +51,15 @@ class _MyDashboard extends State<MyDashboard> {
             )));
   }
 
-  Widget itemCard(int id, String productName, String weight, String size, String price,
-      String reward, String contacts) {
+  Widget itemCard(int id, String productName, String weight, String size,
+      String price, String reward) {
     return GestureDetector(
       onTap: () => {
         Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (context) => PostDetail(id,
-                    productName, weight, size, price, reward, contacts, false)))
+                builder: (context) => PostDetail(id, productName, weight, size,
+                    price, reward, 'CREATED', false)))
       },
       child: Container(
         margin: const EdgeInsets.only(right: 25, left: 20, top: 25),
@@ -110,38 +110,38 @@ class _MyDashboard extends State<MyDashboard> {
                     ],
                   ),
                 ),
-                const SizedBox(
-                  height: 20,
-                ),
-                Row(
-                  children: [
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 45, vertical: 20),
-                      decoration: const BoxDecoration(
-                          color: AppColors.primary,
-                          borderRadius: BorderRadius.only(
-                            bottomLeft: Radius.circular(20),
-                            topRight: Radius.circular(20),
-                          )),
-                      child: const Icon(Icons.add, size: 20),
-                    ),
-                    const SizedBox(width: 20),
-                    SizedBox(
-                      child: Row(
-                        children: [
-                          const Icon(Icons.person, size: 20),
-                          const SizedBox(width: 5),
-                          PrimaryText(
-                            text: contacts,
-                            size: 18,
-                            fontWeight: FontWeight.w600,
-                          )
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
+                //   const SizedBox(
+                //     height: 20,
+                //   ),
+                //   Row(
+                //     children: [
+                //       Container(
+                //         padding: const EdgeInsets.symmetric(
+                //             horizontal: 45, vertical: 20),
+                //         decoration: const BoxDecoration(
+                //             color: AppColors.primary,
+                //             borderRadius: BorderRadius.only(
+                //               bottomLeft: Radius.circular(20),
+                //               topRight: Radius.circular(20),
+                //             )),
+                //         child: const Icon(Icons.add, size: 20),
+                //       ),
+                //       const SizedBox(width: 20),
+                //       SizedBox(
+                //         child: Row(
+                //           children: [
+                //             const Icon(Icons.person, size: 20),
+                //             const SizedBox(width: 5),
+                //             PrimaryText(
+                //               text: contacts,
+                //               size: 18,
+                //               fontWeight: FontWeight.w600,
+                //             )
+                //           ],
+                //         ),
+                //       ),
+                //     ],
+                //   ),
               ],
             ),
             Container(

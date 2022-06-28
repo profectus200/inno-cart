@@ -80,12 +80,21 @@ class ProfileScreen extends StatelessWidget {
                                   builder: (context) => const ActiveOrders()))
                         },
                     child: const ProfileListItem(
-                        icon: Icons.list, text: "Active orders", hasNavigation: true,)),
-                const ProfileListItem(icon: Icons.history, text: "Go to history", hasNavigation: true,),
+                      icon: Icons.list,
+                      text: "Active orders",
+                      hasNavigation: true,
+                    )),
+                const ProfileListItem(
+                  icon: Icons.history,
+                  text: "Go to history",
+                  hasNavigation: true,
+                ),
                 GestureDetector(
                   onTap: () => {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => const MyLogin()))
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const MyLogin()))
                   },
                   child: const ProfileListItem(
                     icon: Icons.logout_outlined,
