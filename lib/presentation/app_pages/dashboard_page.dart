@@ -64,7 +64,7 @@ class _MyDashboard extends State<MyDashboard> {
                         orderList.data![index].description,
                         orderList.data![index].price.toString(),
                         orderList.data![index].reward.toString(),
-                        orderList.data![index].contacts),
+                        orderList.data![index].status),
                   ));
                 } else {
                   return const Center(
