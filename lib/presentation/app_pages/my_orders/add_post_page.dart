@@ -47,7 +47,7 @@ class _MyAddPost extends State<MyAddPost> {
                 child: ElevatedButton(
                   style: ButtonStyle(
                       backgroundColor:
-                      MaterialStateProperty.all<Color>(AppColors.orange),
+                      MaterialStateProperty.all<Color>(AppColors.primary),
                       shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                           RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(18.0),
@@ -232,7 +232,7 @@ class _MyAddPost extends State<MyAddPost> {
                     child: ElevatedButton(
                       style: ButtonStyle(
                           backgroundColor:
-                              MaterialStateProperty.all<Color>(AppColors.orange),
+                              MaterialStateProperty.all<Color>(AppColors.primary),
                           shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                               RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(18.0),

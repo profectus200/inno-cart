@@ -1,6 +1,6 @@
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:innocart_front/presentation/app_pages/active_orders.dart';
+import 'package:innocart_front/presentation/app_pages/my_orders/active_orders.dart';
 import 'package:innocart_front/presentation/style/app_colors.dart';
 
 import 'dashboard_page.dart';
@@ -51,25 +51,29 @@ class _CustomizedBottomNavigationBarState
       items: [
         BottomNavyBarItem(
           icon: const Icon(Icons.apps),
-          title: const Text('Home'),
-          activeColor: Color(0xFFFDFEFF),
+          title: const Text('Dashboard'),
+          activeColor: AppColors.primary,
+          inactiveColor: AppColors.lightGray,
           textAlign: TextAlign.center,
         ),
         BottomNavyBarItem(
-            icon: const Icon(Icons.not_accessible),
-            title: const Text('...'),
-            activeColor: Color(0xFFFDFEFF),
+            icon: const Icon(Icons.delivery_dining),
+            title: const Text('Deliveries'),
+            activeColor: AppColors.primary,
+            inactiveColor: AppColors.lightGray,
             textAlign: TextAlign.center),
         BottomNavyBarItem(
           icon: const Icon(Icons.post_add_outlined),
           title: const Text('My orders'),
-          activeColor: Color(0xFFFDFEFF),
+          activeColor: AppColors.primary,
+          inactiveColor: AppColors.lightGray,
           textAlign: TextAlign.center,
         ),
         BottomNavyBarItem(
           icon: const Icon(Icons.account_circle),
           title: const Text('Profile'),
-          activeColor: Color(0xFFFDFEFF),
+          activeColor: AppColors.primary,
+          inactiveColor: AppColors.lightGray,
           textAlign: TextAlign.center,
         ),
       ],

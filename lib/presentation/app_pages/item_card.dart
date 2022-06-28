@@ -12,9 +12,6 @@ class ItemCard extends StatelessWidget {
   final String reward;
   final String contacts;
 
-  //int id, String productName, String weight, String size,
-  //       String price, String reward, String contacts
-
   const ItemCard(this.id, this.productName, this.weight, this.size,
       this.price,
       this.reward, this.contacts, {Key? key}) : super(key: key);
@@ -45,7 +42,7 @@ class ItemCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(top: 10, left: 5),
+                  padding: const EdgeInsets.only(top: 10, left: 20),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -74,7 +71,7 @@ class ItemCard extends StatelessWidget {
                       const SizedBox(height: 5),
                       Row(children: [
                         PrimaryText(
-                            text: "Weight: $weight",
+                            text: "$weight g",
                             size: 18,
                             color: AppColors.lightGray),
                         const SizedBox(width: 10),
@@ -93,7 +90,7 @@ class ItemCard extends StatelessWidget {
               ],
             ),
             Container(
-              transform: Matrix4.translationValues(32.0, 7.5, 0.0),
+              transform: Matrix4.translationValues(12.0, 7.5, 0.0),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
               ),

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:innocart_front/internal/dependencies/order_repo_module.dart';
 import 'package:innocart_front/presentation/app_pages/item_card.dart';
-import '../../domain/model/order.dart';
+import 'package:innocart_front/presentation/style/app_colors.dart';
+import '../../../domain/model/order.dart';
 
 class ActiveOrders extends StatefulWidget {
   const ActiveOrders({Key? key}) : super(key: key);
@@ -46,7 +47,7 @@ class _ActiveOrders extends State<ActiveOrders> {
         onPressed: () {
           Navigator.pushNamed(context, 'addPost');
         },
-        backgroundColor: Colors.orange,
+        backgroundColor: AppColors.primary,
         child: const Icon(Icons.add),
       ),
     );
