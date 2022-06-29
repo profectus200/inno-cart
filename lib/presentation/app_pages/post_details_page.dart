@@ -45,7 +45,8 @@ class PostDetail extends StatelessWidget {
       body: ListView(
         children: [
           Padding(
-            padding: const EdgeInsets.only(left: 20, right: 20, top: 25, bottom: 25),
+            padding:
+                const EdgeInsets.only(left: 20, right: 20, top: 25, bottom: 25),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -266,23 +267,40 @@ class PostDetail extends StatelessWidget {
                 ],
               )
             ]),
-            SizedBox(height: 15,),
+            SizedBox(
+              height: 15,
+            ),
             Row(
               children: [
-                SizedBox(width: 15,),
+                SizedBox(
+                  width: 15,
+                ),
                 ElevatedButton(
                   onPressed: () => {
-                    // DeliveryRepoModule.deliveryRepository().acceptDelivery(O, id)
+                    DeliveryRepoModule.deliveryRepository().acceptDelivery(
+                        Order(
+                            id: id,
+                            productName: productName,
+                            weight: double.parse(weight),
+                            description: description,
+                            price: double.parse(price),
+                            reward: double.parse(reward),
+                            status: status,
+                            delivererID: -1,
+                            picture: '',
+                            delivererProfile: -1,
+                            customerProfile: customerProfile),
+                        id)
                   },
                   style: ElevatedButton.styleFrom(
                       primary: AppColors.yellow,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10.0),
                           side: const BorderSide(color: Colors.yellowAccent)),
-                      padding:
-                      const EdgeInsets.symmetric(horizontal: 35, vertical: 20),
-                      textStyle:
-                      const TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 35, vertical: 20),
+                      textStyle: const TextStyle(
+                          fontSize: 30, fontWeight: FontWeight.bold)),
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: const [
@@ -296,20 +314,35 @@ class PostDetail extends StatelessWidget {
                     ],
                   ),
                 ),
-                SizedBox(width: 25,),
+                SizedBox(
+                  width: 25,
+                ),
                 ElevatedButton(
                   onPressed: () => {
-
+                    DeliveryRepoModule.deliveryRepository().rejectDelivery(
+                        Order(
+                            id: id,
+                            productName: productName,
+                            weight: double.parse(weight),
+                            description: description,
+                            price: double.parse(price),
+                            reward: double.parse(reward),
+                            status: status,
+                            delivererID: -1,
+                            picture: '',
+                            delivererProfile: -1,
+                            customerProfile: customerProfile),
+                        id)
                   },
                   style: ElevatedButton.styleFrom(
                       primary: Colors.red,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10.0),
                           side: const BorderSide(color: Colors.red)),
-                      padding:
-                      const EdgeInsets.symmetric(horizontal: 35, vertical: 20),
-                      textStyle:
-                      const TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 35, vertical: 20),
+                      textStyle: const TextStyle(
+                          fontSize: 30, fontWeight: FontWeight.bold)),
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: const [
