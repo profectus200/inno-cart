@@ -61,7 +61,8 @@ class ItemCard extends StatelessWidget {
                             text: reward,
                             size: 22,
                           ),
-                          const SizedBox(width: 5), (typeOfPage=='activeOrders')
+                          const SizedBox(width: 5),
+                          (typeOfPage == 'activeOrders')
                               ? TextButton(
                                   style: TextButton.styleFrom(
                                     backgroundColor: AppColors.primary,

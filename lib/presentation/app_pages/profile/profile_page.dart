@@ -48,7 +48,6 @@ class ProfileScreen extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 10 * 2),
-          // const PrimaryText(text: 'Vladimir'),
           FutureBuilder<Profile>(
             future: ProfileRepoModule.profileRepository().getMyProfile(),
             builder:
