@@ -11,10 +11,11 @@ class ItemCard extends StatelessWidget {
   final String size;
   final String reward;
   final String contacts;
+  final bool activeOrders;
 
   const ItemCard(this.id, this.productName, this.weight, this.size,
       this.price,
-      this.reward, this.contacts, {Key? key}) : super(key: key);
+      this.reward, this.contacts, this.activeOrders, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +25,7 @@ class ItemCard extends StatelessWidget {
             context,
             MaterialPageRoute(
                 builder: (context) => PostDetail(id, productName, weight, size,
-                    price, reward, contacts, false)))
+                    price, reward, contacts, activeOrders)))
       },
       child: Container(
         margin: const EdgeInsets.only(right: 25, left: 20, top: 25),
