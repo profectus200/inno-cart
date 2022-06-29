@@ -17,7 +17,9 @@ class AuthService {
     if (response.statusCode == 200) {
       var token = jsonDecode(response.body);
       DataStorage.instance.saveToken(token["auth_token"]);
-      ProfileService().getMyProfile();
+      var profile = await ProfileService().getMyProfile();
+      DataStorage.instance.savePersonID(profile.user);
+      DataStorage.instance.saveProfileID(profile.id);
     }
     return response.statusCode;
   }
@@ -40,7 +42,8 @@ class AuthService {
           nickname: username,
           dealsCompleted: 0,
           alias: alias,
-          id: -1);
+          id: -1,
+          user: -1);
       ProfileService().addProfile(profile);
     }
     return response.statusCode;

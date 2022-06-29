@@ -49,12 +49,8 @@ class ProfileService {
     var token = await DataStorage.instance.getToken;
     var response =
         await http.get(url, headers: {'Authorization': 'Token $token'});
-    var profile = jsonDecode(response.body)[0];
-
-    if (response.statusCode == 200) {
-      DataStorage.instance.saveProfileID(profile["id"]);
-      DataStorage.instance.savePersonID(profile["user"]);
-    }
-    return ApiProfile.fromApi(profile);
+    var element = jsonDecode(response.body)[0];
+    var profile = ApiProfile.fromApi(element);
+    return profile;
   }
 }

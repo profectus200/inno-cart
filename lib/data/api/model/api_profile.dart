@@ -6,6 +6,7 @@ class ApiProfile extends Equatable {
   final double rating;
   final int dealsCompleted;
   final String alias;
+  final int user;
 
   const ApiProfile({
     required this.id,
@@ -13,21 +14,23 @@ class ApiProfile extends Equatable {
     required this.rating,
     required this.dealsCompleted,
     required this.alias,
+    required this.user
   });
 
   ApiProfile.fromApi(Map<String, dynamic> map)
       : id = map['id'],
         nickname = map['nickname'],
         rating = map['rating'],
-        dealsCompleted = map['dealsCompleted'],
-        alias = map['alias'];
+        dealsCompleted = map['deals_completed'],
+        alias = map['telegram_alias'],
+        user = map['user'];
 
   Map<String, dynamic> toApi() {
     return {
       'nickname': nickname,
       'rating': rating,
-      'dealsCompleted': dealsCompleted,
-      'alias': alias,
+      'deals_completed': dealsCompleted,
+      'telegram_alias': alias,
     };
   }
 

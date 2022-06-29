@@ -19,6 +19,7 @@ class ProfileMapper {
       rating: profile.rating,
       dealsCompleted: profile.dealsCompleted,
       alias: profile.alias,
+      user: -1
     );
   }
 }
