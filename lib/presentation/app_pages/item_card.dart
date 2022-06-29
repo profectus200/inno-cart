@@ -12,10 +12,10 @@ class ItemCard extends StatelessWidget {
   final String reward;
   final String status;
   final int customerProfile;
-  final bool activeOrders;
+  final String typeOfPage;
 
   const ItemCard(this.id, this.productName, this.weight, this.size, this.price,
-      this.reward, this.status, this.customerProfile, this.activeOrders,
+      this.reward, this.status, this.customerProfile, this.typeOfPage,
       {Key? key})
       : super(key: key);
 
@@ -27,7 +27,7 @@ class ItemCard extends StatelessWidget {
             context,
             MaterialPageRoute(
                 builder: (context) => PostDetail(id, productName, weight, size,
-                    price, reward, status, customerProfile, activeOrders)))
+                    price, reward, status, customerProfile, typeOfPage)))
       },
       child: Container(
         margin: const EdgeInsets.only(right: 25, left: 20, top: 25),
@@ -61,8 +61,7 @@ class ItemCard extends StatelessWidget {
                             text: reward,
                             size: 22,
                           ),
-                          const SizedBox(width: 5),
-                          activeOrders
+                          const SizedBox(width: 5), (typeOfPage=='activeOrders')
                               ? TextButton(
                                   style: TextButton.styleFrom(
                                     backgroundColor: AppColors.primary,

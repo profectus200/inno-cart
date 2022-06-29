@@ -66,7 +66,7 @@ class _MyDashboard extends State<MyDashboard> {
                         orderList.data![index].reward.toString(),
                         orderList.data![index].status,
                         orderList.data![index].customerProfile,
-                        false),
+                        'dashboard'),
                   ));
                 } else {
                   return const Center(
