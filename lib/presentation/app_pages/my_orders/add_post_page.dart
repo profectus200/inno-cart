@@ -312,6 +312,8 @@ class _MyAddPost extends State<MyAddPost> {
                       status: 'CREATED',
                       delivererID: -1,
                       picture: '',
+                      delivererProfile: -1,
+                      customerProfile: -1
                     );
                     OrderRepoModule.orderRepository().addOrder(newOrder);
                     Navigator.of(context).pop(); // Close the dialog

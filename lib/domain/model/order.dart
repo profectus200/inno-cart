@@ -10,6 +10,8 @@ class Order extends Equatable {
   final String status;
   final int delivererID;
   final String picture;
+  final int delivererProfile;
+  final int customerProfile;
 
   const Order({
     required this.id,
@@ -21,6 +23,8 @@ class Order extends Equatable {
     required this.status,
     required this.delivererID,
     required this.picture,
+    required this.delivererProfile,
+    required this.customerProfile,
   });
 
   @override
@@ -33,6 +37,8 @@ class Order extends Equatable {
         reward,
         status,
         delivererID,
-        picture
+        picture,
+        delivererProfile,
+        customerProfile
       ];
 }

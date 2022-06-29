@@ -12,7 +12,9 @@ class OrderMapper {
         reward: order.reward,
         status: order.status,
         delivererID: order.delivererID,
-        picture: order.picture);
+        picture: order.picture,
+        delivererProfile: order.delivererProfile,
+        customerProfile: order.customerProfile);
   }
 
   static ApiOrder toApi(Order order) {
@@ -25,6 +27,8 @@ class OrderMapper {
         reward: order.reward,
         status: order.status,
         delivererID: order.delivererID,
-        picture: order.picture);
+        picture: order.picture,
+        delivererProfile: order.delivererProfile,
+        customerProfile: order.customerProfile);
   }
 }

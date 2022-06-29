@@ -26,6 +26,8 @@ class DeliveryService {
   Future<int> requestDelivery(ApiOrder order, int id) async {
     Uri url = Uri.parse('http://10.0.2.2:8000/api/v1/orders/$id');
     order.delivererID = await DataStorage.instance.getPersonID;
+    order.delivererProfile = int.parse(await DataStorage.instance.getProfileID);
+    order.status = "CONFIRMATION";
     var token = await DataStorage.instance.getToken;
     var response = await http.put(url,
         headers: {
@@ -52,6 +54,8 @@ class DeliveryService {
   Future<int> rejectDelivery(ApiOrder order, int id) async {
     Uri url = Uri.parse('http://10.0.2.2:8000/api/v1/orders/$id');
     order.delivererID = -1;
+    order.delivererProfile = -1;
+    order.status = "CREATED";
     var token = await DataStorage.instance.getToken;
     var response = await http.put(url,
         headers: {
