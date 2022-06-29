@@ -1,6 +1,6 @@
 # 🛒InnoCart
 
-[![License](https://img.shields.io/badge/License-MIT-red.svg)](https://github.com/InnoSWP/InnoCart/blob/main/LICENSE)
+[![License](https://img.shields.io/github/license/InnoSWP/InnoCart?color=violet&logoColor=red&style=for-the-badge)](https://github.com/InnoSWP/InnoCart/blob/main/LICENSE)
 
 Imagine, you live in Innopolis and you need an item that you can't find here. However, to go to Kazan waste a lot of time and money. So, We are creating an application that can help you with this problem. This app connects a shopper who needs something and an angel who can deliver it from Kazan.
 
