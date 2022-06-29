@@ -1,14 +1,20 @@
 # 🛒InnoCart
-## An application that connects Innopolis residents with people moving around Kazan
 
+[![License](https://img.shields.io/badge/License-MIT-red.svg)](https://github.com/InnoSWP/InnoCart/blob/main/LICENSE)
+
+Imagine, you live in Innopolis and you need an item that you can't find here. However, to go to Kazan waste a lot of time and money. So, We are creating an application that can help you with this problem. This app connects a shopper who needs something and an angel who can deliver it from Kazan.
+
+### How to use it
+1. First of all, you should install it
+2. Secondly, you should register there
+3. And then, you can create orders or response on them
 
 ### Links
+* You can see [video demo](https://drive.google.com/file/d/1X9GSUar21EzOVOC_l5XtCwSQVmNE0JH3/view) of the product
 * Link to our DEEP Product [backlog](https://github.com/orgs/InnoSWP/projects/66)
-* Link to the [UI design](https://www.figma.com/file/IwHlIEm6KW9Id4vlKFG09B/InnoCart?node-id=0%3A1)
-* Link to the [clickable prototype in Figma](https://www.figma.com/proto/IwHlIEm6KW9Id4vlKFG09B/InnoCart?node-id=83%3A59&scaling=scale-down&page-id=0%3A1&starting-point-node-id=83%3A59&show-proto-sidebar=1)
 * Link to our github pages [pipeline](https://github.com/InnoSWP/InnoCart/actions)
 
-## Current state🤔
+## 🤔Current state
 We are working on the major part of MVP with the following featuries:
   * backEnd part of the appication with the profile, order models and authorization support
   * archetecture of the frontEnd and complete data/business-logic layers in order to connect frontEnd and backEnd parts
@@ -16,8 +22,13 @@ We are working on the major part of MVP with the following featuries:
  
  See the [open issues🐛](https://github.com/InnoSWP/InnoCart/issues) for a full list of proposed features (and known issues).
 
+## List of tools that is used
+1. `Dart Workflow` in order to analyze flutter part of our application
+2. `Django Workflow` in order to analyze backend part of our application
+3. `Super Linter` in order to catch additional improvements
+4. `SonarCloud` to test main aspects of the backend (actually works only from fork)
 
-## History of project🔎
+## 🔎History of project
 ### First week
 * [Summary](https://drive.google.com/file/d/1ezn0zbvN8qUjkdWopXG83LRekrY9s3Xf/view?usp=sharing)
 * [Notion](https://almond-roquefort-b37.notion.site/InnoCart-86db2b644ca344fd94527807bd4509ef)
@@ -34,7 +45,7 @@ We are working on the major part of MVP with the following featuries:
 * [MVP](https://drive.google.com/file/d/1VBormCeep39NyjvxGLbwIu1md5oPruyA/view?usp=sharing)
 
 
-## Contributors✨
+## ✨Contributors
 Thanks goes to these wonderful people:
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
@@ -53,5 +64,3 @@ Thanks goes to these wonderful people:
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
-## License📝
-   [MIT](https://github.com/InnoSWP/InnoCart/blob/main/LICENSE)
