@@ -10,18 +10,21 @@ class ApiOrder extends Equatable {
   late final String status;
   late int delivererID;
   final String picture;
+  late final int delivererProfile;
+  late final int customerProfile;
 
-  ApiOrder({
-    required this.id,
-    required this.productName,
-    required this.weight,
-    required this.description,
-    required this.price,
-    required this.reward,
-    required this.status,
-    required this.delivererID,
-    required this.picture,
-  });
+  ApiOrder(
+      {required this.id,
+      required this.productName,
+      required this.weight,
+      required this.description,
+      required this.price,
+      required this.reward,
+      required this.status,
+      required this.delivererID,
+      required this.picture,
+      required this.delivererProfile,
+      required this.customerProfile});
 
   ApiOrder.fromApi(Map<String, dynamic> map)
       : id = map['id'],
@@ -32,7 +35,9 @@ class ApiOrder extends Equatable {
         reward = map['reward'],
         status = map['status'],
         delivererID = map['deliverer_id'],
-        picture = map['picture'];
+        picture = map['picture'],
+        delivererProfile = map['deliverer_profile'],
+        customerProfile = map['customer_profile'];
 
   Map<String, dynamic> toApi() {
     return {
@@ -44,6 +49,8 @@ class ApiOrder extends Equatable {
       'deliverer_id': delivererID,
       'status': status,
       'picture': picture,
+      'deliverer_profile': delivererProfile,
+      'customer_profile': customerProfile,
     };
   }
 
@@ -57,6 +64,8 @@ class ApiOrder extends Equatable {
         reward,
         status,
         delivererID,
-        picture
+        picture,
+        delivererProfile,
+        customerProfile
       ];
 }

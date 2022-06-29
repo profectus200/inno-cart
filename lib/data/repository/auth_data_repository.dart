@@ -13,12 +13,7 @@ class AuthDataRepository extends AuthRepository {
 
   @override
   Future<int> attemptSignUp(
-      String email, String username, String password) async {
-    return _authService.attemptSignUp(email, username, password);
-  }
-
-  @override
-  Future<bool> isStorageEmpty() async {
-    return _authService.isStorageEmpty();
+      String email, String username, String alias, String password) async {
+    return _authService.attemptSignUp(email, username, alias, password);
   }
 }

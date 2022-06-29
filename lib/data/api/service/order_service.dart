@@ -38,6 +38,7 @@ class OrderService {
   Future<int> addOrder(ApiOrder order) async {
     Uri url = Uri.parse('http://10.0.2.2:8000/api/v1/orders');
     var token = await DataStorage.instance.getToken;
+    order.customerProfile = int.parse(await DataStorage.instance.getProfileID);
     var response = await http.post(url,
         headers: {
           'Content-Type': 'application/json',

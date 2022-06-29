@@ -9,8 +9,8 @@ class DataStorage {
 
   static DataStorage get instance => _instance ??= DataStorage._();
 
-  void saveAlias(String alias) {
-    _storage.write(key: "alias", value: alias);
+  void saveProfileID(int id) {
+    _storage.write(key: "profile_id", value: "$id");
   }
 
   void saveToken(String token) {
@@ -18,13 +18,13 @@ class DataStorage {
   }
 
   void savePersonID(int id) {
-    _storage.write(key: "id", value: "$id");
+    _storage.write(key: "person_id", value: "$id");
   }
 
-  Future<String> get getAlias async {
-    var alias = await _storage.read(key: "alias");
-    if (alias == null) return "";
-    return alias;
+  Future<String> get getProfileID async {
+    var id = await _storage.read(key: "profile_id");
+    if (id == null) return "";
+    return id;
   }
 
   Future<String> get getToken async {
@@ -34,12 +34,8 @@ class DataStorage {
   }
 
   Future<int> get getPersonID async {
-    var id = await _storage.read(key: "id");
+    var id = await _storage.read(key: "person_id");
     if (id == null) return -1;
     return int.parse(id);
-  }
-
-  Future<bool> isEmpty() async {
-    return _storage.containsKey(key: "token");
   }
 }

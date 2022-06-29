@@ -33,7 +33,6 @@ class ProfileService {
   }
 
   Future<int> updateProfile(ApiProfile profile, int id) async {
-    //Working?
     Uri url = Uri.parse('http://10.0.2.2:8000/api/v1/profiles/$id');
     var token = await DataStorage.instance.getToken;
     var response = await http.put(url,
@@ -53,8 +52,8 @@ class ProfileService {
     var profile = jsonDecode(response.body)[0];
 
     if (response.statusCode == 200) {
-      DataStorage.instance.saveAlias(profile["telegram_alias"]);
-      DataStorage.instance.savePersonID(profile["person_id"]);
+      DataStorage.instance.saveProfileID(profile["id"]);
+      DataStorage.instance.savePersonID(profile["user"]);
     }
     return ApiProfile.fromApi(profile);
   }
