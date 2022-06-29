@@ -10,11 +10,12 @@ class OrderModel(models.Model):
     description = models.CharField(max_length=500, null=False, blank=False)
     price = models.FloatField(null=False, blank=False)
     reward = models.FloatField(null=False, blank=False)
-    deliverer_id = models.IntegerField(null=True, blank=True, default=-1)
-    status = models.CharField(max_length=11, null=False, blank=False)
+    status = models.CharField(max_length=12, null=False, blank=False)
     picture = models.CharField(max_length=3000, null=True, blank=True, default='')
 
-    # contacts = models.CharField(max_length=50)
+    deliverer_id = models.IntegerField(null=True, blank=True, default=-1)
+    deliverer_profile = models.IntegerField(null=True, blank=True, default=1)
+    customer_profile = models.IntegerField(null=True, blank=True, default=1)
 
     class Meta:
         db_table = "Orders"
