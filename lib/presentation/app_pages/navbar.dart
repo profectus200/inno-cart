@@ -1,5 +1,6 @@
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:innocart_front/presentation/app_pages/deliveries.dart';
 import 'package:innocart_front/presentation/app_pages/my_orders/active_orders.dart';
 import 'package:innocart_front/presentation/style/app_colors.dart';
 
@@ -32,7 +33,7 @@ class _CustomizedBottomNavigationBarState
       case 0:
         return const MyDashboard();
       case 1:
-        return const Text('');
+        return const Deliveries();
       case 2:
         return const ActiveOrders();
         // return const ActiveOrders();

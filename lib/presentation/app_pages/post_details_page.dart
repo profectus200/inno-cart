@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:innocart_front/domain/model/order.dart';
 import 'package:innocart_front/internal/dependencies/order_repo_module.dart';
 
 import 'package:innocart_front/presentation/style/primary_text.dart';
 import 'package:innocart_front/presentation/style/app_colors.dart';
 
+import '../../internal/dependencies/delivery_repo_module.dart';
 
 class PostDetail extends StatelessWidget {
   final int id;
@@ -13,70 +15,89 @@ class PostDetail extends StatelessWidget {
   final String price;
   final String reward;
   final String status;
+  final int customerProfile;
   final bool activeOrders;
 
   const PostDetail(this.id, this.productName, this.weight, this.description,
-      this.price, this.reward, this.status, this.activeOrders,
+      this.price, this.reward, this.status, this.customerProfile, this.activeOrders,
       {Key? key})
       : super(key: key);
+
+  // get customerProfile => null;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: ConstrainedBox(
         constraints:
-        BoxConstraints(minWidth: MediaQuery
-            .of(context)
-            .size
-            .width - 40),
-        child: !activeOrders ? ElevatedButton(
-          onPressed: () => {},
-          style: ElevatedButton.styleFrom(
-              primary: AppColors.primary,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10.0)),
-              padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 20),
-              textStyle:
-              const TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: const [
-              PrimaryText(
-                text: 'Reply',
-                color: AppColors.black,
-                fontWeight: FontWeight.w600,
-                size: 18,
-              ),
-              Icon(Icons.chevron_right)
-            ],
-          ),
-        ) : ElevatedButton(
-          onPressed: () => {
-          OrderRepoModule.orderRepository().deleteOrder(id),
-          Navigator.pushNamed(context, 'activeOrders')
-        },
-          style: ElevatedButton.styleFrom(
-              primary: AppColors.white,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10.0),
-                  side: const BorderSide(color: Colors.red)),
-              padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 20),
-              textStyle:
-              const TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: const [
-              Icon(Icons.remove_circle_outlined, color: Colors.red, size: 24),
-              PrimaryText(
-                text: ' Remove',
-                fontWeight: FontWeight.w600,
-                size: 20,
-                color: Colors.red,
+            BoxConstraints(minWidth: MediaQuery.of(context).size.width - 40),
+        child: !activeOrders
+            ? ElevatedButton(
+                onPressed: () => {
+                  DeliveryRepoModule.deliveryRepository().requestDelivery(
+                      Order(
+                          id: id,
+                          productName: productName,
+                          weight: double.parse(weight),
+                          description: description,
+                          price: double.parse(price),
+                          reward: double.parse(reward),
+                          status: status,
+                          delivererID: -1,
+                          picture: '',
+                          delivererProfile: -1,
+                          customerProfile: customerProfile),
+                      id)
+                },
+                style: ElevatedButton.styleFrom(
+                    primary: AppColors.primary,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10.0)),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 50, vertical: 20),
+                    textStyle: const TextStyle(
+                        fontSize: 30, fontWeight: FontWeight.bold)),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: const [
+                    PrimaryText(
+                      text: 'Reply',
+                      color: AppColors.black,
+                      fontWeight: FontWeight.w600,
+                      size: 18,
+                    ),
+                    Icon(Icons.chevron_right)
+                  ],
+                ),
               )
-            ],
-          ),
-        )
-        ,
+            : ElevatedButton(
+                onPressed: () => {
+                  OrderRepoModule.orderRepository().deleteOrder(id),
+                  Navigator.pushNamed(context, 'dashboard'),
+                },
+                style: ElevatedButton.styleFrom(
+                    primary: AppColors.white,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                        side: const BorderSide(color: Colors.red)),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 50, vertical: 20),
+                    textStyle: const TextStyle(
+                        fontSize: 30, fontWeight: FontWeight.bold)),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: const [
+                    Icon(Icons.remove_circle_outlined,
+                        color: Colors.red, size: 24),
+                    PrimaryText(
+                      text: ' Remove',
+                      fontWeight: FontWeight.w600,
+                      size: 20,
+                      color: Colors.red,
+                    )
+                  ],
+                ),
+              ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       body: ListView(
@@ -155,7 +176,8 @@ class PostDetail extends StatelessWidget {
                               height: 8,
                             ),
                             const PrimaryText(
-                                text: "18:00-20:00", fontWeight: FontWeight.w600),
+                                text: "18:00-20:00",
+                                fontWeight: FontWeight.w600),
                             const SizedBox(
                               height: 8,
                             ),

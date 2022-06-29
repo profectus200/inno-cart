@@ -33,7 +33,9 @@ class _ActiveOrders extends State<ActiveOrders> {
                     orderList.data![index].description,
                     orderList.data![index].price.toString(),
                     orderList.data![index].reward.toString(),
-                    orderList.data![index].status, true),
+                    orderList.data![index].status,
+                    orderList.data![index].customerProfile,
+                    true),
               ));
             } else {
               return const Center(

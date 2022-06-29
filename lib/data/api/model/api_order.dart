@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 
+// ignore: must_be_immutable
 class ApiOrder extends Equatable {
   final int id;
   final String productName;
@@ -7,11 +8,11 @@ class ApiOrder extends Equatable {
   final String description;
   final double price;
   final double reward;
-  late final String status;
+  late String status;
   late int delivererID;
   final String picture;
-  late final int delivererProfile;
-  late final int customerProfile;
+  late int delivererProfile;
+  late int customerProfile;
 
   ApiOrder(
       {required this.id,
