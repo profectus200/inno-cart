@@ -28,6 +28,14 @@ We are working on the major part of MVP with the following featuries:
 3. `Super Linter` in order to catch additional improvements
 4. `SonarCloud` to test main aspects of the backend (actually works only from fork)
 
+## Quality atribute
+We selected three quality atributes:
+1. _Security_, as this app works with users private date
+2. _Usability_, as this app should be comfortable and pleasant to use
+3. _Portability_, as this app should be runned onboth IOS and Android
+
+See [QA table](https://drive.google.com/file/d/1o1YanJeZMbA88v0L41EbRct5cmblRp4k/view) for more information.
+
 ## 🔎History of project
 ### First week
 * [Summary](https://drive.google.com/file/d/1ezn0zbvN8qUjkdWopXG83LRekrY9s3Xf/view?usp=sharing)
