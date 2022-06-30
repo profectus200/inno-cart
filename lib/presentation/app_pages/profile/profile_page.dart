@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:innocart_front/presentation/style/app_colors.dart';
 import 'package:innocart_front/presentation/style/primary_text.dart';
+import '../../../domain/model/profile.dart';
+import '../../../internal/dependencies/profile_repo_module.dart';
 import '../../auth/login_page.dart';
 import 'profile_list_item.dart';
 
@@ -46,19 +48,36 @@ class ProfileScreen extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 10 * 2),
-          const PrimaryText(text: 'Vladimir'),
-          // FutureBuilder(future: ProfileRepoModule.profileRepository().getProfile(1),
-          //   builder: (BuildContext context, AsyncSnapshot<Profile> profile) {
-          //   return PrimaryText(text: profile.data!.nickname);
-          //   }
-          // ),
+          FutureBuilder<Profile>(
+            future: ProfileRepoModule.profileRepository().getMyProfile(),
+            builder:
+                (BuildContext context, AsyncSnapshot<Profile> profile) {
+              if (profile.hasData &&
+                  profile.connectionState == ConnectionState.done) {
+                return  PrimaryText(text: profile.data!.nickname, fontWeight: FontWeight.w300,);
+              } else {
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
+              }
+            },
+          ),
           const SizedBox(height: 10 * 0.5),
           //
-          // FutureBuilder(future: ProfileRepoModule.profileRepository().getProfile(1),
-          //     builder: (BuildContext context, AsyncSnapshot<Profile> profile) {
-          //       return PrimaryText(text: 'rating ' + profile.data!.rating.toString());
-          //     }
-          // ),
+          FutureBuilder<Profile>(
+            future: ProfileRepoModule.profileRepository().getMyProfile(),
+            builder:
+                (BuildContext context, AsyncSnapshot<Profile> profile) {
+              if (profile.hasData &&
+                  profile.connectionState == ConnectionState.done) {
+                return  PrimaryText(text: profile.data!.alias, size: 16);
+              } else {
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
+              }
+            },
+          ),
           const SizedBox(height: 10 * 2),
         ],
       ),

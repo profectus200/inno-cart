@@ -7,7 +7,7 @@ import '../model/api_order.dart';
 
 class DeliveryService {
   Future<List<ApiOrder>> getDeliveryOrders() async {
-    Uri url = Uri.parse('http://10.0.2.2:8000/api/v1/personal');
+    Uri url = Uri.parse('http://10.0.2.2:8000/api/v1/delivery');
     var token = await DataStorage.instance.getToken;
     var response = await http.get(
       url,

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:innocart_front/domain/model/order.dart';
 import 'package:innocart_front/internal/dependencies/order_repo_module.dart';
 
 import 'package:innocart_front/presentation/style/primary_text.dart';
 import 'package:innocart_front/presentation/style/app_colors.dart';
 
+import '../../internal/dependencies/delivery_repo_module.dart';
 
 class PostDetail extends StatelessWidget {
   final int id;
@@ -13,77 +15,38 @@ class PostDetail extends StatelessWidget {
   final String price;
   final String reward;
   final String status;
-  final bool profilePage;
+  final int customerProfile;
+  final String typeOfPage;
 
-  const PostDetail(this.id, this.productName, this.weight, this.description,
-      this.price, this.reward, this.status, this.profilePage,
+  const PostDetail(
+      this.id,
+      this.productName,
+      this.weight,
+      this.description,
+      this.price,
+      this.reward,
+      this.status,
+      this.customerProfile,
+      this.typeOfPage,
       {Key? key})
       : super(key: key);
+
+  // get customerProfile => null;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: ConstrainedBox(
-        constraints:
-        BoxConstraints(minWidth: MediaQuery
-            .of(context)
-            .size
-            .width - 40),
-        child: !profilePage ? ElevatedButton(
-          onPressed: () => {},
-          style: ElevatedButton.styleFrom(
-              primary: AppColors.primary,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10.0)),
-              padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 20),
-              textStyle:
-              const TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: const [
-              PrimaryText(
-                text: 'Reply',
-                color: AppColors.black,
-                fontWeight: FontWeight.w600,
-                size: 18,
-              ),
-              Icon(Icons.chevron_right)
-            ],
-          ),
-        ) : ElevatedButton(
-          onPressed: () => {
-          OrderRepoModule.orderRepository().deleteOrder(id),
-          Navigator.pushNamed(context, 'activeOrders')
-        },
-          style: ElevatedButton.styleFrom(
-              primary: AppColors.white,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10.0),
-                  side: const BorderSide(color: Colors.red)),
-              padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 20),
-              textStyle:
-              const TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: const [
-              Icon(Icons.remove_circle_outlined, color: Colors.red, size: 24),
-              PrimaryText(
-                text: ' Remove',
-                fontWeight: FontWeight.w600,
-                size: 20,
-                color: Colors.red,
-              )
-            ],
-          ),
-        )
-        ,
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      // floatingActionButton: ConstrainedBox(
+      //   constraints:
+      //       BoxConstraints(minWidth: MediaQuery.of(context).size.width - 40),
+      //   child: getBottomOfPost(context),
+      // ),
+      // floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       body: ListView(
         children: [
-          customAppBar(context),
           Padding(
-            padding: const EdgeInsets.only(left: 20, right: 20, top: 25),
+            padding:
+                const EdgeInsets.only(left: 20, right: 20, top: 25, bottom: 25),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -96,16 +59,6 @@ class PostDetail extends StatelessWidget {
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // Image.network(
-                    //   'https://avatars.mds.yandex.net/i?id=2c9c70afa4ab64820d347a195d161ded-5219960-images-thumbs&n=13&exp=1',
-                    //   // height: 90,
-                    //   width: 15,
-                    // ),
-                    // SvgPicture.asset(
-                    //   'assets/dollar.svg',
-                    //   color: AppColors.tertiary,
-                    //   width: 15,
-                    // ),
                     PrimaryText(
                       text: 'Reward $reward',
                       size: 48,
@@ -166,7 +119,8 @@ class PostDetail extends StatelessWidget {
                               height: 8,
                             ),
                             const PrimaryText(
-                                text: "18:00-20:00", fontWeight: FontWeight.w600),
+                                text: "18:00-20:00",
+                                fontWeight: FontWeight.w600),
                             const SizedBox(
                               height: 8,
                             ),
@@ -182,7 +136,7 @@ class PostDetail extends StatelessWidget {
                           ],
                           // borderRadius: BorderRadius.circular(100),
                         ),
-                        height: 170,
+                        height: 160,
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(20.0),
                           child: Image.network(
@@ -206,46 +160,207 @@ class PostDetail extends StatelessWidget {
                 const SizedBox(
                   height: 15,
                 ),
+                getBottomOfPost(context),
               ],
             ),
           ),
-          const SizedBox(
-            height: 100,
-          )
         ],
       ),
     );
   }
 
-  Padding customAppBar(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(
-        horizontal: 20,
-        vertical: 10,
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          // GestureDetector(
-          //   onTap: () => Navigator.pop(context),
-          //   child: Container(
-          //     padding: const EdgeInsets.all(10),
-          //     decoration: BoxDecoration(
-          //         borderRadius: BorderRadius.circular(15),
-          //         border: Border.all(width: 1, color: Colors.grey.shade400)),
-          //     child: const Icon(Icons.chevron_left),
-          //   ),
-          // ),
-          // Container(
-          //   padding: const EdgeInsets.all(10),
-          //   decoration: BoxDecoration(
-          //     color: AppColors.primary,
-          //     borderRadius: BorderRadius.circular(15),
-          //   ),
-          //   child: const Icon(Icons.attach_money, color: AppColors.white),
-          // ),
-        ],
-      ),
-    );
+  Widget getBottomOfPost(BuildContext context) {
+    switch (typeOfPage) {
+      case 'dashboard':
+        return ElevatedButton(
+          onPressed: () => {
+            DeliveryRepoModule.deliveryRepository().requestDelivery(
+                Order(
+                    id: id,
+                    productName: productName,
+                    weight: double.parse(weight),
+                    description: description,
+                    price: double.parse(price),
+                    reward: double.parse(reward),
+                    status: status,
+                    delivererID: -1,
+                    picture: '',
+                    delivererProfile: -1,
+                    customerProfile: customerProfile),
+                id)
+          },
+          style: ElevatedButton.styleFrom(
+              primary: AppColors.primary,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10.0)),
+              padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 20),
+              textStyle:
+                  const TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: const [
+              PrimaryText(
+                text: 'Reply',
+                color: AppColors.black,
+                fontWeight: FontWeight.w600,
+                size: 18,
+              ),
+              Icon(Icons.chevron_right)
+            ],
+          ),
+        );
+      case 'activeOrders':
+        if (status != 'CONFIRMATION') {
+          return ElevatedButton(
+            onPressed: () => {
+              OrderRepoModule.orderRepository().deleteOrder(id),
+              Navigator.pushNamed(context, 'dashboard'),
+            },
+            style: ElevatedButton.styleFrom(
+                primary: AppColors.white,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                    side: const BorderSide(color: Colors.red)),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 50, vertical: 20),
+                textStyle:
+                    const TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: const [
+                Icon(Icons.remove_circle_outlined, color: Colors.red, size: 24),
+                PrimaryText(
+                  text: ' Remove',
+                  fontWeight: FontWeight.w600,
+                  size: 20,
+                  color: Colors.red,
+                )
+              ],
+            ),
+          );
+        } else {
+          return Column(children: [
+            Row(children: [
+              SizedBox(
+                width: 30,
+              ),
+              CircleAvatar(
+                radius: 10 * 4,
+                backgroundColor: Color(0xFF23232D),
+              ),
+              SizedBox(
+                width: 15,
+              ),
+              Column(
+                children: [
+                  PrimaryText(text: 'ivan'),
+                  const PrimaryText(text: 'alias'),
+                ],
+              ),
+              SizedBox(
+                width: 30,
+              ),
+              Column(
+                children: [
+                  PrimaryText(text: 'rating'),
+                  PrimaryText(text: 'completed'),
+                ],
+              )
+            ]),
+            SizedBox(
+              height: 15,
+            ),
+            Row(
+              children: [
+                SizedBox(
+                  width: 15,
+                ),
+                ElevatedButton(
+                  onPressed: () => {
+                    DeliveryRepoModule.deliveryRepository().acceptDelivery(
+                        Order(
+                            id: id,
+                            productName: productName,
+                            weight: double.parse(weight),
+                            description: description,
+                            price: double.parse(price),
+                            reward: double.parse(reward),
+                            status: status,
+                            delivererID: -1,
+                            picture: '',
+                            delivererProfile: -1,
+                            customerProfile: customerProfile),
+                        id)
+                  },
+                  style: ElevatedButton.styleFrom(
+                      primary: AppColors.yellow,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                          side: const BorderSide(color: Colors.yellowAccent)),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 35, vertical: 20),
+                      textStyle: const TextStyle(
+                          fontSize: 30, fontWeight: FontWeight.bold)),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: const [
+                      // Icon(Icons.remove_circle_outlined, color: Colors.red, size: 16),
+                      PrimaryText(
+                        text: ' Accept',
+                        fontWeight: FontWeight.w600,
+                        size: 20,
+                        color: Colors.black,
+                      )
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  width: 25,
+                ),
+                ElevatedButton(
+                  onPressed: () => {
+                    DeliveryRepoModule.deliveryRepository().rejectDelivery(
+                        Order(
+                            id: id,
+                            productName: productName,
+                            weight: double.parse(weight),
+                            description: description,
+                            price: double.parse(price),
+                            reward: double.parse(reward),
+                            status: status,
+                            delivererID: -1,
+                            picture: '',
+                            delivererProfile: -1,
+                            customerProfile: customerProfile),
+                        id)
+                  },
+                  style: ElevatedButton.styleFrom(
+                      primary: Colors.red,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                          side: const BorderSide(color: Colors.red)),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 35, vertical: 20),
+                      textStyle: const TextStyle(
+                          fontSize: 30, fontWeight: FontWeight.bold)),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: const [
+                      // Icon(Icons.remove_circle_outlined, color: Colors.red, size: 24),
+                      PrimaryText(
+                        text: 'Decline',
+                        fontWeight: FontWeight.w600,
+                        size: 20,
+                        color: Colors.white,
+                      )
+                    ],
+                  ),
+                )
+              ],
+            )
+          ]);
+        }
+    }
+    return const Text('');
   }
 }

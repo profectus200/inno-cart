@@ -10,11 +10,14 @@ class ItemCard extends StatelessWidget {
   final String price;
   final String size;
   final String reward;
-  final String contacts;
+  final String status;
+  final int customerProfile;
+  final String typeOfPage;
 
-  const ItemCard(this.id, this.productName, this.weight, this.size,
-      this.price,
-      this.reward, this.contacts, {Key? key}) : super(key: key);
+  const ItemCard(this.id, this.productName, this.weight, this.size, this.price,
+      this.reward, this.status, this.customerProfile, this.typeOfPage,
+      {Key? key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +27,7 @@ class ItemCard extends StatelessWidget {
             context,
             MaterialPageRoute(
                 builder: (context) => PostDetail(id, productName, weight, size,
-                    price, reward, contacts, false)))
+                    price, reward, status, customerProfile, typeOfPage)))
       },
       child: Container(
         margin: const EdgeInsets.only(right: 25, left: 20, top: 25),
@@ -57,7 +60,25 @@ class ItemCard extends StatelessWidget {
                           PrimaryText(
                             text: reward,
                             size: 22,
-                          )
+                          ),
+                          const SizedBox(width: 5),
+                          (typeOfPage == 'activeOrders')
+                              ? TextButton(
+                                  style: TextButton.styleFrom(
+                                    backgroundColor: AppColors.primary,
+                                    shape: const RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(10))),
+                                  ),
+                                  onPressed: () {},
+                                  child: PrimaryText(
+                                    text: status,
+                                    size: 12,
+                                    fontWeight: FontWeight.w500,
+                                    color: AppColors.black,
+                                  ),
+                                )
+                              : const Text(""),
                         ],
                       ),
                       const SizedBox(height: 5),

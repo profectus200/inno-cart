@@ -13,13 +13,6 @@ class ProfileListItem extends StatelessWidget {
       required this.hasNavigation})
       : super(key: key);
 
-  // const ProfileListItem({
-  //   // Key key,
-  //   required this.icon,
-  //   required this.text,
-  //   this.hasNavigation = true,
-  // });
-
   @override
   Widget build(BuildContext context) {
     return Container(

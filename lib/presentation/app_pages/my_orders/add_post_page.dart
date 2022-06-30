@@ -34,22 +34,25 @@ class _MyAddPost extends State<MyAddPost> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
-              Container(
-                height: 50,
-                // width: double.infinity,
-                margin: const EdgeInsets.only(left: 20, right: 20),
-                child: ElevatedButton(
-                  style: ButtonStyle(
-                      backgroundColor:
-                      MaterialStateProperty.all<Color>(AppColors.primary),
-                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                          RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(18.0),
-                          ))),
-                  onPressed: () {
-                  },
-                  child: const PrimaryText(text: "Add image", color: AppColors.black, size: 20,),
-                )),
+                  Container(
+                      height: 50,
+                      // width: double.infinity,
+                      margin: const EdgeInsets.only(left: 20, right: 20),
+                      child: ElevatedButton(
+                        style: ButtonStyle(
+                            backgroundColor: MaterialStateProperty.all<Color>(
+                                AppColors.primary),
+                            shape: MaterialStateProperty.all<
+                                RoundedRectangleBorder>(RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(18.0),
+                            ))),
+                        onPressed: () {},
+                        child: const PrimaryText(
+                          text: "Add image",
+                          color: AppColors.black,
+                          size: 20,
+                        ),
+                      )),
                   const SizedBox(
                     height: 20,
                   ),
@@ -59,7 +62,8 @@ class _MyAddPost extends State<MyAddPost> {
                         labelStyle: TextStyle(color: AppColors.lightGray),
                         enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(20.0)),
-                          borderSide: BorderSide(color: Colors.grey, width: 0.0),
+                          borderSide:
+                              BorderSide(color: Colors.grey, width: 0.0),
                         ),
                         border: OutlineInputBorder()),
                     onFieldSubmitted: (value) {
@@ -93,7 +97,8 @@ class _MyAddPost extends State<MyAddPost> {
                         labelStyle: TextStyle(color: AppColors.lightGray),
                         enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(20.0)),
-                          borderSide: BorderSide(color: Colors.grey, width: 0.0),
+                          borderSide:
+                              BorderSide(color: Colors.grey, width: 0.0),
                         ),
                         border: OutlineInputBorder()),
                     onFieldSubmitted: (value) {
@@ -118,8 +123,10 @@ class _MyAddPost extends State<MyAddPost> {
                           labelText: 'Weight (g.)',
                           labelStyle: TextStyle(color: AppColors.lightGray),
                           enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(20.0)),
-                            borderSide: BorderSide(color: Colors.grey, width: 0.0),
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(20.0)),
+                            borderSide:
+                                BorderSide(color: Colors.grey, width: 0.0),
                           ),
                           border: OutlineInputBorder()),
                       keyboardType: TextInputType.number,
@@ -152,7 +159,8 @@ class _MyAddPost extends State<MyAddPost> {
                         labelStyle: TextStyle(color: AppColors.lightGray),
                         enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(20.0)),
-                          borderSide: BorderSide(color: Colors.grey, width: 0.0),
+                          borderSide:
+                              BorderSide(color: Colors.grey, width: 0.0),
                         ),
                         border: OutlineInputBorder()),
                     keyboardType: TextInputType.number,
@@ -184,7 +192,8 @@ class _MyAddPost extends State<MyAddPost> {
                         labelStyle: TextStyle(color: AppColors.lightGray),
                         enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(20.0)),
-                          borderSide: BorderSide(color: Colors.grey, width: 0.0),
+                          borderSide:
+                              BorderSide(color: Colors.grey, width: 0.0),
                         ),
                         border: OutlineInputBorder()),
                     keyboardType: TextInputType.number,
@@ -219,10 +228,11 @@ class _MyAddPost extends State<MyAddPost> {
                     margin: const EdgeInsets.only(left: 20, right: 20),
                     child: ElevatedButton(
                       style: ButtonStyle(
-                          backgroundColor:
-                              MaterialStateProperty.all<Color>(AppColors.primary),
-                          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                              RoundedRectangleBorder(
+                          backgroundColor: MaterialStateProperty.all<Color>(
+                              AppColors.primary),
+                          shape:
+                              MaterialStateProperty.all<RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(18.0),
                           ))),
                       onPressed: () {
@@ -231,7 +241,11 @@ class _MyAddPost extends State<MyAddPost> {
                           _submit();
                         }
                       },
-                      child: const PrimaryText(text: "Submit", color: AppColors.black, size: 24,),
+                      child: const PrimaryText(
+                        text: "Submit",
+                        color: AppColors.black,
+                        size: 24,
+                      ),
                     ),
                   ),
                 ],
@@ -255,24 +269,32 @@ class _MyAddPost extends State<MyAddPost> {
               children: <Widget>[
                 const Align(
                     alignment: Alignment.topLeft,
-                    child: PrimaryText(text: "Product name and characteristics",
-                        fontWeight: FontWeight.w600, color: AppColors.black,)),
+                    child: PrimaryText(
+                      text: "Product name and characteristics",
+                      fontWeight: FontWeight.w600,
+                      color: AppColors.black,
+                    )),
                 Align(
                   alignment: Alignment.topLeft,
-                  child: PrimaryText(text: "$productName $weight $description",
-                    color: AppColors.black,),
+                  child: PrimaryText(
+                    text: "$productName $weight $description",
+                    color: AppColors.black,
+                  ),
                 ),
                 const SizedBox(
                   height: 10,
                 ),
                 const Align(
                     alignment: Alignment.topLeft,
-                    child:
-                    PrimaryText(text: "Price Reward",
-                      fontWeight: FontWeight.w600, color: AppColors.black,)),
+                    child: PrimaryText(
+                      text: "Price Reward",
+                      fontWeight: FontWeight.w600,
+                      color: AppColors.black,
+                    )),
                 Align(
                   alignment: Alignment.topLeft,
-                  child: PrimaryText(text: "$price $reward", color: AppColors.black),
+                  child: PrimaryText(
+                      text: "$price $reward", color: AppColors.black),
                 )
               ],
             ),
@@ -303,18 +325,17 @@ class _MyAddPost extends State<MyAddPost> {
                   child: const Text('OK'),
                   onPressed: () {
                     Order newOrder = Order(
-                      id: -1,
-                      productName: productName,
-                      weight: weight,
-                      description: description,
-                      price: price,
-                      reward: reward,
-                      status: 'CREATED',
-                      delivererID: -1,
-                      picture: '',
-                      delivererProfile: -1,
-                      customerProfile: -1
-                    );
+                        id: -1,
+                        productName: productName,
+                        weight: weight,
+                        description: description,
+                        price: price,
+                        reward: reward,
+                        status: 'CREATED',
+                        delivererID: -1,
+                        picture: '',
+                        delivererProfile: -1,
+                        customerProfile: -1);
                     OrderRepoModule.orderRepository().addOrder(newOrder);
                     Navigator.of(context).pop(); // Close the dialog
                     FocusScope.of(context)
