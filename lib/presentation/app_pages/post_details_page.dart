@@ -187,8 +187,8 @@ class PostDetail extends StatelessWidget {
   }
 
   void _launchUrl() async {
-    Uri _url = Uri.parse('https://t.me/Vldmr11');
-    if (!await launchUrl(_url)) throw 'Could not launch $_url';
+    Uri url = Uri.parse('https://t.me/Vldmr11');
+    if (!await launchUrl(url)) throw 'Could not launch $url';
   }
 
   Widget getBottomOfPost(BuildContext context) {
@@ -314,7 +314,7 @@ class PostDetail extends StatelessWidget {
                       }
                     },
                   ),
-                  PrimaryText(
+                  const PrimaryText(
                     text: 'completed\ndeals',
                     size: 16,
                   ),
@@ -455,7 +455,7 @@ class PostDetail extends StatelessWidget {
                 }
               },
             ),
-            SizedBox(height: 5,),
+            const SizedBox(height: 5,),
             Row(children: [
               ElevatedButton(
                 onPressed: () => {
@@ -483,7 +483,7 @@ class PostDetail extends StatelessWidget {
                   ],
                 ),
               ),
-              SizedBox(width: 10),
+              const SizedBox(width: 10),
               ElevatedButton(
                 onPressed: () => {},
                 style: ElevatedButton.styleFrom(
