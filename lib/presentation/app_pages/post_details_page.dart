@@ -6,8 +6,8 @@ import 'package:innocart_front/presentation/style/primary_text.dart';
 import 'package:innocart_front/presentation/style/app_colors.dart';
 
 import '../../internal/dependencies/delivery_repo_module.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'dart:io';
-
 class PostDetail extends StatelessWidget {
   final int id;
   final String productName;
@@ -181,6 +181,10 @@ class PostDetail extends StatelessWidget {
       ),
     );
   }
+  void _launchUrl() async {
+    Uri _url = Uri.parse('https://t.me/Vldmr11');
+    if (!await launchUrl(_url)) throw 'Could not launch $_url';
+  }
 
   Widget getBottomOfPost(BuildContext context) {
     switch (typeOfPage) {
@@ -191,16 +195,17 @@ class PostDetail extends StatelessWidget {
                 Order(
                     id: id,
                     productName: productName,
-                    weight: double.parse(weight.toString()),
+                    weight: weight,
                     description: description,
-                    price: double.parse(price.toString()),
-                    reward: double.parse(reward.toString()),
+                    price: price,
+                    reward: reward,
                     status: status,
-                    delivererID: -1,
+                    delivererID: delivererID,
                     picture: picture,
-                    delivererProfile: -1,
+                    delivererProfile: delivererProfile,
                     customerProfile: customerProfile),
-                id)
+                id),
+            Navigator.pushNamed(context, 'dashboard')
           },
           style: ElevatedButton.styleFrom(
               primary: AppColors.primary,
@@ -223,35 +228,7 @@ class PostDetail extends StatelessWidget {
           ),
         );
       case 'activeOrders':
-        if (status != 'CONFIRMATION') {
-          return ElevatedButton(
-            onPressed: () => {
-              OrderRepoModule.orderRepository().deleteOrder(id),
-              Navigator.pushNamed(context, 'dashboard'),
-            },
-            style: ElevatedButton.styleFrom(
-                primary: AppColors.white,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10.0),
-                    side: const BorderSide(color: Colors.red)),
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 50, vertical: 20),
-                textStyle:
-                    const TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: const [
-                Icon(Icons.remove_circle_outlined, color: Colors.red, size: 24),
-                PrimaryText(
-                  text: ' Remove',
-                  fontWeight: FontWeight.w600,
-                  size: 20,
-                  color: Colors.red,
-                )
-              ],
-            ),
-          );
-        } else {
+        if (status == 'CONFIRMATION') {
           return Column(children: [
             Row(children: [
               const SizedBox(
@@ -303,7 +280,8 @@ class PostDetail extends StatelessWidget {
                             picture: picture,
                             delivererProfile: delivererProfile,
                             customerProfile: customerProfile),
-                        id)
+                        id),
+                    _launchUrl()
                   },
                   style: ElevatedButton.styleFrom(
                       primary: AppColors.yellow,
@@ -346,6 +324,7 @@ class PostDetail extends StatelessWidget {
                             delivererProfile: delivererProfile,
                             customerProfile: customerProfile),
                         id),
+                    Navigator.pushNamed(context, 'dashboard'),
                   },
                   style: ElevatedButton.styleFrom(
                       primary: Colors.red,
@@ -372,6 +351,63 @@ class PostDetail extends StatelessWidget {
               ],
             )
           ]);
+        }
+        else if (status=='IN_PROGRESS') {
+          return ElevatedButton(
+            onPressed: () => {
+            },
+            style: ElevatedButton.styleFrom(
+                primary: AppColors.yellow,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                    side: const BorderSide(color: Colors.yellowAccent)),
+                padding: const EdgeInsets.symmetric(
+                    horizontal: 35, vertical: 20),
+                textStyle: const TextStyle(
+                    fontSize: 30, fontWeight: FontWeight.bold)),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: const [
+                // Icon(Icons.remove_circle_outlined, color: Colors.red, size: 16),
+                PrimaryText(
+                  text: 'Close deal',
+                  fontWeight: FontWeight.w600,
+                  size: 20,
+                  color: Colors.black,
+                )
+              ],
+            ),
+          );
+        }
+        else {
+          return ElevatedButton(
+            onPressed: () => {
+              OrderRepoModule.orderRepository().deleteOrder(id),
+              Navigator.pushNamed(context, 'dashboard'),
+            },
+            style: ElevatedButton.styleFrom(
+                primary: AppColors.white,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                    side: const BorderSide(color: Colors.red)),
+                padding:
+                const EdgeInsets.symmetric(horizontal: 50, vertical: 20),
+                textStyle:
+                const TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: const [
+                Icon(Icons.remove_circle_outlined, color: Colors.red, size: 24),
+                PrimaryText(
+                  text: ' Remove',
+                  fontWeight: FontWeight.w600,
+                  size: 20,
+                  color: Colors.red,
+                )
+              ],
+            ),
+          );
+
         }
     }
     return const Text('');
