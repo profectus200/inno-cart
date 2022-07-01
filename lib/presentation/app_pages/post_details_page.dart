@@ -148,7 +148,7 @@ class PostDetail extends StatelessWidget {
                                     fit: BoxFit.cover,
                                     // fit: BoxFit.cover,
                                   )
-                                : Text('')
+                                : const Text('')
                             // Image.network(
                             //   'https://avatars.mds.yandex.net/i?id=2c9c70afa4ab64820d347a195d161ded-5219960-images-thumbs&n=13&exp=1',
                             //   fit: BoxFit.cover,
@@ -250,38 +250,38 @@ class PostDetail extends StatelessWidget {
         } else {
           return Column(children: [
             Row(children: [
-              SizedBox(
+              const SizedBox(
                 width: 30,
               ),
-              CircleAvatar(
+              const CircleAvatar(
                 radius: 10 * 4,
                 backgroundColor: Color(0xFF23232D),
               ),
-              SizedBox(
+              const SizedBox(
                 width: 15,
               ),
               Column(
-                children: [
+                children: const [
                   PrimaryText(text: 'ivan'),
-                  const PrimaryText(text: 'alias'),
+                  PrimaryText(text: 'alias'),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 width: 30,
               ),
               Column(
-                children: [
+                children: const [
                   PrimaryText(text: 'rating'),
                   PrimaryText(text: 'completed'),
                 ],
               )
             ]),
-            SizedBox(
+            const SizedBox(
               height: 15,
             ),
             Row(
               children: [
-                SizedBox(
+                const SizedBox(
                   width: 15,
                 ),
                 ElevatedButton(
@@ -323,7 +323,7 @@ class PostDetail extends StatelessWidget {
                     ],
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 25,
                 ),
                 ElevatedButton(

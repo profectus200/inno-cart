@@ -123,7 +123,7 @@ class ItemCard extends StatelessWidget {
                 child: picture!=''? Image.file(File(picture),
                   height: 100,
                   // fit: BoxFit.cover,
-                ) : Text('')
+                ) : const Text('')
                 // Image.network(
                 //   'https://avatars.mds.yandex.net/i?id=2c9c70afa4ab64820d347a195d161ded-5219960-images-thumbs&n=13&exp=1',
                 //   height: 100,

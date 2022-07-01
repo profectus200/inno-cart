@@ -45,13 +45,6 @@ class _Deliveries extends State<Deliveries> {
           },
         ),
       ),
-      // floatingActionButton: FloatingActionButton(
-      //   onPressed: () {
-      //     Navigator.pushNamed(context, 'addPost');
-      //   },
-      //   backgroundColor: AppColors.primary,
-      //   child: const Icon(Icons.add),
-      // ),
     );
   }
 }

@@ -3,9 +3,6 @@ import 'package:innocart_front/domain/model/order.dart';
 import 'package:innocart_front/internal/dependencies/order_repo_module.dart';
 import 'package:innocart_front/presentation/style/app_colors.dart';
 import 'package:innocart_front/presentation/style/primary_text.dart';
-import 'dart:convert';
-import 'dart:io';
-import 'dart:typed_data';
 import 'package:image_picker/image_picker.dart';
 
 class MyAddPost extends StatefulWidget {
@@ -277,15 +274,7 @@ class _MyAddPost extends State<MyAddPost> {
       //you can use ImageCourse.camera for Camera capture
       if(pickedFile != null){
         imageStatus = 'image uploaded';
-
         imagepath = pickedFile.path;
-        print(imagepath);
-        //output /data/user/0/com.example.testapp/cache/image_picker7973898508152261600.jpg
-
-        File imagefile = File(imagepath); //convert Path to File
-        Uint8List imagebytes = await imagefile.readAsBytes(); //convert to bytes
-        String base64string = base64.encode(imagebytes); //convert bytes to base64 string
-        print(base64string);
       }
     }catch (e) {
       imageStatus = "error";
