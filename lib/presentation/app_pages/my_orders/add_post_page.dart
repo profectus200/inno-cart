@@ -3,6 +3,10 @@ import 'package:innocart_front/domain/model/order.dart';
 import 'package:innocart_front/internal/dependencies/order_repo_module.dart';
 import 'package:innocart_front/presentation/style/app_colors.dart';
 import 'package:innocart_front/presentation/style/primary_text.dart';
+import 'dart:convert';
+import 'dart:io';
+import 'dart:typed_data';
+import 'package:image_picker/image_picker.dart';
 
 class MyAddPost extends StatefulWidget {
   const MyAddPost({Key? key}) : super(key: key);
@@ -19,6 +23,10 @@ class _MyAddPost extends State<MyAddPost> {
   String description = "";
   double price = 0.0;
   double reward = 0.0;
+
+  String imagepath = "";
+  String imageStatus = 'no image';
+  final ImagePicker imgpicker = ImagePicker();
 
   @override
   Widget build(BuildContext context) {
@@ -46,13 +54,20 @@ class _MyAddPost extends State<MyAddPost> {
                                 RoundedRectangleBorder>(RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(18.0),
                             ))),
-                        onPressed: () {},
+                        onPressed: () {
+                          openImage();
+                        },
                         child: const PrimaryText(
                           text: "Add image",
                           color: AppColors.black,
                           size: 20,
                         ),
-                      )),
+                      )
+                  ),
+                  const SizedBox(
+                    height: 5,
+                  ),
+                  PrimaryText(text: imageStatus),
                   const SizedBox(
                     height: 20,
                   ),
@@ -256,6 +271,26 @@ class _MyAddPost extends State<MyAddPost> {
       ),
     );
   }
+  openImage() async {
+    try {
+      var pickedFile = await imgpicker.pickImage(source: ImageSource.gallery);
+      //you can use ImageCourse.camera for Camera capture
+      if(pickedFile != null){
+        imageStatus = 'image uploaded';
+
+        imagepath = pickedFile.path;
+        print(imagepath);
+        //output /data/user/0/com.example.testapp/cache/image_picker7973898508152261600.jpg
+
+        File imagefile = File(imagepath); //convert Path to File
+        Uint8List imagebytes = await imagefile.readAsBytes(); //convert to bytes
+        String base64string = base64.encode(imagebytes); //convert bytes to base64 string
+        print(base64string);
+      }
+    }catch (e) {
+      imageStatus = "error";
+    }
+  }
 
   void _submit() {
     showDialog<void>(
@@ -333,7 +368,7 @@ class _MyAddPost extends State<MyAddPost> {
                         reward: reward,
                         status: 'CREATED',
                         delivererID: -1,
-                        picture: '',
+                        picture: imagepath,
                         delivererProfile: -1,
                         customerProfile: -1);
                     OrderRepoModule.orderRepository().addOrder(newOrder);

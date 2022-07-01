@@ -6,6 +6,7 @@ import 'package:innocart_front/presentation/style/primary_text.dart';
 import 'package:innocart_front/presentation/style/app_colors.dart';
 
 import '../../internal/dependencies/delivery_repo_module.dart';
+import 'dart:io';
 
 class PostDetail extends StatelessWidget {
   final int id;
@@ -16,6 +17,7 @@ class PostDetail extends StatelessWidget {
   final String reward;
   final String status;
   final int customerProfile;
+  final String picture;
   final String typeOfPage;
 
   const PostDetail(
@@ -27,6 +29,7 @@ class PostDetail extends StatelessWidget {
       this.reward,
       this.status,
       this.customerProfile,
+      this.picture,
       this.typeOfPage,
       {Key? key})
       : super(key: key);
@@ -138,14 +141,20 @@ class PostDetail extends StatelessWidget {
                         ),
                         height: 160,
                         child: ClipRRect(
-                          borderRadius: BorderRadius.circular(20.0),
-                          child: Image.network(
-                            'https://avatars.mds.yandex.net/i?id=2c9c70afa4ab64820d347a195d161ded-5219960-images-thumbs&n=13&exp=1',
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                        // Image.asset('https://avatars.mds.yandex.net/i?id=2c9c70afa4ab64820d347a195d161ded-5219960-images-thumbs&n=13&exp=1',
-                        //     fit: BoxFit.cover)
+                            borderRadius: BorderRadius.circular(20.0),
+                            child: picture != ''
+                                ? Image.file(
+                                    File(picture),
+                                    fit: BoxFit.cover,
+                                    // fit: BoxFit.cover,
+                                  )
+                                : Text('')
+                            // Image.network(
+                            //   'https://avatars.mds.yandex.net/i?id=2c9c70afa4ab64820d347a195d161ded-5219960-images-thumbs&n=13&exp=1',
+                            //   fit: BoxFit.cover,
+                            // ),
+
+                            ),
                       ),
                     ),
                   ],
