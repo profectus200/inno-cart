@@ -459,7 +459,7 @@ class PostDetail extends StatelessWidget {
             Row(children: [
               ElevatedButton(
                 onPressed: () => {
-
+                  _launchUrl()
                 },
                 style: ElevatedButton.styleFrom(
                     primary: AppColors.orange,
