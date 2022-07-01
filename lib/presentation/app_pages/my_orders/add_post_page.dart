@@ -20,7 +20,6 @@ class _MyAddPost extends State<MyAddPost> {
   String description = "";
   double price = 0.0;
   double reward = 0.0;
-
   String imagepath = "";
   String imageStatus = 'no image';
   final ImagePicker imgpicker = ImagePicker();
@@ -59,8 +58,7 @@ class _MyAddPost extends State<MyAddPost> {
                           color: AppColors.black,
                           size: 20,
                         ),
-                      )
-                  ),
+                      )),
                   const SizedBox(
                     height: 5,
                   ),
@@ -268,15 +266,16 @@ class _MyAddPost extends State<MyAddPost> {
       ),
     );
   }
+
   openImage() async {
     try {
       var pickedFile = await imgpicker.pickImage(source: ImageSource.gallery);
       //you can use ImageCourse.camera for Camera capture
-      if(pickedFile != null){
+      if (pickedFile != null) {
         imageStatus = 'image uploaded';
         imagepath = pickedFile.path;
       }
-    }catch (e) {
+    } catch (e) {
       imageStatus = "error";
     }
   }
@@ -356,8 +355,8 @@ class _MyAddPost extends State<MyAddPost> {
                         price: price,
                         reward: reward,
                         status: 'CREATED',
-                        delivererID: -1,
                         picture: imagepath,
+                        delivererID: -1,
                         delivererProfile: -1,
                         customerProfile: -1);
                     OrderRepoModule.orderRepository().addOrder(newOrder);

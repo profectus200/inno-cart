@@ -7,17 +7,30 @@ import 'dart:io';
 class ItemCard extends StatelessWidget {
   final int id;
   final String productName;
-  final String weight;
-  final String price;
-  final String size;
-  final String reward;
+  final double weight;
+  final String description;
+  final double price;
+  final double reward;
   final String status;
-  final int customerProfile;
+  final int delivererID;
   final String picture;
+  final int delivererProfile;
+  final int customerProfile;
   final String typeOfPage;
 
-  const ItemCard(this.id, this.productName, this.weight, this.size, this.price,
-      this.reward, this.status, this.picture, this.customerProfile, this.typeOfPage,
+  const ItemCard(
+      this.id,
+      this.productName,
+      this.weight,
+      this.description,
+      this.price,
+      this.reward,
+      this.status,
+      this.picture,
+      this.delivererID,
+      this.delivererProfile,
+      this.customerProfile,
+      this.typeOfPage,
       {Key? key})
       : super(key: key);
 
@@ -28,8 +41,19 @@ class ItemCard extends StatelessWidget {
         Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (context) => PostDetail(id, productName, weight, size,
-                    price, reward, status, customerProfile,picture, typeOfPage)))
+                builder: (context) => PostDetail(
+                    id,
+                    productName,
+                    weight,
+                    description,
+                    price,
+                    reward,
+                    status,
+                    picture,
+                    delivererID,
+                    delivererProfile,
+                    customerProfile,
+                    typeOfPage)))
       },
       child: Container(
         margin: const EdgeInsets.only(right: 25, left: 20, top: 25),
@@ -60,7 +84,7 @@ class ItemCard extends StatelessWidget {
                           ),
                           // const SizedBox(width: 5),
                           PrimaryText(
-                            text: reward,
+                            text: reward.toString(),
                             size: 22,
                           ),
                           const SizedBox(width: 5),
@@ -119,16 +143,19 @@ class ItemCard extends StatelessWidget {
               ),
               // decoration: Cont,
               child: ClipRRect(
-                borderRadius: BorderRadius.circular(10.0),
-                child: picture!=''? Image.file(File(picture),
-                  height: 100,
-                  // fit: BoxFit.cover,
-                ) : const Text('')
-                // Image.network(
-                //   'https://avatars.mds.yandex.net/i?id=2c9c70afa4ab64820d347a195d161ded-5219960-images-thumbs&n=13&exp=1',
-                //   height: 100,
-                // ),
-              ),
+                  borderRadius: BorderRadius.circular(10.0),
+                  child: picture != ''
+                      ? Image.file(
+                          File(picture),
+                          height: 100,
+                          // fit: BoxFit.cover,
+                        )
+                      : const Text('')
+                  // Image.network(
+                  //   'https://avatars.mds.yandex.net/i?id=2c9c70afa4ab64820d347a195d161ded-5219960-images-thumbs&n=13&exp=1',
+                  //   height: 100,
+                  // ),
+                  ),
             )
           ],
         ),

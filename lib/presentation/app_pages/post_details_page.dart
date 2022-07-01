@@ -11,13 +11,15 @@ import 'dart:io';
 class PostDetail extends StatelessWidget {
   final int id;
   final String productName;
-  final String weight;
+  final double weight;
   final String description;
-  final String price;
-  final String reward;
+  final double price;
+  final double reward;
   final String status;
-  final int customerProfile;
+  final int delivererID;
   final String picture;
+  final int delivererProfile;
+  final int customerProfile;
   final String typeOfPage;
 
   const PostDetail(
@@ -28,8 +30,10 @@ class PostDetail extends StatelessWidget {
       this.price,
       this.reward,
       this.status,
-      this.customerProfile,
       this.picture,
+      this.delivererID,
+      this.delivererProfile,
+      this.customerProfile,
       this.typeOfPage,
       {Key? key})
       : super(key: key);
@@ -187,13 +191,13 @@ class PostDetail extends StatelessWidget {
                 Order(
                     id: id,
                     productName: productName,
-                    weight: double.parse(weight),
+                    weight: double.parse(weight.toString()),
                     description: description,
-                    price: double.parse(price),
-                    reward: double.parse(reward),
+                    price: double.parse(price.toString()),
+                    reward: double.parse(reward.toString()),
                     status: status,
                     delivererID: -1,
-                    picture: '',
+                    picture: picture,
                     delivererProfile: -1,
                     customerProfile: customerProfile),
                 id)
@@ -290,14 +294,14 @@ class PostDetail extends StatelessWidget {
                         Order(
                             id: id,
                             productName: productName,
-                            weight: double.parse(weight),
+                            weight: weight,
                             description: description,
-                            price: double.parse(price),
-                            reward: double.parse(reward),
+                            price: price,
+                            reward: reward,
                             status: status,
-                            delivererID: -1,
-                            picture: '',
-                            delivererProfile: -1,
+                            delivererID: delivererID,
+                            picture: picture,
+                            delivererProfile: delivererProfile,
                             customerProfile: customerProfile),
                         id)
                   },
@@ -332,16 +336,16 @@ class PostDetail extends StatelessWidget {
                         Order(
                             id: id,
                             productName: productName,
-                            weight: double.parse(weight),
+                            weight: weight,
                             description: description,
-                            price: double.parse(price),
-                            reward: double.parse(reward),
+                            price: price,
+                            reward: reward,
                             status: status,
-                            delivererID: -1,
-                            picture: '',
-                            delivererProfile: -1,
+                            delivererID: delivererID,
+                            picture: picture,
+                            delivererProfile: delivererProfile,
                             customerProfile: customerProfile),
-                        id)
+                        id),
                   },
                   style: ElevatedButton.styleFrom(
                       primary: Colors.red,
