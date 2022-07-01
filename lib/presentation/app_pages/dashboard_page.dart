@@ -65,6 +65,7 @@ class _MyDashboard extends State<MyDashboard> {
                         orderList.data![index].price.toString(),
                         orderList.data![index].reward.toString(),
                         orderList.data![index].status,
+                        orderList.data![index].picture,
                         orderList.data![index].customerProfile,
                         'dashboard'),
                   ));

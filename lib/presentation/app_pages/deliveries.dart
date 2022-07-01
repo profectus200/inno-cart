@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:innocart_front/internal/dependencies/delivery_repo_module.dart';
 import 'package:innocart_front/presentation/app_pages/item_card.dart';
-import 'package:innocart_front/presentation/style/app_colors.dart';
 import '../../../domain/model/order.dart';
 
 class Deliveries extends StatefulWidget {
@@ -34,6 +33,7 @@ class _Deliveries extends State<Deliveries> {
                         orderList.data![index].price.toString(),
                         orderList.data![index].reward.toString(),
                         orderList.data![index].status,
+                        orderList.data![index].picture,
                         orderList.data![index].customerProfile,
                         ''),
                   ));
@@ -45,13 +45,6 @@ class _Deliveries extends State<Deliveries> {
           },
         ),
       ),
-      // floatingActionButton: FloatingActionButton(
-      //   onPressed: () {
-      //     Navigator.pushNamed(context, 'addPost');
-      //   },
-      //   backgroundColor: AppColors.primary,
-      //   child: const Icon(Icons.add),
-      // ),
     );
   }
 }
