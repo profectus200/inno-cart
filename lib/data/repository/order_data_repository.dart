@@ -51,4 +51,15 @@ class OrderDataRepository extends OrderRepository {
     }
     return orderList;
   }
+
+  @override
+  Future<List<Order>> getHistoryOrders() async {
+    final list = await _orderService.getHistoryOrders();
+    List<Order> orderList = [];
+    for (var element in list) {
+      Order order = OrderMapper.fromApi(element);
+      orderList.add(order);
+    }
+    return orderList;
+  }
 }

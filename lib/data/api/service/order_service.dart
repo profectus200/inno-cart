@@ -74,4 +74,21 @@ class OrderService {
 
     return personalOrders;
   }
+
+  Future<List<ApiOrder>> getHistoryOrders() async {
+    Uri url = Uri.parse('http://10.0.2.2:8000/api/v1/history');
+    var token = await DataStorage.instance.getToken;
+    var response = await http.get(
+      url,
+      headers: {'Authorization': 'Token $token'},
+    );
+    var list = jsonDecode(response.body) as List;
+    List<ApiOrder> historyOrders = [];
+    for (var element in list) {
+      ApiOrder order = ApiOrder.fromApi(element);
+      historyOrders.add(order);
+    }
+
+    return historyOrders;
+  }
 }

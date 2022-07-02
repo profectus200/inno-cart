@@ -65,4 +65,17 @@ class DeliveryService {
         body: jsonEncode(order.toApi()));
     return response.statusCode;
   }
+
+  Future<int> closeDelivery(ApiOrder order, int id) async {
+    Uri url = Uri.parse('http://10.0.2.2:8000/api/v1/personal-orders/$id');
+    order.status = "COMPLETED";
+    var token = await DataStorage.instance.getToken;
+    var response = await http.put(url,
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Token $token'
+        },
+        body: jsonEncode(order.toApi()));
+    return response.statusCode;
+  }
 }
