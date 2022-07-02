@@ -40,4 +40,11 @@ class DeliveryDataRepository extends DeliveryRepository {
     Future<int> requestCode = _deliveryService.rejectDelivery(apiOrder, id);
     return requestCode;
   }
+
+  @override
+  Future<int> closeDelivery(Order order, int id) async {
+    ApiOrder apiOrder = OrderMapper.toApi(order);
+    Future<int> requestCode = _deliveryService.closeDelivery(apiOrder, id);
+    return requestCode;
+  }
 }

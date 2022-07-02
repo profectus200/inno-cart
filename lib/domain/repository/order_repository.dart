@@ -10,4 +10,6 @@ abstract class OrderRepository {
   Future<int> deleteOrder(int id);
 
   Future<List<Order>> getPersonalOrders();
+
+  Future<List<Order>> getHistoryOrders();
 }

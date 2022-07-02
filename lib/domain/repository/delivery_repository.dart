@@ -8,4 +8,6 @@ abstract class DeliveryRepository {
   Future<int> acceptDelivery(Order order, int id);
 
   Future<int> rejectDelivery(Order order, int id);
+
+  Future<int> closeDelivery(Order order, int id);
 }
