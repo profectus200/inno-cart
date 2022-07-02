@@ -8,7 +8,7 @@ import '../model/api_profile.dart';
 
 class AuthService {
   Future<int> attemptLogIn(String username, String password) async {
-    Uri url = Uri.parse('http://10.0.2.2:8000/auth/token/login/');
+    Uri url = Uri.parse('http://vldmr314.pythonanywhere.com/auth/token/login/');
     var response = await http.post(url,
         headers: {
           "Content-Type": "application/json",
@@ -26,7 +26,7 @@ class AuthService {
 
   Future<int> attemptSignUp(
       String email, String username, String alias, String password) async {
-    Uri url = Uri.parse('http://10.0.2.2:8000/api/v1/authusers/');
+    Uri url = Uri.parse('http://vldmr314.pythonanywhere.com/api/v1/authusers/');
     var response = await http.post(url,
         headers: {
           "Content-Type": "application/json",
