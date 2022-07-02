@@ -544,6 +544,50 @@ class PostDetail extends StatelessWidget {
             ),
           );
         }
+      case 'history': {
+        return Column(
+          children: [
+            const PrimaryText(text: 'Angel:'),
+            const SizedBox(height: 5,),
+            FutureBuilder<Profile>(
+              future: ProfileRepoModule.profileRepository()
+                  .getProfile(delivererProfile),
+              builder:
+                  (BuildContext context, AsyncSnapshot<Profile> profile) {
+                if (profile.hasData &&
+                    profile.connectionState == ConnectionState.done) {
+                  return PrimaryText(
+                    text: profile.data!.nickname,
+                    fontWeight: FontWeight.w300,
+                  );
+                } else {
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
+                }
+              },
+            ),
+            FutureBuilder<Profile>(
+              future: ProfileRepoModule.profileRepository()
+                  .getProfile(delivererProfile),
+              builder:
+                  (BuildContext context, AsyncSnapshot<Profile> profile) {
+                if (profile.hasData &&
+                    profile.connectionState == ConnectionState.done) {
+                  return PrimaryText(
+                    text: profile.data!.alias,
+                    fontWeight: FontWeight.w300,
+                  );
+                } else {
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
+                }
+              },
+            ),
+          ],
+        );
+      }
     }
     return const Text('');
   }

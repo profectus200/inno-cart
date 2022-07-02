@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:innocart_front/internal/dependencies/order_repo_module.dart';
 import 'package:innocart_front/presentation/app_pages/item_card.dart';
-import 'package:innocart_front/presentation/style/app_colors.dart';
 import '../../../domain/model/order.dart';
 
 class History extends StatefulWidget {
@@ -47,14 +46,7 @@ class _History extends State<History> {
             }
           },
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.pushNamed(context, 'addPost');
-        },
-        backgroundColor: AppColors.primary,
-        child: const Icon(Icons.add),
-      ),
+      )
     );
   }
 }
