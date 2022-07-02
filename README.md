@@ -9,9 +9,7 @@ Imagine, you live in Innopolis and you need an item that you can't find here. Ho
 2. Secondly, you should register there
 3. And then, you can create orders or response on them
 
-## 💎How it looks like
-
-### [Detection and Segmentation for Surgery Robots](https://github.com/SUYEgit/Surgery-Robot-Detection-Segmentation) by the NUS Control & Mechatronics Lab.
+### 💎How it [looks](https://github.com/SUYEgit/Surgery-Robot-Detection-Segmentation)  like
 ![Surgery Robot Detection and Segmentation](https://github.com/SUYEgit/Surgery-Robot-Detection-Segmentation/raw/master/assets/video.gif)
 
 ### Links
