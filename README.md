@@ -10,7 +10,7 @@ Imagine, you live in Innopolis and you need an item that you can't find here. Ho
 3. And then, you can create orders or response on them
 
 ### 💎How it [looks](https://github.com/SUYEgit/Surgery-Robot-Detection-Segmentation) like
-![Demo version](assets/video.mp4)
+![Demo version](https://github.com/InnoSWP/InnoCart/blob/b6e24f57e3ccc55d9dd7f12d61a2893f559f0ae9/assets/video.mp4)
 
 ### Links
 * You can see [video demo](https://drive.google.com/file/d/1X9GSUar21EzOVOC_l5XtCwSQVmNE0JH3/view) of the product
