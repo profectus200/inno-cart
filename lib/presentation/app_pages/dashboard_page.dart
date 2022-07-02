@@ -32,15 +32,14 @@ class _MyDashboard extends State<MyDashboard> {
                   child: TextField(
                 decoration: InputDecoration(
                   enabledBorder: UnderlineInputBorder(
-                      borderSide:
-                          BorderSide(width: 2, color: AppColors.lightGray),
+                    borderSide:
+                        BorderSide(width: 2, color: AppColors.lightGray),
                   ),
                   hintText: 'Search..',
                   hintStyle: TextStyle(
-                      color: AppColors.lightGray,
-                      fontSize: 20,
-                      fontWeight: FontWeight.w500,
-
+                    color: AppColors.lightGray,
+                    fontSize: 20,
+                    fontWeight: FontWeight.w500,
                   ),
                 ),
               )),
@@ -60,12 +59,14 @@ class _MyDashboard extends State<MyDashboard> {
                     (index) => ItemCard(
                         orderList.data![index].id,
                         orderList.data![index].productName,
-                        orderList.data![index].weight.toString(),
+                        orderList.data![index].weight,
                         orderList.data![index].description,
-                        orderList.data![index].price.toString(),
-                        orderList.data![index].reward.toString(),
+                        orderList.data![index].price,
+                        orderList.data![index].reward,
                         orderList.data![index].status,
                         orderList.data![index].picture,
+                        orderList.data![index].delivererID,
+                        orderList.data![index].delivererProfile,
                         orderList.data![index].customerProfile,
                         'dashboard'),
                   ));

@@ -5,19 +5,25 @@ import 'package:innocart_front/internal/dependencies/order_repo_module.dart';
 import 'package:innocart_front/presentation/style/primary_text.dart';
 import 'package:innocart_front/presentation/style/app_colors.dart';
 
+import '../../domain/model/profile.dart';
 import '../../internal/dependencies/delivery_repo_module.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'dart:io';
+
+import '../../internal/dependencies/profile_repo_module.dart';
 
 class PostDetail extends StatelessWidget {
   final int id;
   final String productName;
-  final String weight;
+  final double weight;
   final String description;
-  final String price;
-  final String reward;
+  final double price;
+  final double reward;
   final String status;
-  final int customerProfile;
+  final int delivererID;
   final String picture;
+  final int delivererProfile;
+  final int customerProfile;
   final String typeOfPage;
 
   const PostDetail(
@@ -28,8 +34,10 @@ class PostDetail extends StatelessWidget {
       this.price,
       this.reward,
       this.status,
-      this.customerProfile,
       this.picture,
+      this.delivererID,
+      this.delivererProfile,
+      this.customerProfile,
       this.typeOfPage,
       {Key? key})
       : super(key: key);
@@ -178,6 +186,11 @@ class PostDetail extends StatelessWidget {
     );
   }
 
+  void _launchUrl() async {
+    Uri url = Uri.parse('https://t.me/Vldmr11');
+    if (!await launchUrl(url)) throw 'Could not launch $url';
+  }
+
   Widget getBottomOfPost(BuildContext context) {
     switch (typeOfPage) {
       case 'dashboard':
@@ -187,16 +200,17 @@ class PostDetail extends StatelessWidget {
                 Order(
                     id: id,
                     productName: productName,
-                    weight: double.parse(weight),
+                    weight: weight,
                     description: description,
-                    price: double.parse(price),
-                    reward: double.parse(reward),
+                    price: price,
+                    reward: reward,
                     status: status,
-                    delivererID: -1,
-                    picture: '',
-                    delivererProfile: -1,
+                    delivererID: delivererID,
+                    picture: picture,
+                    delivererProfile: delivererProfile,
                     customerProfile: customerProfile),
-                id)
+                id),
+            Navigator.pushNamed(context, 'dashboard')
           },
           style: ElevatedButton.styleFrom(
               primary: AppColors.primary,
@@ -219,35 +233,7 @@ class PostDetail extends StatelessWidget {
           ),
         );
       case 'activeOrders':
-        if (status != 'CONFIRMATION') {
-          return ElevatedButton(
-            onPressed: () => {
-              OrderRepoModule.orderRepository().deleteOrder(id),
-              Navigator.pushNamed(context, 'dashboard'),
-            },
-            style: ElevatedButton.styleFrom(
-                primary: AppColors.white,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10.0),
-                    side: const BorderSide(color: Colors.red)),
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 50, vertical: 20),
-                textStyle:
-                    const TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: const [
-                Icon(Icons.remove_circle_outlined, color: Colors.red, size: 24),
-                PrimaryText(
-                  text: ' Remove',
-                  fontWeight: FontWeight.w600,
-                  size: 20,
-                  color: Colors.red,
-                )
-              ],
-            ),
-          );
-        } else {
+        if (status == 'CONFIRMATION') {
           return Column(children: [
             Row(children: [
               const SizedBox(
@@ -261,18 +247,77 @@ class PostDetail extends StatelessWidget {
                 width: 15,
               ),
               Column(
-                children: const [
-                  PrimaryText(text: 'ivan'),
-                  PrimaryText(text: 'alias'),
+                children: [
+                  FutureBuilder<Profile>(
+                    future: ProfileRepoModule.profileRepository()
+                        .getProfile(delivererProfile),
+                    builder:
+                        (BuildContext context, AsyncSnapshot<Profile> profile) {
+                      if (profile.hasData &&
+                          profile.connectionState == ConnectionState.done) {
+                        return PrimaryText(
+                          text: profile.data!.nickname,
+                          fontWeight: FontWeight.w300,
+                          // color: AppColors.white,
+                        );
+                      } else {
+                        return const Center(
+                          child: CircularProgressIndicator(),
+                        );
+                      }
+                    },
+                  ),
+                  FutureBuilder<Profile>(
+                    future: ProfileRepoModule.profileRepository()
+                        .getProfile(delivererProfile),
+                    builder:
+                        (BuildContext context, AsyncSnapshot<Profile> profile) {
+                      if (profile.hasData &&
+                          profile.connectionState == ConnectionState.done) {
+                        return PrimaryText(
+                          text: profile.data!.rating.toString(),
+                          fontWeight: FontWeight.w300,
+                          // color: AppColors.white,
+                        );
+                      } else {
+                        return const Center(
+                          child: CircularProgressIndicator(),
+                        );
+                      }
+                    },
+                  ),
+                  // PrimaryText(text: 'ivan'),
+                  // PrimaryText(text: 'alias'),
                 ],
               ),
               const SizedBox(
                 width: 30,
               ),
               Column(
-                children: const [
-                  PrimaryText(text: 'rating'),
-                  PrimaryText(text: 'completed'),
+                children: [
+                  FutureBuilder<Profile>(
+                    future: ProfileRepoModule.profileRepository()
+                        .getProfile(delivererProfile),
+                    builder:
+                        (BuildContext context, AsyncSnapshot<Profile> profile) {
+                      if (profile.hasData &&
+                          profile.connectionState == ConnectionState.done) {
+                        return PrimaryText(
+                          text: profile.data!.dealsCompleted.toString(),
+                          fontWeight: FontWeight.w300,
+                          // color: AppColors.white,
+                        );
+                      } else {
+                        return const Center(
+                          child: CircularProgressIndicator(),
+                        );
+                      }
+                    },
+                  ),
+                  const PrimaryText(
+                    text: 'completed\ndeals',
+                    size: 16,
+                  ),
                 ],
               )
             ]),
@@ -290,16 +335,18 @@ class PostDetail extends StatelessWidget {
                         Order(
                             id: id,
                             productName: productName,
-                            weight: double.parse(weight),
+                            weight: weight,
                             description: description,
-                            price: double.parse(price),
-                            reward: double.parse(reward),
+                            price: price,
+                            reward: reward,
                             status: status,
-                            delivererID: -1,
-                            picture: '',
-                            delivererProfile: -1,
+                            delivererID: delivererID,
+                            picture: picture,
+                            delivererProfile: delivererProfile,
                             customerProfile: customerProfile),
-                        id)
+                        id),
+                    Navigator.pushNamed(context, 'dashboard'),
+                    _launchUrl(),
                   },
                   style: ElevatedButton.styleFrom(
                       primary: AppColors.yellow,
@@ -332,16 +379,17 @@ class PostDetail extends StatelessWidget {
                         Order(
                             id: id,
                             productName: productName,
-                            weight: double.parse(weight),
+                            weight: weight,
                             description: description,
-                            price: double.parse(price),
-                            reward: double.parse(reward),
+                            price: price,
+                            reward: reward,
                             status: status,
-                            delivererID: -1,
-                            picture: '',
-                            delivererProfile: -1,
+                            delivererID: delivererID,
+                            picture: picture,
+                            delivererProfile: delivererProfile,
                             customerProfile: customerProfile),
-                        id)
+                        id),
+                    Navigator.pushNamed(context, 'dashboard'),
                   },
                   style: ElevatedButton.styleFrom(
                       primary: Colors.red,
@@ -368,6 +416,130 @@ class PostDetail extends StatelessWidget {
               ],
             )
           ]);
+        } else if (status == 'IN_PROGRESS') {
+          return Column(children: [
+            FutureBuilder<Profile>(
+              future: ProfileRepoModule.profileRepository()
+                  .getProfile(delivererProfile),
+              builder:
+                  (BuildContext context, AsyncSnapshot<Profile> profile) {
+                if (profile.hasData &&
+                    profile.connectionState == ConnectionState.done) {
+                  return PrimaryText(
+                    text: 'Angel: ${profile.data!.nickname}',
+                    fontWeight: FontWeight.w300,
+                  );
+                } else {
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
+                }
+              },
+            ),
+            FutureBuilder<Profile>(
+              future: ProfileRepoModule.profileRepository()
+                  .getProfile(delivererProfile),
+              builder:
+                  (BuildContext context, AsyncSnapshot<Profile> profile) {
+                if (profile.hasData &&
+                    profile.connectionState == ConnectionState.done) {
+                  return PrimaryText(
+                    text: profile.data!.alias,
+                    fontWeight: FontWeight.w300,
+                    // color: AppColors.white,
+                  );
+                } else {
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
+                }
+              },
+            ),
+            const SizedBox(height: 5,),
+            Row(children: [
+              ElevatedButton(
+                onPressed: () => {
+                  _launchUrl()
+                },
+                style: ElevatedButton.styleFrom(
+                    primary: AppColors.orange,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                        side: const BorderSide(color: Colors.orangeAccent)),
+                    padding:
+                    const EdgeInsets.symmetric(horizontal: 35, vertical: 20),
+                    textStyle: const TextStyle(
+                        fontSize: 30, fontWeight: FontWeight.bold)),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: const [
+                    // Icon(Icons.remove_circle_outlined, color: Colors.red, size: 16),
+                    PrimaryText(
+                      text: 'Contact',
+                      fontWeight: FontWeight.w600,
+                      size: 20,
+                      color: Colors.black,
+                    )
+                  ],
+                ),
+              ),
+              const SizedBox(width: 10),
+              ElevatedButton(
+                onPressed: () => {},
+                style: ElevatedButton.styleFrom(
+                    primary: AppColors.yellow,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                        side: const BorderSide(color: Colors.yellowAccent)),
+                    padding:
+                    const EdgeInsets.symmetric(horizontal: 35, vertical: 20),
+                    textStyle: const TextStyle(
+                        fontSize: 30, fontWeight: FontWeight.bold)),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: const [
+                    // Icon(Icons.remove_circle_outlined, color: Colors.red, size: 16),
+                    PrimaryText(
+                      text: 'Close deal',
+                      fontWeight: FontWeight.w600,
+                      size: 20,
+                      color: Colors.black,
+                    )
+                  ],
+                ),
+              ),
+
+            ],)
+
+          ]);
+        } else {
+          return ElevatedButton(
+            onPressed: () => {
+              OrderRepoModule.orderRepository().deleteOrder(id),
+              Navigator.pushNamed(context, 'dashboard'),
+            },
+            style: ElevatedButton.styleFrom(
+                primary: AppColors.white,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                    side: const BorderSide(color: Colors.red)),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 50, vertical: 20),
+                textStyle:
+                    const TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: const [
+                Icon(Icons.remove_circle_outlined, color: Colors.red, size: 24),
+                PrimaryText(
+                  text: ' Remove',
+                  fontWeight: FontWeight.w600,
+                  size: 20,
+                  color: Colors.red,
+                )
+              ],
+            ),
+          );
         }
     }
     return const Text('');
