@@ -9,6 +9,8 @@ Imagine, you live in Innopolis and you need an item that you can't find here. Ho
 2. Secondly, you should register there
 3. And then, you can create orders or response on them
 
+## 💎How it looks like
+
 ### Links
 * You can see [video demo](https://drive.google.com/file/d/1X9GSUar21EzOVOC_l5XtCwSQVmNE0JH3/view) of the product
 * Link to our DEEP Product [backlog](https://github.com/orgs/InnoSWP/projects/66)
