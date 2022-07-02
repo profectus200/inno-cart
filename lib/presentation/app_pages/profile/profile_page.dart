@@ -101,10 +101,15 @@ class ProfileScreen extends StatelessWidget {
           Expanded(
             child: ListView(
               children: <Widget>[
-                const ProfileListItem(
-                  icon: Icons.history,
-                  text: "Go to history",
-                  hasNavigation: true,
+                GestureDetector(
+                  onTap: () => {
+                    Navigator.pushNamed(context, 'history')
+                  },
+                  child: const ProfileListItem(
+                    icon: Icons.history,
+                    text: "Go to history",
+                    hasNavigation: true,
+                  ),
                 ),
                 GestureDetector(
                   onTap: () => {

@@ -485,7 +485,10 @@ class PostDetail extends StatelessWidget {
               ),
               const SizedBox(width: 10),
               ElevatedButton(
-                onPressed: () => {},
+                onPressed: () => {
+                  DeliveryRepoModule.deliveryRepository().closeDelivery(Order(id: id, productName: productName, weight: weight, description: description, price: price, reward: reward, status: status, delivererID: delivererID, picture: picture, delivererProfile: delivererProfile, customerProfile: customerProfile), id),
+                  Navigator.pushNamed(context, 'dashboard'),
+                },
                 style: ElevatedButton.styleFrom(
                     primary: AppColors.yellow,
                     shape: RoundedRectangleBorder(
