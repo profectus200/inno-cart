@@ -11,6 +11,8 @@ Imagine, you live in Innopolis and you need an item that you can't find here. Ho
 
 ## 💎How it looks like
 
+### [4K Video Demo](https://www.youtube.com/watch?v=OOT3UIXZztE)
+
 ### Links
 * You can see [video demo](https://drive.google.com/file/d/1X9GSUar21EzOVOC_l5XtCwSQVmNE0JH3/view) of the product
 * Link to our DEEP Product [backlog](https://github.com/orgs/InnoSWP/projects/66)
