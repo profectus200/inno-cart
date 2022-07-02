@@ -31,7 +31,7 @@ We selected three quality atributes:
 2. _Usability_, as this app should be comfortable and pleasant to use
 3. _Portability_, as this app should be runned onboth IOS and Android
 
-## Development process
+## ⚙️Development process
 At the FrontEnd development is used the Flutter. That helps to achieve the portability attribute, Flutter can be used on the IOS, Android and WEB.
 At the BackEnd development is used the Django and Djoser, that helps us to achieve the security attribute.
 
