@@ -25,17 +25,21 @@ We are working on the major part of MVP with the following featuries:
  
  See the [open issues🐛](https://github.com/InnoSWP/InnoCart/issues) for a full list of proposed features (and known issues).
 
-## 📜List of tools that is used
-1. `Dart Workflow` in order to analyze flutter part of our application
-2. `Django Workflow` in order to analyze backend part of our application
-3. `Super Linter` in order to catch additional improvements
-4. `SonarCloud` to test main aspects of the backend (actually works only from fork)
-
 ## 🚩Quality atribute
 We selected three quality atributes:
 1. _Security_, as this app works with users private date
 2. _Usability_, as this app should be comfortable and pleasant to use
 3. _Portability_, as this app should be runned onboth IOS and Android
+
+## Development process
+At the FrontEnd development is used the Flutter. That helps to achieve the portability attribute, Flutter can be used on the IOS, Android and WEB.
+At the BackEnd development is used the Django and Djoser, that helps us to achieve the security attribute.
+
+## 📜List of tools that is used
+1. `Dart Workflow` in order to analyze flutter part of our application
+2. `Django Workflow` in order to analyze backend part of our application
+3. `Super Linter` in order to catch additional improvements
+4. `SonarCloud` to test main aspects of the backend (actually works only from fork)
 
 See [QA table](https://drive.google.com/file/d/1o1YanJeZMbA88v0L41EbRct5cmblRp4k/view) for more information.
 
