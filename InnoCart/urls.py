@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.urls import path, include, re_path
 from rest_framework import routers
 
-from order.views import OrderViewSet, PersonalOrdersViewSet, DeliveryViewSet
+from order.views import OrderViewSet, PersonalOrdersViewSet, DeliveryViewSet, HistoryViewSet
 from profile.views import ProfilesViewSet, PersonalProfileViewSet
 
 router = routers.DefaultRouter(trailing_slash=False)
@@ -11,6 +11,7 @@ router.register('personal-orders', PersonalOrdersViewSet, basename='personal-ord
 router.register('delivery', DeliveryViewSet, basename='delivery-details')
 router.register('profiles', ProfilesViewSet, basename='profiles-details')
 router.register('my-profile', PersonalProfileViewSet, basename='my-profile-details')
+router.register('history', HistoryViewSet, basename='history')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
