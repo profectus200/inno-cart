@@ -38,12 +38,12 @@ dependencies:
   http: ^0.13.4
   flutter_secure_storage: ^5.0.2
   bottom_navy_bar: ^6.0.0
-#  animated_theme_switcher: ^2.0.5
   flutter_screenutil: ^5.5.3
   equatable: ^2.0.3
   image_picker: ^0.8.5+3
   url_launcher: ^6.1.4
-#  theme_provider: ^0.5.0
+  badges: ^2.0.3
+  flutter_rating_bar: ^4.0.1
 
 dev_dependencies:
   flutter_test:
