@@ -7,7 +7,7 @@ import '../model/api_profile.dart';
 
 class ProfileService {
   Future<ApiProfile> getProfile(int id) async {
-    Uri url = Uri.parse('http://10.0.2.2:8000/api/v1/profiles/$id');
+    Uri url = Uri.parse('http://vldmr314.pythonanywhere.com/api/v1/profiles/$id');
     var token = await DataStorage.instance.getToken;
     var response = await http.get(
       url,
@@ -21,7 +21,7 @@ class ProfileService {
   }
 
   Future<int> addProfile(ApiProfile profile) async {
-    Uri url = Uri.parse('http://10.0.2.2:8000/api/v1/profiles');
+    Uri url = Uri.parse('http://vldmr314.pythonanywhere.com/api/v1/profiles');
     var token = await DataStorage.instance.getToken;
     var response = await http.post(url,
         headers: {
@@ -33,7 +33,7 @@ class ProfileService {
   }
 
   Future<int> updateProfile(ApiProfile profile, int id) async {
-    Uri url = Uri.parse('http://10.0.2.2:8000/api/v1/profiles/$id');
+    Uri url = Uri.parse('http://vldmr314.pythonanywhere.com/api/v1/profiles/$id');
     var token = await DataStorage.instance.getToken;
     var response = await http.put(url,
         headers: {
@@ -45,7 +45,7 @@ class ProfileService {
   }
 
   Future<ApiProfile> getMyProfile() async {
-    Uri url = Uri.parse('http://10.0.2.2:8000/api/v1/my-profile');
+    Uri url = Uri.parse('http://vldmr314.pythonanywhere.com/api/v1/my-profile');
     var token = await DataStorage.instance.getToken;
     var response =
         await http.get(url, headers: {'Authorization': 'Token $token'});

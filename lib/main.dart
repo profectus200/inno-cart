@@ -13,7 +13,6 @@ void main() {
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
     home: const MyLogin(),
-    // home: CustomizedBottomNavigationBar(),
     theme: myAppTheme,
     routes: {
       'register': (context) => const MyRegister(),
