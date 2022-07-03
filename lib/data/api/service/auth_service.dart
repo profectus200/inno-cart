@@ -37,6 +37,17 @@ class AuthService {
           "password": password,
         }));
     if (response.statusCode == 201) {
+      Uri url =
+          Uri.parse('http://vldmr314.pythonanywhere.com/auth/token/login/');
+      var loginResponse = await http.post(url,
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: jsonEncode({"username": username, "password": password}));
+      if (loginResponse.statusCode == 200) {
+        var token = jsonDecode(loginResponse.body);
+        DataStorage.instance.saveToken(token["auth_token"]);
+      }
       ApiProfile profile = ApiProfile(
           rating: 5,
           nickname: username,
