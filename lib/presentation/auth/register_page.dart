@@ -13,9 +13,9 @@ Color colors = const Color(0xfffe9721);
 
 class _MyRegisterState extends State<MyRegister> {
   final TextEditingController _usernameController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _aliasController = TextEditingController();
-  final TextEditingController _emailController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -87,7 +87,7 @@ class _MyRegisterState extends State<MyRegister> {
                         ),
                       ),
                       const SizedBox(
-                        height: 32,
+                        height: 16,
                       ),
                       Container(
                         height: 50,
@@ -97,7 +97,7 @@ class _MyRegisterState extends State<MyRegister> {
                           style: const TextStyle(
                               fontSize: 16, color: Colors.white),
                           decoration: InputDecoration(
-                            hintText: "Email",
+                            hintText: "Email (ivan@gmail.com)",
                             hintStyle: TextStyle(color: Colors.grey.shade700),
                             filled: true,
                             fillColor: const Color(0xff161d27).withOpacity(0.9),
@@ -113,7 +113,7 @@ class _MyRegisterState extends State<MyRegister> {
                         ),
                       ),
                       const SizedBox(
-                        height: 32,
+                        height: 16,
                       ),
                       Container(
                         height: 50,
@@ -140,7 +140,33 @@ class _MyRegisterState extends State<MyRegister> {
                         ),
                       ),
                       const SizedBox(
-                        height: 32,
+                        height: 16,
+                      ),
+                      Container(
+                        height: 50,
+                        margin: const EdgeInsets.only(left: 40, right: 40),
+                        child: TextField(
+                          controller: _aliasController,
+                          style: const TextStyle(
+                              fontSize: 16, color: Colors.white),
+                          decoration: InputDecoration(
+                            hintText: "Alias (@ivan)",
+                            hintStyle: TextStyle(color: Colors.grey.shade700),
+                            filled: true,
+                            fillColor: const Color(0xff161d27).withOpacity(0.9),
+                            enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(30),
+                                borderSide:
+                                const BorderSide(color: AppColors.primary)),
+                            focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(30),
+                                borderSide:
+                                const BorderSide(color: AppColors.primary)),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 20,
                       ),
                       Container(
                         height: 50,

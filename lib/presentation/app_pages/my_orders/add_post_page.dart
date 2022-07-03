@@ -122,6 +122,11 @@ class _MyAddPost extends State<MyAddPost> {
                         description = value;
                       });
                     },
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Description cannot be empty';
+                      } return null;
+                    },
                   ),
                   const SizedBox(
                     height: 20,
