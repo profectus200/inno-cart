@@ -11,6 +11,15 @@ class ProfilesViewSet(viewsets.ModelViewSet):
     serializer_class = ProfileSerializer
     permission_classes = (IsAuthenticated,)
 
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
+
+    def get_serializer_class(self):
+        serializer_class = self.serializer_class
+        if self.request.method in ['PUT', 'PATCH']:
+            setattr(serializer_class.Meta, 'read_only_fields', ('user',))
+        return serializer_class
+
 
 class PersonalProfileViewSet(viewsets.ModelViewSet):
     queryset = ProfileModel.objects.all()
