@@ -347,6 +347,24 @@ class PostDetail extends StatelessWidget {
                             customerProfile: customerProfile),
                         id),
                     Navigator.pushNamed(context, 'dashboard'),
+                    FutureBuilder<Profile>(
+                      future: ProfileRepoModule.profileRepository()
+                          .getProfile(delivererProfile),
+                      builder: (BuildContext context, AsyncSnapshot<Profile> profile) {
+                        if (profile.hasData &&
+                            profile.connectionState == ConnectionState.done) {
+                          var alias = profile.data!.alias;
+                          return PrimaryText(
+                            text: 'Angel: ${profile.data!.nickname}',
+                            fontWeight: FontWeight.w300,
+                          );
+                        } else {
+                          return const Center(
+                            child: CircularProgressIndicator(),
+                          );
+                        }
+                      },
+                    ),
                     _launchUrl(),
                   },
                   style: ElevatedButton.styleFrom(

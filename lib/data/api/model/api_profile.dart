@@ -31,7 +31,7 @@ class ApiProfile extends Equatable {
       'rating': rating,
       'deals_completed': dealsCompleted,
       'telegram_alias': alias,
-      'user': user
+      'user': 1
     };
   }
 
