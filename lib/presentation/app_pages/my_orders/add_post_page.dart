@@ -170,7 +170,7 @@ class _MyAddPost extends State<MyAddPost> {
                   ),
                   TextFormField(
                     decoration: const InputDecoration(
-                        labelText: 'Price (\$)',
+                        labelText: 'Price (\₽)',
                         labelStyle: TextStyle(color: AppColors.lightGray),
                         enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(20.0)),
@@ -203,7 +203,7 @@ class _MyAddPost extends State<MyAddPost> {
                   ),
                   TextFormField(
                     decoration: const InputDecoration(
-                        labelText: 'Reward (\$)',
+                        labelText: 'Reward (\₽)',
                         labelStyle: TextStyle(color: AppColors.lightGray),
                         enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(20.0)),

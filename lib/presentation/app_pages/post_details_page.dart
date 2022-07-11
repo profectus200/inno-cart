@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:innocart_front/domain/model/order.dart';
 import 'package:innocart_front/internal/dependencies/order_repo_module.dart';
 
@@ -116,7 +117,7 @@ class PostDetail extends StatelessWidget {
                               height: 8,
                             ),
                             PrimaryText(
-                                text: '$price \$', fontWeight: FontWeight.w600),
+                                text: '$price \₽', fontWeight: FontWeight.w600),
                             const SizedBox(
                               height: 8,
                             ),
@@ -346,6 +347,24 @@ class PostDetail extends StatelessWidget {
                             customerProfile: customerProfile),
                         id),
                     Navigator.pushNamed(context, 'dashboard'),
+                    FutureBuilder<Profile>(
+                      future: ProfileRepoModule.profileRepository()
+                          .getProfile(delivererProfile),
+                      builder: (BuildContext context, AsyncSnapshot<Profile> profile) {
+                        if (profile.hasData &&
+                            profile.connectionState == ConnectionState.done) {
+                          var alias = profile.data!.alias;
+                          return PrimaryText(
+                            text: 'Angel: ${profile.data!.nickname}',
+                            fontWeight: FontWeight.w300,
+                          );
+                        } else {
+                          return const Center(
+                            child: CircularProgressIndicator(),
+                          );
+                        }
+                      },
+                    ),
                     _launchUrl(),
                   },
                   style: ElevatedButton.styleFrom(
@@ -421,8 +440,7 @@ class PostDetail extends StatelessWidget {
             FutureBuilder<Profile>(
               future: ProfileRepoModule.profileRepository()
                   .getProfile(delivererProfile),
-              builder:
-                  (BuildContext context, AsyncSnapshot<Profile> profile) {
+              builder: (BuildContext context, AsyncSnapshot<Profile> profile) {
                 if (profile.hasData &&
                     profile.connectionState == ConnectionState.done) {
                   return PrimaryText(
@@ -439,8 +457,7 @@ class PostDetail extends StatelessWidget {
             FutureBuilder<Profile>(
               future: ProfileRepoModule.profileRepository()
                   .getProfile(delivererProfile),
-              builder:
-                  (BuildContext context, AsyncSnapshot<Profile> profile) {
+              builder: (BuildContext context, AsyncSnapshot<Profile> profile) {
                 if (profile.hasData &&
                     profile.connectionState == ConnectionState.done) {
                   return PrimaryText(
@@ -455,65 +472,82 @@ class PostDetail extends StatelessWidget {
                 }
               },
             ),
-            const SizedBox(height: 5,),
-            Row(children: [
-              ElevatedButton(
-                onPressed: () => {
-                  _launchUrl()
-                },
-                style: ElevatedButton.styleFrom(
-                    primary: AppColors.orange,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10.0),
-                        side: const BorderSide(color: Colors.orangeAccent)),
-                    padding:
-                    const EdgeInsets.symmetric(horizontal: 35, vertical: 20),
-                    textStyle: const TextStyle(
-                        fontSize: 30, fontWeight: FontWeight.bold)),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: const [
-                    // Icon(Icons.remove_circle_outlined, color: Colors.red, size: 16),
-                    PrimaryText(
-                      text: 'Contact',
-                      fontWeight: FontWeight.w600,
-                      size: 20,
-                      color: Colors.black,
-                    )
-                  ],
+            FutureBuilder<Profile>(
+              future: ProfileRepoModule.profileRepository()
+                  .getProfile(delivererProfile),
+              builder: (BuildContext context, AsyncSnapshot<Profile> profile) {
+                if (profile.hasData &&
+                    profile.connectionState == ConnectionState.done) {
+                  return PrimaryText(
+                    text: 'deals completed: ${profile.data!.dealsCompleted}',
+                    fontWeight: FontWeight.w300,
+                    // color: AppColors.white,
+                  );
+                } else {
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
+                }
+              },
+            ),
+            const SizedBox(
+              height: 5,
+            ),
+            Row(
+              children: [
+                ElevatedButton(
+                  onPressed: () => {_launchUrl()},
+                  style: ElevatedButton.styleFrom(
+                      primary: AppColors.orange,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                          side: const BorderSide(color: Colors.orangeAccent)),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 35, vertical: 20),
+                      textStyle: const TextStyle(
+                          fontSize: 30, fontWeight: FontWeight.bold)),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: const [
+                      // Icon(Icons.remove_circle_outlined, color: Colors.red, size: 16),
+                      PrimaryText(
+                        text: 'Contact',
+                        fontWeight: FontWeight.w600,
+                        size: 20,
+                        color: Colors.black,
+                      )
+                    ],
+                  ),
                 ),
-              ),
-              const SizedBox(width: 10),
-              ElevatedButton(
-                onPressed: () => {
-                  DeliveryRepoModule.deliveryRepository().closeDelivery(Order(id: id, productName: productName, weight: weight, description: description, price: price, reward: reward, status: status, delivererID: delivererID, picture: picture, delivererProfile: delivererProfile, customerProfile: customerProfile), id),
-                  Navigator.pushNamed(context, 'dashboard'),
-                },
-                style: ElevatedButton.styleFrom(
-                    primary: AppColors.yellow,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10.0),
-                        side: const BorderSide(color: Colors.yellowAccent)),
-                    padding:
-                    const EdgeInsets.symmetric(horizontal: 35, vertical: 20),
-                    textStyle: const TextStyle(
-                        fontSize: 30, fontWeight: FontWeight.bold)),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: const [
-                    // Icon(Icons.remove_circle_outlined, color: Colors.red, size: 16),
-                    PrimaryText(
-                      text: 'Close deal',
-                      fontWeight: FontWeight.w600,
-                      size: 20,
-                      color: Colors.black,
-                    )
-                  ],
+                const SizedBox(width: 10),
+                ElevatedButton(
+                  onPressed: () => {
+                    _submit(context),
+                  },
+                  style: ElevatedButton.styleFrom(
+                      primary: AppColors.yellow,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                          side: const BorderSide(color: Colors.yellowAccent)),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 35, vertical: 20),
+                      textStyle: const TextStyle(
+                          fontSize: 30, fontWeight: FontWeight.bold)),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: const [
+                      // Icon(Icons.remove_circle_outlined, color: Colors.red, size: 16),
+                      PrimaryText(
+                        text: 'Close deal',
+                        fontWeight: FontWeight.w600,
+                        size: 20,
+                        color: Colors.black,
+                      )
+                    ],
+                  ),
                 ),
-              ),
-
-            ],)
-
+              ],
+            )
           ]);
         } else {
           return ElevatedButton(
@@ -544,51 +578,201 @@ class PostDetail extends StatelessWidget {
             ),
           );
         }
-      case 'history': {
-        return Column(
-          children: [
-            const PrimaryText(text: 'Angel:'),
-            const SizedBox(height: 5,),
-            FutureBuilder<Profile>(
-              future: ProfileRepoModule.profileRepository()
-                  .getProfile(delivererProfile),
-              builder:
-                  (BuildContext context, AsyncSnapshot<Profile> profile) {
-                if (profile.hasData &&
-                    profile.connectionState == ConnectionState.done) {
-                  return PrimaryText(
-                    text: profile.data!.nickname,
-                    fontWeight: FontWeight.w300,
-                  );
-                } else {
-                  return const Center(
-                    child: CircularProgressIndicator(),
-                  );
-                }
-              },
-            ),
-            FutureBuilder<Profile>(
-              future: ProfileRepoModule.profileRepository()
-                  .getProfile(delivererProfile),
-              builder:
-                  (BuildContext context, AsyncSnapshot<Profile> profile) {
-                if (profile.hasData &&
-                    profile.connectionState == ConnectionState.done) {
-                  return PrimaryText(
-                    text: profile.data!.alias,
-                    fontWeight: FontWeight.w300,
-                  );
-                } else {
-                  return const Center(
-                    child: CircularProgressIndicator(),
-                  );
-                }
-              },
-            ),
-          ],
-        );
-      }
+      case 'history':
+        {
+          return Column(
+            children: [
+              const PrimaryText(text: 'Angel:'),
+              const SizedBox(
+                height: 5,
+              ),
+              FutureBuilder<Profile>(
+                future: ProfileRepoModule.profileRepository()
+                    .getProfile(delivererProfile),
+                builder:
+                    (BuildContext context, AsyncSnapshot<Profile> profile) {
+                  if (profile.hasData &&
+                      profile.connectionState == ConnectionState.done) {
+                    return PrimaryText(
+                      text: profile.data!.nickname,
+                      fontWeight: FontWeight.w300,
+                    );
+                  } else {
+                    return const Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  }
+                },
+              ),
+              FutureBuilder<Profile>(
+                future: ProfileRepoModule.profileRepository()
+                    .getProfile(delivererProfile),
+                builder:
+                    (BuildContext context, AsyncSnapshot<Profile> profile) {
+                  if (profile.hasData &&
+                      profile.connectionState == ConnectionState.done) {
+                    return PrimaryText(
+                      text: profile.data!.alias,
+                      fontWeight: FontWeight.w300,
+                    );
+                  } else {
+                    return const Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  }
+                },
+              ),
+              FutureBuilder<Profile>(
+                future: ProfileRepoModule.profileRepository()
+                    .getProfile(delivererProfile),
+                builder:
+                    (BuildContext context, AsyncSnapshot<Profile> profile) {
+                  if (profile.hasData &&
+                      profile.connectionState == ConnectionState.done) {
+                    return PrimaryText(
+                      text: 'deals completed: ${profile.data!.dealsCompleted}',
+                      fontWeight: FontWeight.w300,
+                    );
+                  } else {
+                    return const Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  }
+                },
+              ),
+            ],
+          );
+        }
+      case 'deliveries':
+        {
+          return Column(
+            children: [
+              const PrimaryText(text: 'Buyer:'),
+              const SizedBox(
+                height: 5,
+              ),
+              FutureBuilder<Profile>(
+                future: ProfileRepoModule.profileRepository()
+                    .getProfile(customerProfile),
+                builder:
+                    (BuildContext context, AsyncSnapshot<Profile> profile) {
+                  if (profile.hasData &&
+                      profile.connectionState == ConnectionState.done) {
+                    return PrimaryText(
+                      text: profile.data!.nickname,
+                      fontWeight: FontWeight.w300,
+                    );
+                  } else {
+                    return const Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  }
+                },
+              ),
+              FutureBuilder<Profile>(
+                future: ProfileRepoModule.profileRepository()
+                    .getProfile(customerProfile),
+                builder:
+                    (BuildContext context, AsyncSnapshot<Profile> profile) {
+                  if (profile.hasData &&
+                      profile.connectionState == ConnectionState.done) {
+                    return PrimaryText(
+                      text: profile.data!.alias,
+                      fontWeight: FontWeight.w300,
+                    );
+                  } else {
+                    return const Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  }
+                },
+              ),
+            ],
+          );
+        }
     }
     return const Text('');
+  }
+
+  void _submit(context) {
+    showDialog<void>(
+      context: context,
+      barrierDismissible: true, // user can tap anywhere to close the pop up
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Rating'),
+          content: SingleChildScrollView(
+            child: Column(
+              children: <Widget>[
+                RatingBar.builder(
+                  initialRating: 3,
+                  minRating: 1,
+                  direction: Axis.horizontal,
+                  allowHalfRating: true,
+                  itemCount: 5,
+                  itemPadding: const EdgeInsets.symmetric(horizontal: 4.0),
+                  itemBuilder: (context, _) => const Icon(
+                    Icons.favorite,
+                    color: Colors.amber,
+                  ),
+                  onRatingUpdate: (rating) {
+                    print(rating);
+                    // ProfileRepoModule.profileRepository()
+                    //     .getProfile(delivererProfile)
+                    //     .then((profile) {
+                    //   Profile newProfile = Profile(
+                    //       id: profile.id,
+                    //       nickname: profile.nickname,
+                    //       rating: (profile.rating * profile.dealsCompleted +
+                    //               rating) /
+                    //           (profile.dealsCompleted + 1),
+                    //       dealsCompleted: profile.dealsCompleted + 1,
+                    //       alias: profile.alias);
+                    //   ProfileRepoModule.profileRepository()
+                    //       .updateProfile(newProfile, profile.id);
+                    // });
+                    // print(rating);
+                  },
+                )
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                TextButton(
+                  style: TextButton.styleFrom(
+                    primary: Colors.white,
+                    backgroundColor: Colors.blue,
+                    shape: const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(10))),
+                  ),
+                  child: const Text('OK'),
+                  onPressed: () {
+                    DeliveryRepoModule.deliveryRepository().closeDelivery(
+                        Order(
+                            id: id,
+                            productName: productName,
+                            weight: weight,
+                            description: description,
+                            price: price,
+                            reward: reward,
+                            status: status,
+                            delivererID: delivererID,
+                            picture: picture,
+                            delivererProfile: delivererProfile,
+                            customerProfile: customerProfile),
+                        id);
+                    Navigator.pushNamed(
+                        context, 'dashboard'); // Empty the form fields
+                  },
+                )
+              ],
+            )
+          ],
+        );
+      },
+    );
   }
 }

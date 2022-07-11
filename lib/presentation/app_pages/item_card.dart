@@ -3,6 +3,7 @@ import 'package:innocart_front/presentation/app_pages/post_details_page.dart';
 import 'package:innocart_front/presentation/style/primary_text.dart';
 import 'package:innocart_front/presentation/style/app_colors.dart';
 import 'dart:io';
+import 'package:badges/badges.dart';
 
 class ItemCard extends StatelessWidget {
   final int id;
@@ -77,34 +78,26 @@ class ItemCard extends StatelessWidget {
                     children: [
                       Row(
                         children: [
-                          const Icon(
-                            Icons.attach_money_outlined,
-                            color: AppColors.yellow,
-                            size: 28,
-                          ),
                           // const SizedBox(width: 5),
                           PrimaryText(
                             text: reward.toString(),
                             size: 22,
                           ),
+                          const Icon(
+                            Icons.currency_ruble,
+                            color: AppColors.yellow,
+                            size: 26,
+                          ),
                           const SizedBox(width: 5),
                           (typeOfPage == 'activeOrders')
-                              ? TextButton(
-                                  style: TextButton.styleFrom(
-                                    backgroundColor: AppColors.primary,
-                                    shape: const RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.all(
-                                            Radius.circular(10))),
-                                  ),
-                                  onPressed: () {},
-                                  child: PrimaryText(
-                                    text: status,
-                                    size: 12,
-                                    fontWeight: FontWeight.w500,
-                                    color: AppColors.black,
-                                  ),
-                                )
-                              : const Text(""),
+                              ?
+                          Badge(
+                            toAnimate: false,
+                            shape: BadgeShape.square,
+                            badgeColor: getBadgeColor(status),
+                            borderRadius: BorderRadius.circular(8),
+                            badgeContent: Text(status, style: const TextStyle(color: Colors.black)),
+                          ) : const Text(""),
                         ],
                       ),
                       const SizedBox(height: 5),
@@ -124,8 +117,28 @@ class ItemCard extends StatelessWidget {
                         const SizedBox(width: 10),
                         const Icon(Icons.person, size: 20),
                         const SizedBox(width: 5),
+                        // FutureBuilder<Profile>(
+                        //   future: ProfileRepoModule.profileRepository()
+                        //       .getProfile(delivererProfile),
+                        //   builder: (BuildContext context,
+                        //       AsyncSnapshot<Profile> profile) {
+                        //     if (profile.hasData &&
+                        //         profile.connectionState ==
+                        //             ConnectionState.done) {
+                        //       return PrimaryText(
+                        //         text: profile.data!.rating.toString(),
+                        //         size: 18,
+                        //         fontWeight: FontWeight.w600,
+                        //       );
+                        //     } else {
+                        //       return const Center(
+                        //         child: CircularProgressIndicator(),
+                        //       );
+                        //     }
+                        //   },
+                        // ),
                         const PrimaryText(
-                          text: "4.5",
+                          text: "5.0",
                           size: 18,
                           fontWeight: FontWeight.w600,
                         )
@@ -162,4 +175,9 @@ class ItemCard extends StatelessWidget {
       ),
     );
   }
+}
+Color getBadgeColor(text) {
+  if (text=='IN_PROGRESS') return AppColors.yellow;
+  else if (text=='CONFIRMATION') return AppColors.blue_;
+  return AppColors.lightGray;
 }
