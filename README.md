@@ -9,7 +9,7 @@ Imagine, you live in Innopolis and you need an item that you can't find here. Ho
 2. Secondly, you should register there
 3. And then, you can create orders or response on them
 
-## 💎How it [looks](https://drive.google.com/file/d/1X9GSUar21EzOVOC_l5XtCwSQVmNE0JH3/view) like
+## 💎How it [looks](https://drive.google.com/file/d/1oQsEM-LphsJDqu8NbEVU6JuWnioWcBl0/view?usp=sharing) like
 ![Demo version](https://github.com/InnoSWP/InnoCart/blob/74abd1729eb61205619fd4989ab151dee15d761a/assets/video.gif)
 
 ### Links
